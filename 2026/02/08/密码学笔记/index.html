@@ -175,7 +175,25 @@
     </div>
     
     <div class="content" v-pre>
-        <h2><span id="古典密码">古典密码</span></h2><p>常见的古典密码在计算机时代大部分可以通过计算机的算法完成爆破类似的解密</p>
+        <!-- toc -->
+
+<ul>
+<li><a href="#%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81">古典密码</a><ul>
+<li><a href="#%E5%8D%95%E8%A1%A8%E6%9B%BF%E6%8D%A2%E5%AF%86%E7%A0%81">单表替换密码</a></li>
+<li><a href="#%E5%A4%9A%E8%A1%A8%E6%9B%BF%E6%8D%A2%E5%AF%86%E7%A0%81">多表替换密码</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E5%AF%86%E7%A0%81">其他类型密码</a></li>
+</ul>
+</li>
+<li><a href="#%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81">现代密码</a><ul>
+<li><a href="#%E4%B8%8D%E5%90%8C%E5%88%86%E7%B1%BB">不同分类</a></li>
+<li><a href="#%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81">对称密码</a></li>
+<li><a href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%AF%86%E7%A0%81">非对称密码</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="古典密码">古典密码</span></h2><p>常见的古典密码在计算机时代大部分可以通过计算机的算法完成爆破类似的解密</p>
 <h3><span id="单表替换密码">单表替换密码</span></h3><h4><span id="caesar-cipher-凯撒密码">Caesar Cipher 凯撒密码</span></h4><p>对于26个字母进行数字映射(a–&gt;0)，然后对于明文映射后加上同一个密钥n，得到密文<br>破解同理转化为数字映射然后同时减去n即可</p>
 <p>加密函数：<br>$E_k(x) ≡ (x + k) \ mod \ 26$<br>解密函数：<br>$D_k(x) ≡ (x - k) \ mod \ 26$</p>
 <h5><span id="凯撒加密代码实现">凯撒加密代码实现</span></h5><pre><code class="language-python">def caesar_encrypt(plaintext, shift):
