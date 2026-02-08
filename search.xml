@@ -33,9 +33,20 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/myblog.github.io/categories/index.html"/>
-      <url>/myblog.github.io/categories/index.html</url>
+      <title>搜索</title>
+      <link href="/myblog.github.io/search/index.html"/>
+      <url>/myblog.github.io/search/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tags</title>
+      <link href="/myblog.github.io/tags/index.html"/>
+      <url>/myblog.github.io/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -55,9 +66,9 @@
     
     
     <entry>
-      <title>archives</title>
-      <link href="/myblog.github.io/archives/index.html"/>
-      <url>/myblog.github.io/archives/index.html</url>
+      <title>categories</title>
+      <link href="/myblog.github.io/categories/index.html"/>
+      <url>/myblog.github.io/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -66,9 +77,9 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/myblog.github.io/tags/index.html"/>
-      <url>/myblog.github.io/tags/index.html</url>
+      <title>archives</title>
+      <link href="/myblog.github.io/archives/index.html"/>
+      <url>/myblog.github.io/archives/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
