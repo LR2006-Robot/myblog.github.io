@@ -55,17 +55,6 @@
     
     
     <entry>
-      <title>搜索</title>
-      <link href="/myblog.github.io/search/index.html"/>
-      <url>/myblog.github.io/search/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>categories</title>
       <link href="/myblog.github.io/categories/index.html"/>
       <url>/myblog.github.io/categories/index.html</url>
