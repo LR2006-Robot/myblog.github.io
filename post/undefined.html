@@ -460,16 +460,31 @@
   #article-container figure.highlight {
       border-radius: 10px;
   }
-
-  /* 文章卡片完全透明（和背景图融合） */
+  /* 文章卡片：不透明白框黑字 */
   #recent-posts > .recent-post-item {
-    background: transparent !important;
-    box-shadow: none !important; /* 去掉卡片阴影 */
+    background: #ffffff !important; /* 纯白背景 */
+  color: #000000 !important; /* 纯黑文字 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important; /* 轻微阴影增加层次感 */
+  border-radius: 8px; /* 可选：圆角优化 */
   }
-  /* 文章卡片文字颜色调整（避免和背景混淆） */
+
+  /* 文章卡片标题/时间：确保黑字清晰 */
   #recent-posts .recent-post-item .post-title,
   #recent-posts .recent-post-item .post-meta {
-    color: #fff !important; /* 白色文字，可根据背景图调整为黑色 #000 */
+    color: #000000 !important;
+  }
+
+  /* 侧边栏卡片：同步白框黑字 */
+  #aside-content .card-widget {
+  background: #ffffff !important;
+  color: #000000 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 8px;
+  }
+
+  /* 侧边栏文字：确保黑字清晰 */
+  #aside-content .card-widget * {
+    color: #000000 !important;
   }
 </style>
 <meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/myblog.github.io/atom.xml" title="Alice and Bodの神秘小屋" type="application/atom+xml">
