@@ -319,3 +319,42 @@ div#post, div#page, div#archive, div#tag, div#category {
     background: transparent !important;
     border-radius: 5px;
 }
+
+/* 终极覆盖：抹除所有蓝色背景，优先级最高 */
+* {
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* 只保留背景图和半透明白色（核心需求） */
+body {
+    background: url(/images/bg.jpg) no-repeat center center fixed !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+}
+
+/* 恢复你想要的半透明白色（按需调整0.7） */
+#recent-posts > .recent-post-item,
+#aside-content .card-widget,
+div#post, div#page, div#archive, div#tag, div#category {
+    background: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* 夜间模式恢复深色半透明 */
+[data-theme='dark'] #recent-posts > .recent-post-item,
+[data-theme='dark'] .card-widget,
+[data-theme='dark'] div#post,
+[data-theme='dark'] div#page,
+[data-theme='dark'] div#archive,
+[data-theme='dark'] div#tag,
+[data-theme='dark'] div#category {
+    background: rgba(18, 18, 18, 0.8) !important;
+}
+
+/* 恢复评论框/番剧插件的特殊背景（如果需要） */
+.bangumi-active, .bangumi-button:hover {
+    background: #dbecfe !important;
+}
+.vwrap, .vcard {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
