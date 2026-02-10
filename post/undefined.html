@@ -159,7 +159,309 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/myblog.github.io/atom.xml" title="Alice and Bodの神秘小屋" type="application/atom+xml">
+}</script><style>
+  @font-face {
+      font-family: ZhuZiAYuanJWD;
+      src: url(https://cdn.cbd.int/anzhiyu-blog@latest/fonts/ZhuZiAYuanJWD.woff2);
+      font-display: swap;
+      font-weight: lighter;
+  }
+  @import url(https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap);
+
+  /* 字体样式 */
+  div#menu {
+      font-family: 'ZCOOL KuaiLe', cursive;
+  }
+  h1#site-title {
+      font-family: 'ZCOOL KuaiLe', cursive;
+      font-size: 3em !important;
+  }
+  a.article-title,
+  a.blog-slider__title,
+  a.categoryBar-list-link,
+  h1.post-title{
+      font-family: 'ZCOOL KuaiLe', cursive;
+  }
+
+  /* 图标样式 */
+  .iconfont{
+      font-family: 'iconfont' !important;
+      font-size: 3em;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
+  svg.icon{
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+  }
+  .icon-zhongbiao::before{
+      color:#f7c768;
+  }
+
+  /* bilibli番剧插件 */
+  .bangumi-active{
+      background:#dbecfe !important;
+      border-radius:10px !important;
+  }
+  a.bangumi-tab:hover{
+      text-decoration:none !important;
+  }
+  .bangumi-button:hover{
+      background:#dbecfe !important;
+      border-radius:10px !important;
+  }
+  a.bangumi-button.bangumi-nextpage:hover {
+      text-decoration:none !important;
+  }
+  .bangumi-button{
+      padding: 5px 10px !important;
+  }
+  a.bangumi-tab {
+      padding: 5px 10px !important;
+  }
+  svg.icon.faa-tada {
+      font-size:1.1em;
+  }
+
+  /* 解决artitalk的图标问题 */
+  #uploadSource > svg {
+      width:1.19em;
+      height:1.5em;
+  }   
+
+  /* 移除头图黑色透明玻璃效果 */
+  #page-header:not(.not-top-img):before{
+      background-color: transparent !important;
+  }
+
+  /* 核心：透明化配置 */
+  #recent-posts >.recent-post-item {
+      background:rgba(255,255,255,0.1) !important;
+  }
+  #aside-content .card-widget {
+      background:rgba(255, 255, 255,0.1) !important;
+  }
+  div#post {
+      background:rgba(255,255,255,0.1) !important;
+  }
+  div#page {
+      background:rgba(255, 255, 255,0.1) !important;
+  }
+  div#archive {
+      background:rgba(255, 255, 255,0.1) !important;
+  }
+  div#tag {
+      background:rgba(255, 255, 255,0.1) !important;
+  }
+  div#category {
+      background:rgba(255, 255, 255,0.1) !important;
+  }
+
+  /* 夜间模式 */
+  [data-theme='dark'] #recent-posts >.recent-post-item {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] .card-widget {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#post {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#tag {
+      background:#121212 !important;
+  }
+  [data-theme='dark'] div#archive {
+      background:#121212 !important;
+  }   
+  [data-theme='dark'] div#page {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#category {
+      background: transparent !important;
+  }
+
+  /* 头部+尾部完全透明 */
+  #footer {
+      background: transparent !important;
+  }
+  #page-header,
+  #page-header #site-banner {
+      background: transparent !important;
+      background-color: transparent !important;
+  }
+  #rightside > div > button {
+      border-radius: 5px;
+  }
+
+  /* 滚动条 */
+  ::-webkit-scrollbar {
+      width:10px;
+      height:10px;
+  }
+  ::-webkit-scrollbar-thumb {
+      background-color:#49b1f5;
+      border-radius:20px;
+  }
+  ::-webkit-scrollbar-corner {
+      background-color: transparent;
+  }
+  ::selection{
+      color:#fff;
+      background-color:#49b1f5;
+  }
+
+  /* 音乐播放器 */
+  .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+      left:-66px !important;
+      transition: all 0.3s;
+  }
+  .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{
+      left:0 !important;
+      transition: all 0.3s;
+  }
+  .aplayer.aplayer-fixed {
+      z-index: 9999999 !important;
+  }
+
+  /* 评论框 */
+  .vwrap{
+      box-shadow: 2px 2px 5px#bbb;
+      background: rgba(255, 255, 255,0.3) !important;
+      border-radius: 8px;
+      padding: 30px;
+      margin: 30px 0px 30px 0px;
+  }
+  .vcard{
+      box-shadow:2px 2px 2px 5px#bbb;
+      background: rgba(255,255, 255,0.3) !important;
+      border-radius:8px;
+      padding: 30px;
+      margin: 30px 0px 0px 0px;   
+  }
+
+  /* md下划线 */
+  #article-container a:hover {
+      text-decoration:none !important;
+  }
+  #article-container #hpp_talk p img {
+      display: inline;
+  }
+
+  /* 404页面 */
+  #error-wrap {
+      position: absolute;
+      top: 40%;
+      right: 0;
+      left: 0;
+      margin:0 auto;
+      padding: 0 1rem;
+      max-width: 1000px;
+      transform: translate(0,-50%);
+  }
+  #error-wrap .error-content {    
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin: 0 1rem;
+      height: 18rem;
+      border-radius: 8px;
+      background: var(--card-bg);
+      box-shadow: var(--card-box-shadow);
+      transition: all 0.3s;
+  }
+  #error-wrap .error-content .error-img {
+      box-flex: 1;
+      flex: 1;
+      height: 100%;
+      border-top-left-radius:8px;
+      border-bottom-left-radius: 8px;
+      background-color: #49b1f5;
+      background-position: center;
+      background-size: cover;
+  }
+  #error-wrap .error-content .error-info {
+      box-flex: 1;
+      flex: 1;
+      padding: 0.5rem;
+      text-align: center;
+      font-size: 14px;
+      font-family:Titillium Web, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft JhengHei', 'Microsoft YaHei',sans-serif;
+  }
+  #error-wrap .error-content .error-info .error_title {
+      margin-top: -4rem;
+      font-size: 9em;
+  }
+  #error-wrap .error-content .error-info .error_subtitle {
+      margin-top: -3.5rem;
+      word-break:break-word;
+      font-size: 1.6em;
+  }
+  #error-wrap .error-content .error-info a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.3rem 1.5rem;
+      background:var(--btn-bg);
+      color: var(--btn-color);
+  }
+  #body-wrap.error .aside-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      bottom:0px;
+      position: absolute;
+      padding: 1rem;
+      width:100%;
+      overflow: scroll;
+  }
+  #body-wrap.error .aside-list .aside-list-group{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      max-width:1200px;
+      margin:0 auto;
+  }
+  #body-wrap.error .aside-list .aside-list-item {
+   padding: 0.5rem;
+  }
+  #body-wrap.error .aside-list .aside-list-item img {
+      width:100%;
+      object-fit: cover;
+      border-radius: 12px;
+  }
+  #body-wrap.error .aside-list .aside-list-item .thumbnail {
+      overflow:hidden;
+      width: 230px;
+      height: 143px;
+      background: var(--heo-card-bg);
+      display: flex;
+  }
+  #body-wrap.error .aside-list .aside-list-item .content .title {
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      line-height: 1.5;
+      justify-content: center;
+      align-items: flex-end;
+      align-content: center; 
+      padding-top: 0.5rem;
+      color: white;
+  }
+  #body-wrap.error .aside-list .aside-list-item .content time {
+      display: none;
+  }
+
+  /* 代码框 */
+  #article-container figure.highlight {
+      border-radius: 10px;
+  }
+</style>
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/myblog.github.io/atom.xml" title="Alice and Bodの神秘小屋" type="application/atom+xml">
 </head><body><div class="bg-animation" id="web_bg" style="background-image: url(/myblog.github.io/img/bg1.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/myblog.github.io/img/Alice.png" onerror="this.onerror=null;this.src='/myblog.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/myblog.github.io/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/myblog.github.io/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/myblog.github.io/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/bangumis/index.html"><i class="fa-fw fas fa-home"></i><span> 追番</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/myblog.github.io/"><span class="site-name">Alice and Bodの神秘小屋</span></a><a class="nav-page-title" href="/myblog.github.io/"><span class="site-name">RSA题型总结</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/bangumis/index.html"><i class="fa-fw fas fa-home"></i><span> 追番</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">RSA题型总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-02-08T09:05:00.000Z" title="发表于 2026-02-08 17:05:00">2026-02-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-08T09:35:10.269Z" title="更新于 2026-02-08 17:35:10">2026-02-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2><span id="rsa-基础定义">RSA 基础定义</span></h2><h3><span id="基础字母含义">基础字母含义</span></h3><p>明文$m$：用于以数字或字节形式记录信息<br>公钥$e$：用于加密明文<br>密文$m$：用于以数字或字节形式记录加密信息<br>私钥$d$：用于解密密文<br>模数$n$：用于加解密信息，安全性的核心<br>欧拉函数$phi$(数学形式$\phi(n)$)：用于计算私钥<br>质数$p$：用于解密<br>质数$q$：用于解密</p>
 <h3><span id="基础字母关系">基础字母关系</span></h3><p>$n &#x3D; p × q$<br>$\phi(n)  &#x3D; (p-1)(q-1)$</p>
 <p>$m^e \equiv c \ (\bmod \ n)$<br>$e × d \equiv 1 \ (\bmod \ \phi(n))$<br>$c^d \equiv m \ (\bmod \ n)$</p>

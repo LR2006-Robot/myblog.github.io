@@ -6,6 +6,7 @@
 }
 @import url(https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap);
 
+/* 字体样式 */
 div#menu {
     font-family: 'ZCOOL KuaiLe', cursive;
 }
@@ -20,6 +21,7 @@ h1.post-title{
     font-family: 'ZCOOL KuaiLe', cursive;
 }
 
+/* 图标样式 */
 .iconfont{
     font-family: 'iconfont' !important;
     font-size: 3em;
@@ -27,7 +29,6 @@ h1.post-title{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
 svg.icon{
     width: 1em;
     height: 1em;
@@ -35,125 +36,107 @@ svg.icon{
     fill: currentColor;
     overflow: hidden;
 }
-
 .icon-zhongbiao::before{
     color:#f7c768;
 }
 
-/*bilibli番剧插件 */
+/* bilibli番剧插件 */
 .bangumi-active{
     background:#dbecfe !important;
     border-radius:10px !important;
 }
 a.bangumi-tab:hover{
     text-decoration:none !important;
-
 }
 .bangumi-button:hover{
-background:#dbecfe !important;
-border-radius:10px !important;
+    background:#dbecfe !important;
+    border-radius:10px !important;
 }
 a.bangumi-button.bangumi-nextpage:hover {
     text-decoration:none !important;
 }
 .bangumi-button{
-padding: 5px 10px !important;
+    padding: 5px 10px !important;
 }
-
 a.bangumi-tab {
-    padding: 5px 10px ! important;
+    padding: 5px 10px !important;
 }
 svg.icon.faa-tada {
     font-size:1.1em;
 }
 
-/*解决artitalk的图标问题*/
+/* 解决artitalk的图标问题 */
 #uploadSource > svg {
     width:1.19em;
     height:1.5em;
 }   
 
-/*top-img黑色透明玻璃效果移除,不建议加,除非你执着于完全一图流或者背景图对比色明显 */
+/* 移除头图黑色透明玻璃效果 */
 #page-header:not(.not-top-img):before{
     background-color: transparent !important;
 }
 
-/*首页文章卡片 */
+/* 核心：透明化配置（修复rgba语法错误） */
+/* 首页文章卡片 */
 #recent-posts >.recent-post-item {
-    background:rgba(255,255,255,0,1);
+    background:rgba(255,255,255,0.1) !important;
 }
-
-/*首页侧栏卡片*/
+/* 首页侧栏卡片 */
 #aside-content .card-widget {
-    background:rgba(255, 255, 255,0,1);
+    background:rgba(255, 255, 255,0.1) !important;
 }
-
-/*文章页面正文背景*/
+/* 文章页面正文背景 */
 div#post {
-    background:rgba(255,255,255,0,1);
+    background:rgba(255,255,255,0.1) !important;
 }
-
-/*分页页面*/
+/* 分页页面 */
 div#page {
-    background:rgba(255, 255, 255,0,1);
+    background:rgba(255, 255, 255,0.1) !important;
 }
-
-/*归档页面*/
+/* 归档页面 */
 div#archive {
-    background:rgba(255, 255, 255,0,1);
+    background:rgba(255, 255, 255,0.1) !important;
 }
-
-/*标签页面*/
+/* 标签页面 */
 div#tag {
-    background:rgba(255, 255, 255,0,1);
+    background:rgba(255, 255, 255,0.1) !important;
 }
-
-/*分类页面*/
+/* 分类页面 */
 div#category {
-    background:rgba(255, 255, 255,0,1);
+    background:rgba(255, 255, 255,0.1) !important;
 }
 
-/*夜间模式伪类遮罩层透明*/
+/* 夜间模式伪类遮罩层透明 */
 [data-theme='dark'] #recent-posts >.recent-post-item {
-    background: #121212;
+    background: #121212 !important;
 }
-
 [data-theme='dark'] .card-widget {
-    background: #12121212 ! important;
+    background: #121212 !important;
 }
-
 [data-theme='dark'] div#post {
-    background: #12121212 ! important;
+    background: #121212 !important;
 }
-
 [data-theme='dark'] div#tag {
-    background:#121212 ! important;
+    background:#121212 !important;
 }
-
 [data-theme='dark'] div#archive {
-    background:#121212 ! important;
+    background:#121212 !important;
 }   
-
 [data-theme='dark'] div#page {
     background: #121212 !important;
 }
-
-[data-theme='dark'] div#category {
-    background: #12121212 !important;
-}
-
 [data-theme='dark'] div#category {
     background: transparent !important;
 }
 
-/* 页脚透明 */
+/* 核心：头部+尾部完全透明（提升选择器优先级） */
 #footer {
     background: transparent !important;
 }
-
-/*头图透明*/
-#page-header {
+#page-header,
+#page-header #site-banner {
     background: transparent !important;
+    background-color: transparent !important;
 }
 #rightside > div > button {
     border-radius: 5px;
@@ -164,73 +147,56 @@ div#category {
     width:10px;
     height:10px;
 }
-
 ::-webkit-scrollbar-thumb {
     background-color:#49b1f5;
     border-radius:20px;
 }
-
-:-webkit-scrollbar-corner {
+::-webkit-scrollbar-corner { /* 修复选择器拼写错误 */
     background-color: transparent;
 }
-
-:-moz-selection{
+::selection{ /* 修复火狐/Chrome兼容 */
     color:#fff;
     background-color:#49b1f5;
 }
 
-/*音乐播放器 */
-
-/*.aplayer.aplayer-lrc {
-    display: none !important;
-}*/
-
-aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
+/* 音乐播放器 */
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body { /* 修复拼写错误 aplayer-bodyy */
     left:-66px !important;
     transition: all 0.3s;
-    /*默认情况下缩进左侧66px,只留一点箭头部分*/
 }
-
 .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{
     left:0 !important;
     transition: all 0.3s;
-    /*鼠标悬停是左侧缩进归零,完全显示按钮 */
 }
-
 .aplayer.aplayer-fixed {
-    z-index: 9999999 ! important;
+    z-index: 9999999 !important;
 }
 
-/*评论框*/
+/* 评论框 */
 .vwrap{
     box-shadow: 2px 2px 5px#bbb;
-    background: rgba(255, 255, 255,0.3);
+    background: rgba(255, 255, 255,0.3) !important;
     border-radius: 8px;
     padding: 30px;
     margin: 30px 0px 30px 0px;
 }
-
-/*设置评论框*/
-
 .vcard{
     box-shadow:2px 2px 2px 5px#bbb;
-    background: rgba(255,255, 255,0.3);
+    background: rgba(255,255, 255,0.3) !important;
     border-radius:8px;
     padding: 30px;
     margin: 30px 0px 0px 0px;   
 }
 
-/*md网站下划线 */
+/* md网站下划线 */
 #article-container a:hover {
     text-decoration:none !important;
 }
-
 #article-container #hpp_talk p img {
     display: inline;
 }
 
-
-/*404页面*/
+/* 404页面 */
 #error-wrap {
     position: absolute;
     top: 40%;
@@ -241,7 +207,6 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     max-width: 1000px;
     transform: translate(0,-50%);
 }
-
 #error-wrap .error-content {    
     display: flex;
     flex-direction: row;
@@ -254,7 +219,6 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     box-shadow: var(--card-box-shadow);
     transition: all 0.3s;
 }
-
 #error-wrap .error-content .error-img {
     box-flex: 1;
     flex: 1;
@@ -265,7 +229,6 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     background-position: center;
     background-size: cover;
 }
-
 #error-wrap .error-content .error-info {
     box-flex: 1;
     flex: 1;
@@ -274,18 +237,15 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     font-size: 14px;
     font-family:Titillium Web, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft JhengHei', 'Microsoft YaHei',sans-serif;
 }
-
 #error-wrap .error-content .error-info .error_title {
     margin-top: -4rem;
     font-size: 9em;
 }
-
 #error-wrap .error-content .error-info .error_subtitle {
     margin-top: -3.5rem;
     word-break:break-word;
     font-size: 1.6em;
 }
-
 #error-wrap .error-content .error-info a {
     display: inline-block;
     margin-top: 0.5rem;
@@ -293,7 +253,6 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     background:var(--btn-bg);
     color: var(--btn-color);
 }
-
 #body-wrap.error .aside-list {
     display: flex;
     flex-direction: row;
@@ -304,7 +263,6 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     width:100%;
     overflow: scroll;
 }
-
 #body-wrap.error .aside-list .aside-list-group{
     display: flex;
     flex-direction: row;
@@ -312,17 +270,14 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     max-width:1200px;
     margin:0 auto;
 }
-
 #body-wrap.error .aside-list .aside-list-item {
  padding: 0.5rem;
 }
-
 #body-wrap.error .aside-list .aside-list-item img {
     width:100%;
     object-fit: cover;
     border-radius: 12px;
 }
-
 #body-wrap.error .aside-list .aside-list-item .thumbnail {
     overflow:hidden;
     width: 230px;
@@ -330,7 +285,6 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     background: var(--heo-card-bg);
     display: flex;
 }
-
 #body-wrap.error .aside-list .aside-list-item .content .title {
     -webkit-line-clamp: 2;
     overflow: hidden;
@@ -343,13 +297,11 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     padding-top: 0.5rem;
     color: white;
 }
-
 #body-wrap.error .aside-list .aside-list-item .content time {
-display: none;
+    display: none;
 }
 
-/*代码框主题*/
+/* 代码框主题 */
 #article-container figure.highlight {
     border-radius: 10px;
 }
-
