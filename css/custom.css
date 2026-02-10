@@ -1,0 +1,22 @@
+@font-face {
+    font-family: ZhuZiAYuanJWD;
+    src: url(https://cdn.cbd.int/anzhiyu-blog@latest/fonts/ZhuZiAYuanJWD.woff2);
+    font-display: swap;
+    font-weight: lighter;
+}
+@import url(https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap);
+
+div#menu {
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+h1#site-title {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 3em !important;
+}
+a.article-title,
+a.blog-slider__title,
+a.categoryBar-list-link,
+h1.post-title{
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
