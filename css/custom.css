@@ -167,7 +167,7 @@ div#category {
 
 ::-webkit-scrollbar-thumb {
     background-color:#49b1f5;
-    border-radius:2ea;
+    border-radius:20px;
 }
 
 :-webkit-scrollbar-corner {
@@ -213,7 +213,7 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
 /*设置评论框*/
 
 .vcard{
-    box-shadow:2px2px 2px 5px#bbb;
+    box-shadow:2px 2px 2px 5px#bbb;
     background: rgba(255,255, 255,0.3);
     border-radius:8px;
     padding: 30px;
@@ -353,44 +353,3 @@ display: none;
     border-radius: 10px;
 }
 
-/* 全局背景设置 */
-body {
-  background: url(/images/bg.jpg) no-repeat center center fixed !important;
-  background-size: cover !important;
-  background-attachment: fixed !important;
-}
-
-/* 顶部导航栏透明 */
-#page-header {
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* 顶部标题栏透明 */
-#site-info {
-  background: transparent !important;
-}
-
-/* 文章卡片透明 */
-#content-inner,
-.layout_post > .recent-post-item,
-.article-sort-item {
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* 侧边栏透明 */
-#aside-content .card-widget {
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* 底部页脚透明 */
-#footer {
-  background: transparent !important;
-}
-
-/* 其他可能遮挡的容器 */
-#page, #body-wrap {
-  background: transparent !important;
-}
