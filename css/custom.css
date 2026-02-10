@@ -353,15 +353,44 @@ display: none;
     border-radius: 10px;
 }
 
-/* 全局背景（整个页面） */
+/* 全局背景设置 */
 body {
-  background: url(/img/bg.jpg) no-repeat center center fixed;
-  /* 补充样式：让背景适配屏幕 */
-  background-size: cover;
-  background-attachment: fixed;
+  background: url(/images/bg.jpg) no-repeat center center fixed !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
 }
 
-/* 如果是头部/某个模块背景，替换对应的选择器（比如 #header） */
-#header {
-  background: url(/img/bg.jpg) no-repeat;
+/* 顶部导航栏透明 */
+#page-header {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 顶部标题栏透明 */
+#site-info {
+  background: transparent !important;
+}
+
+/* 文章卡片透明 */
+#content-inner,
+.layout_post > .recent-post-item,
+.article-sort-item {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 侧边栏透明 */
+#aside-content .card-widget {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 底部页脚透明 */
+#footer {
+  background: transparent !important;
+}
+
+/* 其他可能遮挡的容器 */
+#page, #body-wrap {
+  background: transparent !important;
 }
