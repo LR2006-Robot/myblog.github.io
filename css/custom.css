@@ -352,3 +352,16 @@ display: none;
 #article-container figure.highlight {
     border-radius: 10px;
 }
+
+/* 全局背景（整个页面） */
+body {
+  background: url(/img/bg.jpg) no-repeat center center fixed;
+  /* 补充样式：让背景适配屏幕 */
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* 如果是头部/某个模块背景，替换对应的选择器（比如 #header） */
+#header {
+  background: url(/img/bg.jpg) no-repeat;
+}
