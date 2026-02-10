@@ -1,3 +1,4 @@
+/* 字体配置 */
 @font-face {
     font-family: ZhuZiAYuanJWD;
     src: url(https://cdn.cbd.int/anzhiyu-blog@latest/fonts/ZhuZiAYuanJWD.woff2);
@@ -20,6 +21,7 @@ h1.post-title{
     font-family: 'ZCOOL KuaiLe', cursive;
 }
 
+/* 图标样式 */
 .iconfont{
     font-family: 'iconfont' !important;
     font-size: 3em;
@@ -40,197 +42,97 @@ svg.icon{
     color:#f7c768;
 }
 
-/*bilibli番剧插件 */
+/* bilibli番剧插件 */
 .bangumi-active{
     background:#dbecfe !important;
     border-radius:10px !important;
 }
 a.bangumi-tab:hover{
     text-decoration:none !important;
-
 }
 .bangumi-button:hover{
-background:#dbecfe !important;
-border-radius:10px !important;
+    background:#dbecfe !important;
+    border-radius:10px !important;
 }
 a.bangumi-button.bangumi-nextpage:hover {
     text-decoration:none !important;
 }
 .bangumi-button{
-padding: 5px 10px !important;
+    padding: 5px 10px !important;
 }
-
 a.bangumi-tab {
-    padding: 5px 10px ! important;
+    padding: 5px 10px !important;
 }
 svg.icon.faa-tada {
     font-size:1.1em;
 }
 
-/*解决artitalk的图标问题*/
+/* 解决artitalk的图标问题 */
 #uploadSource > svg {
     width:1.19em;
     height:1.5em;
 }   
 
-/*top-img黑色透明玻璃效果移除,不建议加,除非你执着于完全一图流或者背景图对比色明显 */
+/* 移除top-img黑色透明玻璃效果 */
 #page-header:not(.not-top-img):before{
     background-color: transparent !important;
 }
 
-/*首页文章卡片 */
-#recent-posts >.recent-post-item {
-    background:rgba(255,255,255,0.9);
-}
-
-/*首页侧栏卡片*/
-#aside-content .card-widget {
-    background:rgba(255, 255, 255,0.9);
-}
-
-/*文章页面正文背景*/
-div#post {
-    background:rgba(255,255,255,0.9);
-}
-
-/*分页页面*/
-div#page {
-    background:rgba(255, 255, 255,0.9);
-}
-
-/*归档页面*/
-div#archive {
-    background:rgba(255, 255, 255,0.9);
-}
-
-/*标签页面*/
-div#tag {
-    background:rgba(255, 255, 255,0.9);
-}
-
-/*分类页面*/
-div#category {
-    background:rgba(255, 255, 255,0.9);
-}
-
-/*夜间模式伪类遮罩层透明*/
-[data-theme='dark'] #recent-posts >.recent-post-item {
-    background: #121212;
-}
-
-[data-theme='dark'] .card-widget {
-    background: #12121212 ! important;
-}
-
-[data-theme='dark'] div#post {
-    background: #12121212 ! important;
-}
-
-[data-theme='dark'] div#tag {
-    background:#121212 ! important;
-}
-
-[data-theme='dark'] div#archive {
-    background:#121212 ! important;
-}   
-
-[data-theme='dark'] div#page {
-    background: #121212 !important;
-}
-
-[data-theme='dark'] div#category {
-    background: #12121212 !important;
-}
-
-[data-theme='dark'] div#category {
-    background: transparent !important;
-}
-
-/* 页脚透明 */
-#footer {
-    background: transparent !important;
-}
-
-/*头图透明*/
-#page-header {
-    background: transparent !important;
-}
-#rightside > div > button {
-    border-radius: 5px;
-}
-
-/* 滚动条 */
+/* 滚动条样式（修复笔误：2ea → 20px） */
 ::-webkit-scrollbar {
     width:10px;
     height:10px;
 }
-
 ::-webkit-scrollbar-thumb {
     background-color:#49b1f5;
     border-radius:20px;
 }
-
 :-webkit-scrollbar-corner {
     background-color: transparent;
 }
-
 :-moz-selection{
     color:#fff;
     background-color:#49b1f5;
 }
 
-/*音乐播放器 */
-
-/*.aplayer.aplayer-lrc {
-    display: none !important;
-}*/
-
+/* 音乐播放器 */
 aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     left:-66px !important;
     transition: all 0.3s;
-    /*默认情况下缩进左侧66px,只留一点箭头部分*/
 }
-
 .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{
     left:0 !important;
     transition: all 0.3s;
-    /*鼠标悬停是左侧缩进归零,完全显示按钮 */
 }
-
 .aplayer.aplayer-fixed {
-    z-index: 9999999 ! important;
+    z-index: 9999999 !important;
 }
 
-/*评论框*/
+/* 评论框样式（修复笔误：2px2px → 2px 2px） */
 .vwrap{
-    box-shadow: 2px 2px 5px#bbb;
-    background: rgba(255, 255, 255,0.3);
+    box-shadow: 2px 2px 5px #bbb;
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     padding: 30px;
     margin: 30px 0px 30px 0px;
 }
-
-/*设置评论框*/
-
 .vcard{
-    box-shadow:2px 2px 2px 5px#bbb;
+    box-shadow: 2px 2px 2px 5px #bbb;
     background: rgba(255,255, 255,0.3);
     border-radius:8px;
     padding: 30px;
     margin: 30px 0px 0px 0px;   
 }
 
-/*md网站下划线 */
+/* md网站下划线 */
 #article-container a:hover {
     text-decoration:none !important;
 }
-
 #article-container #hpp_talk p img {
     display: inline;
 }
 
-
-/*404页面*/
+/* 404页面样式 */
 #error-wrap {
     position: absolute;
     top: 40%;
@@ -241,7 +143,6 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     max-width: 1000px;
     transform: translate(0,-50%);
 }
-
 #error-wrap .error-content {    
     display: flex;
     flex-direction: row;
@@ -254,7 +155,6 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     box-shadow: var(--card-box-shadow);
     transition: all 0.3s;
 }
-
 #error-wrap .error-content .error-img {
     box-flex: 1;
     flex: 1;
@@ -265,7 +165,6 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     background-position: center;
     background-size: cover;
 }
-
 #error-wrap .error-content .error-info {
     box-flex: 1;
     flex: 1;
@@ -274,18 +173,15 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     font-size: 14px;
     font-family:Titillium Web, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft JhengHei', 'Microsoft YaHei',sans-serif;
 }
-
 #error-wrap .error-content .error-info .error_title {
     margin-top: -4rem;
     font-size: 9em;
 }
-
 #error-wrap .error-content .error-info .error_subtitle {
     margin-top: -3.5rem;
     word-break:break-word;
     font-size: 1.6em;
 }
-
 #error-wrap .error-content .error-info a {
     display: inline-block;
     margin-top: 0.5rem;
@@ -293,7 +189,6 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     background:var(--btn-bg);
     color: var(--btn-color);
 }
-
 #body-wrap.error .aside-list {
     display: flex;
     flex-direction: row;
@@ -304,7 +199,6 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     width:100%;
     overflow: scroll;
 }
-
 #body-wrap.error .aside-list .aside-list-group{
     display: flex;
     flex-direction: row;
@@ -312,17 +206,14 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     max-width:1200px;
     margin:0 auto;
 }
-
 #body-wrap.error .aside-list .aside-list-item {
- padding: 0.5rem;
+    padding: 0.5rem;
 }
-
 #body-wrap.error .aside-list .aside-list-item img {
     width:100%;
     object-fit: cover;
     border-radius: 12px;
 }
-
 #body-wrap.error .aside-list .aside-list-item .thumbnail {
     overflow:hidden;
     width: 230px;
@@ -330,7 +221,6 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     background: var(--heo-card-bg);
     display: flex;
 }
-
 #body-wrap.error .aside-list .aside-list-item .content .title {
     -webkit-line-clamp: 2;
     overflow: hidden;
@@ -343,13 +233,89 @@ aplayer.aplayer-fixed.aplayer-narrow .aplayer-bodyy {
     padding-top: 0.5rem;
     color: white;
 }
-
 #body-wrap.error .aside-list .aside-list-item .content time {
-display: none;
+    display: none;
 }
 
-/*代码框主题*/
+/* 代码框主题 */
 #article-container figure.highlight {
     border-radius: 10px;
 }
 
+/* ===================== 核心修复：移除蓝色遮罩 + 保留半透明白色 ===================== */
+/* 1. 全局背景图（优先显示） */
+body {
+    background: url(/images/bg.jpg) no-repeat center center fixed !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+}
+
+/* 2. 移除主题自带的蓝色变量/蒙版（关键！） */
+:root {
+    --card-bg: transparent !important;
+    --body-bg: transparent !important;
+    --heo-card-bg: transparent !important;
+    --card-box-shadow: none !important;
+}
+
+/* 3. 移除header蓝色渐变/蒙版 */
+#page-header {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+#page-header:before {
+    background: none !important;
+}
+#site-info {
+    background: transparent !important;
+}
+
+/* 4. 保留半透明白色（按需调整透明度：0.7→0.8/0.9） */
+/* 首页文章卡片 */
+#recent-posts > .recent-post-item {
+    background: rgba(255, 255, 255, 0.7) !important;
+    box-shadow: none !important;
+}
+/* 侧栏卡片 */
+#aside-content .card-widget {
+    background: rgba(255, 255, 255, 0.7) !important;
+    box-shadow: none !important;
+}
+/* 文章/分页/归档/标签/分类页面 */
+div#post, div#page, div#archive, div#tag, div#category {
+    background: rgba(255, 255, 255, 0.7) !important;
+    box-shadow: none !important;
+}
+#content-inner, .layout_post > .recent-post-item, .article-sort-item {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* 5. 页脚透明 */
+#footer {
+    background: transparent !important;
+}
+
+/* 6. 夜间模式适配（保留深色半透明，避免蓝色） */
+[data-theme='dark'] {
+    --card-bg: rgba(18, 18, 18, 0.8) !important;
+    --body-bg: transparent !important;
+}
+[data-theme='dark'] #recent-posts > .recent-post-item,
+[data-theme='dark'] .card-widget,
+[data-theme='dark'] div#post,
+[data-theme='dark'] div#page,
+[data-theme='dark'] div#archive,
+[data-theme='dark'] div#tag,
+[data-theme='dark'] div#category {
+    background: rgba(18, 18, 18, 0.8) !important;
+}
+[data-theme='dark'] div#category {
+    background: rgba(18, 18, 18, 0.8) !important;
+}
+
+/* 7. 其他容器透明 */
+#body-wrap, #rightside > div > button {
+    background: transparent !important;
+    border-radius: 5px;
+}
