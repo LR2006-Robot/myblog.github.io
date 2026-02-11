@@ -245,8 +245,11 @@
   #aside-content .card-widget {
       background:rgba(255, 255, 255,0.1) !important;
   }
+  /* 核心：透明化配置 */
   div#post {
-      background:rgba(255,255,255,0.1) !important;
+    background: #ffffff !important; /* 纯白色背景，替换原来的透明 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important; /* 可选：轻微阴影 */
+    color: #000000 !important; /* 确保文字是黑色，方便阅读 */
   }
   div#page {
       background:rgba(255, 255, 255,0.1) !important;
