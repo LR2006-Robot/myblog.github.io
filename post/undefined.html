@@ -239,16 +239,18 @@
   }
 
   /* 核心：透明化配置 */
-  body #recent-posts >.recent-post-item {
-      background:rgba(255,255,255,0.5) !important;
-      color: #000000 !important;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-      border-radius: 8px !important;
+  /* 文章卡片 */
+  body #recent-posts > .recent-post-item {
+    background:rgba(255,255,255,0.5) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 8px !important;
   }
+  /* 侧边栏卡片 */
   body #aside-content .card-widget {
-      background:rgba(255, 255, 255,0.5) !important;
-      color: #000000 !important;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    background:rgba(255, 255, 255,0.5) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   }
   /* 核心：透明化配置 */
   body div#post {
@@ -257,24 +259,24 @@
     color: #000000 !important; /* 确保文字是黑色，方便阅读 */
   }
   body div#page {
-      background:rgba(255, 255, 255,0.5) !important;
-      color: #000000 !important;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    background:rgba(255, 255, 255,0.5) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   }
   body div#archive {
-      background:rgba(255, 255, 255,0.5) !important;
-      color: #000000 !important;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    background:rgba(255, 255, 255,0.5) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   }
   body div#tag {
-      background:rgba(255, 255, 255,0.5) !important;
-      color: #000000 !important;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    background:rgba(255, 255, 255,0.5) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   }
   body div#category {
-      background:rgba(255, 255, 255,0.5) !important;
-      color: #000000 !important;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    background:rgba(255, 255, 255,0.5) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   }
 
   /* 夜间模式 */
@@ -288,16 +290,16 @@
       background: #121212 !important;
   }
   [data-theme='dark'] div#tag {
-      background:#121212 !important;
+      background: #121212 !important;
   }
   [data-theme='dark'] div#archive {
-      background:#121212 !important;
+      background: #121212 !important;
   }   
   [data-theme='dark'] div#page {
       background: #121212 !important;
   }
   [data-theme='dark'] div#category {
-      background: transparent !important;
+      background: #121212 !important;
   }
 
   /* 头部+尾部完全透明 */
@@ -310,7 +312,7 @@
       background-color: transparent !important;
   }
   #rightside > div > button {
-      border-radius: 5px;
+      border-radius: 5px !important;
   }
 
   /* 滚动条 */
@@ -319,25 +321,25 @@
       height:10px;
   }
   ::-webkit-scrollbar-thumb {
-      background-color:#49b1f5;
-      border-radius:20px;
+      background-color:#49b1f5 !important;
+      border-radius:20px !important;
   }
   ::-webkit-scrollbar-corner {
-      background-color: transparent;
+      background-color: transparent !important;
   }
   ::selection{
-      color:#fff;
-      background-color:#49b1f5;
+      color: #fff !important;
+      background-color:#49b1f5 !important;
   }
 
   /* 音乐播放器 */
   .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-      left:-66px !important;
-      transition: all 0.3s;
+      left: -66px !important;
+      transition: all 0.3s !important;
   }
   .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{
       left:0 !important;
-      transition: all 0.3s;
+      transition: all 0.3s !important;
   }
   .aplayer.aplayer-fixed {
       z-index: 9999999 !important;
@@ -345,18 +347,18 @@
 
   /* 评论框 */
   .vwrap{
-      box-shadow: 2px 2px 5px#bbb;
+      box-shadow: 2px 2px 5px#bbb !important;
       background: rgba(255, 255, 255,0.3) !important;
-      border-radius: 8px;
-      padding: 30px;
-      margin: 30px 0px 30px 0px;
+      border-radius: 8px !important;
+      padding: 30px !important;
+      margin: 30px 0px 30px 0px !important;
   }
   .vcard{
-      box-shadow:2px 2px 2px 5px#bbb;
+      box-shadow:2px 2px 2px 5px#bbb !important;
       background: rgba(255,255, 255,0.3) !important;
-      border-radius:8px;
-      padding: 30px;
-      margin: 30px 0px 0px 0px;   
+      border-radius:8px !important;
+      padding: 30px !important;
+      margin: 30px 0px 0px 0px !important;   
   }
 
   /* md下划线 */
@@ -364,7 +366,7 @@
       text-decoration:none !important;
   }
   #article-container #hpp_talk p img {
-      display: inline;
+      display: inline !important;
   }
 
   /* 404页面 */
@@ -374,7 +376,7 @@
       right: 0;
       left: 0;
       margin:0 auto;
-      padding: 0 1rem;
+      padding: 0 1rem !important;
       max-width: 1000px;
       transform: translate(0,-50%);
   }
@@ -383,22 +385,22 @@
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      margin: 0 1rem;
-      height: 18rem;
-      border-radius: 8px;
-      background: var(--card-bg);
-      box-shadow: var(--card-box-shadow);
-      transition: all 0.3s;
+      margin: 0 1rem !important;
+      height: 18rem !important;
+      border-radius: 8px !important;
+      background: var(--card-bg) !important;
+      box-shadow: var(--card-box-shadow) !important;
+      transition: all 0.3s !important;
   }
   #error-wrap .error-content .error-img {
       box-flex: 1;
       flex: 1;
       height: 100%;
-      border-top-left-radius:8px;
-      border-bottom-left-radius: 8px;
-      background-color: #49b1f5;
-      background-position: center;
-      background-size: cover;
+      border-top-left-radius:8px !important;
+      border-bottom-left-radius: 8px !important;
+      background-color: #49b1f5 !important;
+      background-position: center !important;
+      background-size: cover !important;
   }
   #error-wrap .error-content .error-info {
       box-flex: 1;
@@ -474,19 +476,19 @@
 
   /* 代码框 */
   #article-container figure.highlight {
-      border-radius: 10px;
+      border-radius: 10px !important;
   }
 
   /* 文章卡片标题/时间：确保黑字清晰 */
   body #recent-posts .recent-post-item .post-title,
   body #recent-posts .recent-post-item .post-meta {
     color: #000000 !important;
-  
+  }
   body #aside-content .card-widget {
     background: transparent !important; 
     color: #000000 !important; 
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important; 
-    border-radius: 8px; 
+    border-radius: 8px !important;
   }
 
   /* 侧边栏文字：确保黑字清晰 */
