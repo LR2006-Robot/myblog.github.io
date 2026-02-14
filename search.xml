@@ -80,17 +80,6 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/myblog.github.io/categories/index.html"/>
-      <url>/myblog.github.io/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>about</title>
       <link href="/myblog.github.io/about/index.html"/>
       <url>/myblog.github.io/about/index.html</url>
@@ -105,6 +94,17 @@
       <title>tags</title>
       <link href="/myblog.github.io/tags/index.html"/>
       <url>/myblog.github.io/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>categories</title>
+      <link href="/myblog.github.io/categories/index.html"/>
+      <url>/myblog.github.io/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
