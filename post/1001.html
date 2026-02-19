@@ -1,0 +1,780 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>密码学数学基础 - 整数关系 | Alice and Bobの神秘小屋</title><meta name="author" content="Dorange"><meta name="copyright" content="Dorange"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在我们踏上密码学数学基础的冒险之旅后，第一站就是整数关系的世界。这个领域虽然看似简单，但却是构建整个密码学大厦的基石。无论是最基本的整除关系，还是更复杂的同余关系，它们都在为我们揭示数字之间的神秘联系。本章将带你深入了解整数关系的核心概念，包括整除、素数、最大公约数和最小公倍数等。我们将通过生动的例子和直观的解释，帮助你掌握这些基本工具，为后续的密码学学习打下坚实的基础。别看我说的很高大上，放轻松">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学数学基础 - 整数关系">
+<meta property="og:url" content="https://lr2006-robot.github.io/myblog.github.io/post/1001.html">
+<meta property="og:site_name" content="Alice and Bobの神秘小屋">
+<meta property="og:description" content="在我们踏上密码学数学基础的冒险之旅后，第一站就是整数关系的世界。这个领域虽然看似简单，但却是构建整个密码学大厦的基石。无论是最基本的整除关系，还是更复杂的同余关系，它们都在为我们揭示数字之间的神秘联系。本章将带你深入了解整数关系的核心概念，包括整除、素数、最大公约数和最小公倍数等。我们将通过生动的例子和直观的解释，帮助你掌握这些基本工具，为后续的密码学学习打下坚实的基础。别看我说的很高大上，放轻松">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://youke.xn--y7xa690gmna.cn/s1/2026/02/13/698f3ded87e7e.webp">
+<meta property="article:published_time" content="2026-02-19T09:18:00.000Z">
+<meta property="article:modified_time" content="2026-02-19T14:16:09.325Z">
+<meta property="article:author" content="Dorange">
+<meta property="article:tag" content="密码学">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="数论">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://youke.xn--y7xa690gmna.cn/s1/2026/02/13/698f3ded87e7e.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "密码学数学基础 - 整数关系",
+  "url": "https://lr2006-robot.github.io/myblog.github.io/post/1001.html",
+  "image": "https://youke.xn--y7xa690gmna.cn/s1/2026/02/13/698f3ded87e7e.webp",
+  "datePublished": "2026-02-19T09:18:00.000Z",
+  "dateModified": "2026-02-19T14:16:09.325Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Dorange",
+      "url": "https://LR2006-Robot.github.io/myblog.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/myblog.github.io/img/favicon.png"><link rel="canonical" href="https://lr2006-robot.github.io/myblog.github.io/post/1001.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/myblog.github.io/manifest.json"/><meta name="msapplication-TileColor" content="#49b1f5"/><link rel="apple-touch-icon" sizes="180x180" href="/myblog.github.io/img/siteicon/128.png"/><link rel="icon" type="image/png" sizes="32x32" href="/myblog.github.io/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/myblog.github.io/img/siteicon/16.png"/><link rel="mask-icon" href="/myblog.github.io/img/siteicon/128.png" color="#5bbad5"/><link rel="stylesheet" href="/myblog.github.io/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/myblog.github.io/',
+  algolia: undefined,
+  localSearch: {"path":"/myblog.github.io/search.xml","preload":true,"top_n_per_article":3,"unescape":false,"pagination":{"enable":true,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '密码学数学基础 - 整数关系',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><style>
+  @font-face {
+      font-family: ZhuZiAYuanJWD;
+      src: url(https://cdn.cbd.int/anzhiyu-blog@latest/fonts/ZhuZiAYuanJWD.woff2);
+      font-display: swap;
+      font-weight: lighter;
+  }
+  @import url(https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap);
+
+  /* 字体样式 */
+  div#menu {
+      font-family: 'ZCOOL KuaiLe', cursive;
+  }
+  h1#site-title {
+      font-family: 'ZCOOL KuaiLe', cursive;
+      font-size: 3em !important;
+  }
+  a.article-title,
+  a.blog-slider__title,
+  a.categoryBar-list-link,
+  h1.post-title{
+      font-family: 'ZCOOL KuaiLe', cursive;
+  }
+
+  /* 图标样式 */
+  .iconfont{
+      font-family: 'iconfont' !important;
+      font-size: 3em;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
+  svg.icon{
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+  }
+  .icon-zhongbiao::before{
+      color:#f7c768;
+  }
+
+  /* bilibli番剧插件 */
+  .bangumi-active{
+      background:#dbecfe !important;
+      border-radius:10px !important;
+  }
+  a.bangumi-tab:hover{
+      text-decoration:none !important;
+  }
+  .bangumi-button:hover{
+      background:#dbecfe !important;
+      border-radius:10px !important;
+  }
+  a.bangumi-button.bangumi-nextpage:hover {
+      text-decoration:none !important;
+  }
+  .bangumi-button{
+      padding: 5px 10px !important;
+  }
+  a.bangumi-tab {
+      padding: 5px 10px !important;
+  }
+  svg.icon.faa-tada {
+      font-size:1.1em;
+  }
+
+  /* 解决artitalk的图标问题 */
+  #uploadSource > svg {
+      width:1.19em;
+      height:1.5em;
+  }   
+
+  /* 移除头图黑色透明玻璃效果 */
+  #page-header:not(.not-top-img):before{
+      background-color: transparent !important;
+  }
+
+  /* 核心：透明化配置 */
+  /* 文章卡片 */
+  body #recent-posts > .recent-post-item {
+    background:rgba(255,255,255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 8px !important;
+  }
+  /* 侧边栏卡片 */
+  body #aside-content .card-widget {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+  /* 核心：透明化配置 */
+  body div#post {
+    background: rgba(255, 255, 255, 0.7) !important; /* 纯白色背景，替换原来的透明 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important; /* 可选：轻微阴影 */
+    color: #000000 !important; /* 确保文字是黑色，方便阅读 */
+  }
+  body div#page {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+  body div#archive {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+  body div#tag {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+  body div#category {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* 夜间模式 */
+  [data-theme='dark'] #recent-posts >.recent-post-item {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] .card-widget {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#post {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#tag {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#archive {
+      background: #121212 !important;
+  }   
+  [data-theme='dark'] div#page {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#category {
+      background: #121212 !important;
+  }
+  /* 黑夜模式下文章正文文本颜色 */
+  [data-theme='dark'] .article-content p,
+  [data-theme='dark'] .article-content li,
+  [data-theme='dark'] .article-content span, 
+  [data-theme='dark'] .article-content div {
+      color: #e0e0e0 !important; /* 浅灰色，适配深色背景 */
+  }
+  /* 黑夜模式下，强制所有文章正文文本为浅色 */
+  [data-theme='dark'] #article-container,
+  [data-theme='dark'] .article-content,
+  [data-theme='dark'] .post-content,
+  [data-theme='dark'] .entry-content {
+    color: #e0e0e0 !important;
+  }
+
+  /* 头部+尾部完全透明 */
+  #footer {
+      background: transparent !important;
+  }
+  #page-header,
+  #page-header #site-banner {
+      background: transparent !important;
+      background-color: transparent !important;
+  }
+  #rightside > div > button {
+      border-radius: 5px !important;
+  }
+
+  /* 滚动条 */
+  ::-webkit-scrollbar {
+      width:10px;
+      height:10px;
+  }
+  ::-webkit-scrollbar-thumb {
+      background-color:#49b1f5 !important;
+      border-radius:20px !important;
+  }
+  ::-webkit-scrollbar-corner {
+      background-color: transparent !important;
+  }
+  ::selection{
+      color: #fff !important;
+      background-color:#49b1f5 !important;
+  }
+
+  /* 音乐播放器 */
+  .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+      left: -66px !important;
+      transition: all 0.3s !important;
+  }
+  .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{
+      left:0 !important;
+      transition: all 0.3s !important;
+  }
+  .aplayer.aplayer-fixed {
+      z-index: 9999999 !important;
+  }
+
+  /* 评论框 */
+  .vwrap{
+      box-shadow: 2px 2px 5px#bbb !important;
+      background: rgba(255, 255, 255,0.3) !important;
+      border-radius: 8px !important;
+      padding: 30px !important;
+      margin: 30px 0px 30px 0px !important;
+  }
+  .vcard{
+      box-shadow:2px 2px 2px 5px#bbb !important;
+      background: rgba(255,255, 255,0.3) !important;
+      border-radius:8px !important;
+      padding: 30px !important;
+      margin: 30px 0px 0px 0px !important;   
+  }
+
+  /* md下划线 */
+  #article-container a:hover {
+      text-decoration:none !important;
+  }
+  #article-container #hpp_talk p img {
+      display: inline !important;
+  }
+
+  /* 404页面 */
+  #error-wrap {
+      position: absolute;
+      top: 40%;
+      right: 0;
+      left: 0;
+      margin:0 auto;
+      padding: 0 1rem !important;
+      max-width: 1000px;
+      transform: translate(0,-50%);
+  }
+  #error-wrap .error-content {    
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin: 0 1rem !important;
+      height: 18rem !important;
+      border-radius: 8px !important;
+      background: var(--card-bg) !important;
+      box-shadow: var(--card-box-shadow) !important;
+      transition: all 0.3s !important;
+  }
+  #error-wrap .error-content .error-img {
+      box-flex: 1;
+      flex: 1;
+      height: 100%;
+      border-top-left-radius:8px !important;
+      border-bottom-left-radius: 8px !important;
+      background-color: #49b1f5 !important;
+      background-position: center !important;
+      background-size: cover !important;
+  }
+  #error-wrap .error-content .error-info {
+      box-flex: 1;
+      flex: 1;
+      padding: 0.7rem;
+      text-align: center;
+      font-size: 14px;
+      font-family:Titillium Web, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft JhengHei', 'Microsoft YaHei',sans-serif;
+  }
+  #error-wrap .error-content .error-info .error_title {
+      margin-top: -4rem;
+      font-size: 9em;
+  }
+  #error-wrap .error-content .error-info .error_subtitle {
+      margin-top: -3.5rem;
+      word-break:break-word;
+      font-size: 1.6em;
+  }
+  #error-wrap .error-content .error-info a {
+      display: inline-block;
+      margin-top: 0.7rem;
+      padding: 0.3rem 1.5rem;
+      background:var(--btn-bg);
+      color: var(--btn-color);
+  }
+  #body-wrap.error .aside-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      bottom:0px;
+      position: absolute;
+      padding: 1rem;
+      width:100%;
+      overflow: scroll;
+  }
+  #body-wrap.error .aside-list .aside-list-group{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      max-width:1200px;
+      margin:0 auto;
+  }
+  #body-wrap.error .aside-list .aside-list-item {
+   padding: 0.7rem;
+  }
+  #body-wrap.error .aside-list .aside-list-item img {
+      width:100%;
+      object-fit: cover;
+      border-radius: 12px;
+  }
+  #body-wrap.error .aside-list .aside-list-item .thumbnail {
+      overflow:hidden;
+      width: 230px;
+      height: 143px;
+      background: var(--heo-card-bg);
+      display: flex;
+  }
+  #body-wrap.error .aside-list .aside-list-item .content .title {
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      line-height: 1.5;
+      justify-content: center;
+      align-items: flex-end;
+      align-content: center; 
+      padding-top: 0.7rem;
+      color: white;
+  }
+  #body-wrap.error .aside-list .aside-list-item .content time {
+      display: none;
+  }
+
+  /* 代码框 */
+  #article-container figure.highlight {
+      border-radius: 10px !important;
+  }
+
+  /* 文章卡片标题/时间：确保黑字清晰 */
+  body #recent-posts .recent-post-item .post-title,
+  body #recent-posts .recent-post-item .post-meta {
+    color: #000000 !important;
+  }
+
+  /* 侧边栏文字：确保黑字清晰 */
+  #aside-content .card-widget * {
+    color: #000000 !important;
+  }
+
+</style>
+<!-- hexo injector head_end start --><link rel="stylesheet" href="/myblog.github.io/css/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.8/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/myblog.github.io/atom.xml" title="Alice and Bobの神秘小屋" type="application/atom+xml">
+</head><body><div class="bg-animation" id="web_bg" style="background-image: url(https://youke.xn--y7xa690gmna.cn/s1/2026/02/13/698f3e32cf068.webp);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://youke.xn--y7xa690gmna.cn/s1/2026/02/13/698f369459a78.webp" onerror="this.onerror=null;this.src='/myblog.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/myblog.github.io/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/myblog.github.io/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/myblog.github.io/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/bangumis/index.html"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/cinemas/index.html"><i class="fa-fw fas fa-film"></i><span> 追剧</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://youke.xn--y7xa690gmna.cn/s1/2026/02/13/698f3ded87e7e.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/myblog.github.io/"><img class="site-icon" src="https://youke.xn--y7xa690gmna.cn/s1/2026/02/18/6995e1acc4d05.webp" alt="Logo"></a><a class="nav-page-title" href="/myblog.github.io/"><span class="site-name">密码学数学基础 - 整数关系</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog.github.io/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/bangumis/index.html"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/cinemas/index.html"><i class="fa-fw fas fa-film"></i><span> 追剧</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">密码学数学基础 - 整数关系</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-02-19T09:18:00.000Z" title="发表于 2026-02-19 17:18:00">2026-02-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-19T14:16:09.325Z" title="更新于 2026-02-19 22:16:09">2026-02-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/">密码学数学基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>在我们踏上密码学数学基础的冒险之旅后，第一站就是整数关系的世界。这个领域虽然看似简单，但却是构建整个密码学大厦的基石。无论是最基本的整除关系，还是更复杂的同余关系，它们都在为我们揭示数字之间的神秘联系。<br>本章将带你深入了解整数关系的核心概念，包括整除、素数、最大公约数和最小公倍数等。我们将通过生动的例子和直观的解释，帮助你掌握这些基本工具，为后续的密码学学习打下坚实的基础。<br>别看我说的很高大上，放轻松，这一章非常简单。😁</p>
+<h2><span id="整除关系与素数">整除关系与素数 😋</span></h2><p>在整数的世界里，整除关系是最基本的关系之一。我们说一个整数 ( a ) 整除另一个整数 ( b )，记作 ( a \mid b )，如果存在一个整数 ( k ) 使得 ( b = ak )。换句话说，( b ) 可以被 ( a ) 整除，没有余数。例如，( 3 \mid 12 ) 因为 ( 12 = 3 \times 4 )，但 ( 5 \nmid 12 ) 因为 ( 12 ) 不能被 ( 5 ) 整除。</p>
+<p>素数是大于 1 的整数，除了 1 和它本身之外没有其他正整数因数。素数在密码学中扮演着重要的角色，因为许多加密算法都依赖于大素数的性质。例如，RSA 加密算法就是基于两个大素数的乘积来实现安全性的。</p>
+<h2><span id="最大公约数与最小公倍数">最大公约数与最小公倍数 😛</span></h2><p>最大公约数（GCD）是指两个或多个整数的公共约数中最大的一个。比如，( \text{gcd}(12, 15) = 3 )，因为 3 是 12 和 15 的最大公共约数。</p>
+<p>最小公倍数（LCM）则是指两个或多个整数的公共倍数中最小的一个。例如，( \text{lcm}(4, 6) = 12 )，因为 12 是 4 和 6 的最小公共倍数。</p>
+<h3><span id="如何求解最大公约数与最小公倍数">如何求解最大公约数与最小公倍数 🤨</span></h3><p>计算最大公约数的一种高效方法是辗转相除法（Euclidean Algorithm）。<br>这个算法基于一个重要的性质①：对于两个整数 ( a ) 和 ( b )，如果 ( a &gt; b )，那么<br>[ \text{gcd}(a, b) = \text{gcd}(b, a \mod b) ]<br>通过不断地将较大的数替换为较小的数和它们的余数，我们可以快速找到最大公约数。</p>
+<p>再根据最大公约数和最小公倍数的性质②：<br>[\text{lcm}(a, b) = \frac{|a \times b|}{\text{gcd}(a, b)} ]<br>求出最小公倍数。</p>
+<h2><span id="裴蜀定理与扩展欧几里得算法">裴蜀定理与扩展欧几里得算法 🥰</span></h2><p>裴蜀定理（Bézout’s Identity）是整数关系中的一个重要定理，它告诉我们对于任意两个整数 ( a ) 和 ( b )，存在整数 ( x ) 和 ( y )，使得性质③：<br>[ ax + by = \text{gcd}(a, b) ]<br>扩展欧几里得算法（Extended Euclidean Algorithm）就是基于裴蜀定理的一种算法，它不仅可以计算最大公约数，还可以找到满足裴蜀定理的整数 ( x ) 和 ( y )。</p>
+<h2><span id="性质123证明">性质①②③证明 🤓👆</span></h2><p>由于本章节的定理和算法都比较基础，我们来简单证明一下吧。</p>
+<h3><span id="性质1证明">性质①证明 😑</span></h3><h4><span id="带余除法分解">带余除法分解</span></h4><p>假设 ( a = bq + r )，其中 ( q ) 是商，( r ) 是余数，且 ( 0 \leq r &lt; b )。我们记( r )为 ( a \mod b )。</p>
+<h4><span id="证明gcdab是b和r的公约数">证明(gcd(a,b))是(b)和(r)的公约数</span></h4><p>设 ( d = \text{gcd}(a, b) )，则 ( d \mid a ) 和 ( d \mid b )。<br>因为 ( d ) 整除 ( a ) 和 ( bq )，( d ) 也必须整除 ( r = a - bq )，即 ( d \mid r )。<br>所以，( d ) 是 ( b ) 和 ( r ) 的公因数，故 ( \text{gcd}(a, b) \leq \text{gcd}(b, r) )。</p>
+<h4><span id="证明gcdbr是a和b的公约数">证明(gcd(b,r))是(a)和(b)的公约数</span></h4><p>设 ( d’ = \text{gcd}(b, r) )，则 ( d’ \mid b ) 和 ( d’ \mid r )。<br>因为 ( d’ ) 整除 ( b ) 和 ( r )，( d’ ) 也必须整除 ( a = bq + r )，即 ( d’ \mid a )。<br>所以，( d’ ) 是 ( a ) 和 ( b ) 的公因数，故 ( \text{gcd}(b, r) \leq \text{gcd}(a, b) )。</p>
+<h4><span id="结论">结论</span></h4><p>综上所述，( \text{gcd}(a, b) = \text{gcd}(b, r) )，证明完毕。</p>
+<h3><span id="性质2证明">性质②证明 😪</span></h3><p>设 ( d = \text{gcd}(a, b) )，则 ( a = da’ ) 和 ( b = db’ )，其中 ( a’ ) 和 ( b’ ) 是互质的整数。<br>因此，( \text{lcm}(a, b) = d \times a’ \times b’ = \frac{|da’ \times db’|}{d} = \frac{|a \times b|}{\text{gcd}(a, b)} )，证明完毕。</p>
+<h3><span id="性质3证明">性质③证明 😨</span></h3><h4><span id="欧几里得算法辗转相除法">欧几里得算法（辗转相除法）</span></h4><p>设 ( d = \text{gcd}(a, b) )。<br>用辗转相除法：<br>( a = bq<em>1 + r_1 )， (0 &lt; r_1 &lt; b )<br>( b = r_1q_2 + r_2 )， (0 &lt; r_2 &lt; r_1 )<br>…<br>( r</em>{n-2} = r<em>{n-1}q_n + r_n )， (0 &lt; r_n &lt; r</em>{n-1} )<br>( r<em>{n-1} = r_nq</em>{n+1} + 0 )， (r_n = d )<br>最后余数为 0，说明 ( r_n = d = \text{gcd}(a, b) )。</p>
+<h4><span id="反向替换求解-x-和-y">反向替换求解 ( x ) 和 ( y )</span></h4><p>倒数第二步：<br>( d = r<em>n = r</em>{n-2} - r_{n-1}q_n )</p>
+<p>再把(r<em>{n-1})用上一行表示：<br>(r</em>{n-1} = r<em>{n-3} - r</em>{n-2}q_{n-1})</p>
+<p>带入：<br>(d = A·r<em>{n-2} + B·r</em>{n-3}),  ( A ,B  \in \mathbb{Z} )</p>
+<p>一直往上带入，最终可以表示为：<br>(d = x·a + y·b)，其中 ( x, y \in \mathbb{Z} )，证明完毕。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://LR2006-Robot.github.io/myblog.github.io">Dorange</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://lr2006-robot.github.io/myblog.github.io/post/1001.html">https://lr2006-robot.github.io/myblog.github.io/post/1001.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://LR2006-Robot.github.io/myblog.github.io" target="_blank">Alice and Bobの神秘小屋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/">数学</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E6%95%B0%E8%AE%BA/">数论</a></div><div class="post-share"><div class="social-share" data-image="https://youke.xn--y7xa690gmna.cn/s1/2026/02/13/698f3ded87e7e.webp" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/myblog.github.io/post/1000.html" title="密码学数学基础 - 前言"><img class="cover" src="https://youke.xn--y7xa690gmna.cn/s1/2026/02/13/698f36b7cd77f.webp" onerror="onerror=null;src='/myblog.github.io/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">密码学数学基础 - 前言</div></div><div class="info-2"><div class="info-item-1">你有没有想过，当你在深夜网购🛒、和朋友发私密消息💬、或是登录银行账户🏦时，那些看似 “坚不可摧” 的安全屏障🔒，背后其实是一群数学精灵🧚在默默守护？✨欢迎来到《密码学数学基础》的奇妙世界！这里没有枯燥的公式堆砌（真的假的😋），只有一把把打开信息安全大门的钥匙🗝️。在信息安全的宇宙🌌里，密码学就像是一位神秘的魔法师🧙，而数学则是它手中的魔法棒🪄。本系列文章将带你解锁密码学中最核心的数学知识，特别是数论和代数这两大 “护法”🛡️。从最基础的整除、同余，到高深莫测的群论、环论和域论，我们会一步步揭开这些数学工具的神秘面纱🎭。别担心，我会用轻松有趣的方式（🤣👉🤡），让你发现这些看似高冷的数学概念，其实是设计和分析加密算法与协议的基石🧱。它们不仅是密码学的 “幕后英雄”🦸，还在编码理论、计算复杂性等领域大放异彩🌟。想象一下：当你用 HTTPS 浏览网页时🌐，大素数的乘积正在帮你抵御窃听👂；当你用数字签名确认身份时✍️，椭圆曲线的点运算正在为你保驾护航🚢；当区块链上的交易被永久记录时⛓️，哈希函数的单向性正在守护数据的不可篡改性📜。这些听起来高大上...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/myblog.github.io/post/1000.html" title="密码学数学基础 - 前言"><img class="cover" src="https://youke.xn--y7xa690gmna.cn/s1/2026/02/13/698f36b7cd77f.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-19</div><div class="info-item-2">密码学数学基础 - 前言</div></div><div class="info-2"><div class="info-item-1">你有没有想过，当你在深夜网购🛒、和朋友发私密消息💬、或是登录银行账户🏦时，那些看似 “坚不可摧” 的安全屏障🔒，背后其实是一群数学精灵🧚在默默守护？✨欢迎来到《密码学数学基础》的奇妙世界！这里没有枯燥的公式堆砌（真的假的😋），只有一把把打开信息安全大门的钥匙🗝️。在信息安全的宇宙🌌里，密码学就像是一位神秘的魔法师🧙，而数学则是它手中的魔法棒🪄。本系列文章将带你解锁密码学中最核心的数学知识，特别是数论和代数这两大 “护法”🛡️。从最基础的整除、同余，到高深莫测的群论、环论和域论，我们会一步步揭开这些数学工具的神秘面纱🎭。别担心，我会用轻松有趣的方式（🤣👉🤡），让你发现这些看似高冷的数学概念，其实是设计和分析加密算法与协议的基石🧱。它们不仅是密码学的 “幕后英雄”🦸，还在编码理论、计算复杂性等领域大放异彩🌟。想象一下：当你用 HTTPS 浏览网页时🌐，大素数的乘积正在帮你抵御窃听👂；当你用数字签名确认身份时✍️，椭圆曲线的点运算正在为你保驾护航🚢；当区块链上的交易被永久记录时⛓️，哈希函数的单向性正在守护数据的不可篡改性📜。这些听起来高大上...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://youke.xn--y7xa690gmna.cn/s1/2026/02/13/698f369459a78.webp" onerror="this.onerror=null;this.src='/myblog.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Dorange</div><div class="author-info-description"></div><div class="site-data"><a href="/myblog.github.io/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/myblog.github.io/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/myblog.github.io/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LR2006-Robot"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Crypto is fun!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">整除关系与素数 😋</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">最大公约数与最小公倍数 😛</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.1.</span> <span class="toc-text">如何求解最大公约数与最小公倍数 🤨</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">裴蜀定理与扩展欧几里得算法 🥰</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">性质①②③证明 🤓👆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">4.1.</span> <span class="toc-text">性质①证明 😑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">4.1.1.</span> <span class="toc-text">带余除法分解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">4.1.2.</span> <span class="toc-text">证明(gcd(a,b))是(b)和(r)的公约数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">4.1.3.</span> <span class="toc-text">证明(gcd(b,r))是(a)和(b)的公约数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">4.1.4.</span> <span class="toc-text">结论</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">4.2.</span> <span class="toc-text">性质②证明 😪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">4.3.</span> <span class="toc-text">性质③证明 😨</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">4.3.1.</span> <span class="toc-text">欧几里得算法（辗转相除法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">4.3.2.</span> <span class="toc-text">反向替换求解 ( x ) 和 ( y )</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/myblog.github.io/post/1001.html" title="密码学数学基础 - 整数关系"><img src="https://youke.xn--y7xa690gmna.cn/s1/2026/02/13/698f3ded87e7e.webp" onerror="this.onerror=null;this.src='/myblog.github.io/img/404.jpg'" alt="密码学数学基础 - 整数关系"/></a><div class="content"><a class="title" href="/myblog.github.io/post/1001.html" title="密码学数学基础 - 整数关系">密码学数学基础 - 整数关系</a><time datetime="2026-02-19T09:18:00.000Z" title="发表于 2026-02-19 17:18:00">2026-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/myblog.github.io/post/1000.html" title="密码学数学基础 - 前言"><img src="https://youke.xn--y7xa690gmna.cn/s1/2026/02/13/698f36b7cd77f.webp" onerror="this.onerror=null;this.src='/myblog.github.io/img/404.jpg'" alt="密码学数学基础 - 前言"/></a><div class="content"><a class="title" href="/myblog.github.io/post/1000.html" title="密码学数学基础 - 前言">密码学数学基础 - 前言</a><time datetime="2026-02-19T08:00:00.000Z" title="发表于 2026-02-19 16:00:00">2026-02-19</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Dorange</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/myblog.github.io/js/utils.js?v=5.5.4"></script><script src="/myblog.github.io/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-fzi50solb-doranges-projects.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = (el = document, path = location.pathname) => {
+    twikoo.init({
+      el: el.querySelector('#twikoo-wrap'),
+      envId: 'https://twikoo-fzi50solb-doranges-projects.vercel.app/',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      },
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    
+
+    isShuoshuo && (window.shuoshuoComment.destroyTwikoo = () => {
+      if (el.children.length) {
+        el.innerHTML = ''
+        el.classList.add('no-comment')
+      }
+    })
+  }
+
+  const loadTwikoo = (el, path) => {
+    if (typeof twikoo === 'object') setTimeout(() => init(el, path), 0)
+    else btf.getScript('https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.all.min.js').then(() => init(el, path))
+  }
+
+  if (isShuoshuo) {
+    'Twikoo' === 'Twikoo'
+      ? window.shuoshuoComment = { loadComment: loadTwikoo }
+      : window.loadOtherComment = loadTwikoo
+    return
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><div class="aplayer no-destory" data-id="9662215536" data-server="tencent" data-type="playlist" data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/metingjs/dist/Meting.min.js"></script><div class="app-refresh" id="app-refresh" style="position: fixed;top: -2.2rem;left: 0;right: 0;z-index: 99999;padding: 0 lrem;font-size: 15px; height: 2.2rem;transition: all 0.3s ease;"><div class="app-refresh-wrap" style=" display: flex;color: #fff;height: 100%;align-items: center;justify-content: center;"><label>✨ 有新文章啦！👉</label><a href="javascript:void(0)" onclick="location.reload()"><span style="color: #fff;text-decoration: underline;cursor: pointer;">🍗点击食用🍔</span></a></div></div><script>if ('serviceWorker' in navigator) {
+if (navigator.serviceWorker.controller) {
+navigator.serviceWorker.addEventListener('controllerchange', function () {
+showNotification()
+})
+}
+window.addEventListener('load', function () {
+navigator.serviceWorker.register('/sw.js')
+})
+}
+function showNotification() {
+if (GLOBAL_CONFIG.Snackbar) {
+var snackbarBg = 
+document.documentElement.getAttribute('data-theme') === 'light' ? 
+GLOBAL_CONFIG.Snackbar.bgLight :
+GLOBAL_CONFIG.Snackbar.bgDark
+var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+Snackbar.show({
+text: '✨有新文章啦！👉',
+backgroundColor: snackbarBg,
+duration: 5000,
+pos: snackbarPos,
+actionText: '🍗点击食用🍔',
+actionTextColor: '#fff',
+onActionClick: function (e) {
+locaton.reload()
+},
+})
+} else {
+var showBg = 
+document.documentElement.getAttribute('data-theme') === 'light' ? 
+'#49b1f5' :
+'#1f1f1f'
+var cssText = `top: 0; background: ${showBg}`
+document.getElementById('app-refresh').style.cssText = cssText
+}
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索......." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/myblog.github.io/js/search/local-search.js?v=5.5.4"></script></div></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '15');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('zoomIn');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="/myblog.github.io/js/wow.min.js"></script><script defer src="/myblog.github.io/js/wow_init.js"></script><script async src="/js/ali_font.js"></script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.8/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = 'c7dd6e12c55343d08f1c43980c4cd0fa';
+  var qweather_api_host = 'nj6r6pm8pt.re.qweatherapi.com';
+  var ip_api_key = 'Kq1pRjB3WyDja7rhKcWV9f5QU8';
+  var gaud_map_key = 'c7ac840f81b353a1fecc8d3c42421754';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.8/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="/myblog.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/myblog.github.io/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
