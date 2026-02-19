@@ -9,7 +9,7 @@
   <link href="https://lr2006-robot.github.io/myblog.github.io/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, Dorange</rights>
   <title>Alice and Bobの神秘小屋</title>
-  <updated>2026-02-19T14:20:51.447Z</updated>
+  <updated>2026-02-19T16:19:04.435Z</updated>
   <entry>
     <author>
       <name>Dorange</name>
@@ -19,16 +19,38 @@
     <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     <category term="数论" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     <content>
-      <![CDATA[<p>在我们踏上密码学数学基础的冒险之旅后，第一站就是整数关系的世界。这个领域虽然看似简单，但却是构建整个密码学大厦的基石。无论是最基本的整除关系，还是更复杂的同余关系，它们都在为我们揭示数字之间的神秘联系。<br>本章将带你深入了解整数关系的核心概念，包括整除、素数、最大公约数和最小公倍数等。我们将通过生动的例子和直观的解释，帮助你掌握这些基本工具，为后续的密码学学习打下坚实的基础。<br>别看我说的很高大上，放轻松，这一章非常简单。😁</p><h2><span id="整除关系与素数">整除关系与素数 😋</span></h2><p>在整数的世界里，整除关系是最基本的关系之一。我们说一个整数 $ a $ 整除另一个整数 $ b $，记作 $ a \mid b $，如果存在一个整数 $ k $ 使得 $ b = ak $。换句话说，$ b $ 可以被 $ a $ 整除，没有余数。例如，$ 3 \mid 12 $ 因为 $ 12 = 3 \times 4 $，但 $ 5 \nmid 12 $ 因为 $ 12 $ 不能被 $ 5 $ 整除。</p><p>素数是大于 1 的整数，除了 1 和它本身之外没有其他正整数因数。素数在密码学中扮演着重要的角色，因为许多加密算法都依赖于大素数的性质。例如，RSA 加密算法就是基于两个大素数的乘积来实现安全性的。</p><h2><span id="最大公约数与最小公倍数">最大公约数与最小公倍数 😛</span></h2><p>最大公约数（GCD）是指两个或多个整数的公共约数中最大的一个。比如，$ \text{gcd}(12, 15) = 3 $，因为 3 是 12 和 15 的最大公共约数。</p><p>最小公倍数（LCM）则是指两个或多个整数的公共倍数中最小的一个。例如，$ \text{lcm}(4, 6) = 12 $，因为 12 是 4 和 6 的最小公共倍数。</p><h3><span id="如何求解最大公约数与最小公倍数">如何求解最大公约数与最小公倍数 🤨</span></h3><p>计算最大公约数的一种高效方法是辗转相除法（Euclidean Algorithm）。<br>这个算法基于一个重要的性质①：对于两个整数 $ a $ 和 $ b $，如果 $ a &gt; b $，那么<br>$ \text{gcd}(a, b) = \text{gcd}(b, a \mod b) $<br>通过不断地将较大的数替换为较小的数和它们的余数，我们可以快速找到最大公约数。</p><p>再根据最大公约数和最小公倍数的性质②：<br>$\text{lcm}(a, b) = \frac{|a \times b|}{\text{gcd}(a, b)} $<br>求出最小公倍数。</p><h2><span id="裴蜀定理与扩展欧几里得算法">裴蜀定理与扩展欧几里得算法 🥰</span></h2><p>裴蜀定理（Bézout’s Identity）是整数关系中的一个重要定理，它告诉我们对于任意两个整数 $ a $ 和 $ b $，存在整数 $ x $ 和 $ y $，使得性质③：<br>$ ax + by = \text{gcd}(a, b) $<br>扩展欧几里得算法（Extended Euclidean Algorithm）就是基于裴蜀定理的一种算法，它不仅可以计算最大公约数，还可以找到满足裴蜀定理的整数 $ x $ 和 $ y $。</p><h2><span id="性质123证明">性质①②③证明 🤓👆</span></h2><p>由于本章节的定理和算法都比较基础，我们来简单证明一下吧。</p><h3><span id="性质1证明">性质①证明 😑</span></h3><h4><span id="带余除法分解">带余除法分解</span></h4><p>假设 $ a = bq + r $，其中 $ q $ 是商，$ r $ 是余数，且 $ 0 \leq r &lt; b $。我们记$ r $为 $ a \mod b $。</p><h4><span id="证明gcdab是b和r的公约数">证明$gcd(a,b)$是$b$和$r$的公约数</span></h4><p>设 $ d = \text{gcd}(a, b) $，则 $ d \mid a $ 和 $ d \mid b $。<br>因为 $ d $ 整除 $ a $ 和 $ bq $，$ d $ 也必须整除 $ r = a - bq $，即 $ d \mid r $。<br>所以，$ d $ 是 $ b $ 和 $ r $ 的公因数，故 $ \text{gcd}(a, b) \leq \text{gcd}(b, r) $。</p><h4><span id="证明gcdbr是a和b的公约数">证明$gcd(b,r)$是$a$和$b$的公约数</span></h4><p>设 $ d’ = \text{gcd}(b, r) $，则 $ d’ \mid b $ 和 $ d’ \mid r $。<br>因为 $ d’ $ 整除 $ b $ 和 $ r $，$ d’ $ 也必须整除 $ a = bq + r $，即 $ d’ \mid a $。<br>所以，$ d’ $ 是 $ a $ 和 $ b $ 的公因数，故 $ \text{gcd}(b, r) \leq \text{gcd}(a, b) $。</p><h4><span id="结论">结论</span></h4><p>综上所述，$ \text{gcd}(a, b) = \text{gcd}(b, r) $，证明完毕。</p><h3><span id="性质2证明">性质②证明 😪</span></h3><p>设 $ d = \text{gcd}(a, b) $，则 $ a = da’ $ 和 $ b = db’ $，其中 $ a’ $ 和 $ b’ $ 是互质的整数。<br>因此，$ \text{lcm}(a, b) = d \times a’ \times b’ = \frac{|da’ \times db’|}{d} = \frac{|a \times b|}{\text{gcd}(a, b)} $，证明完毕。</p><h3><span id="性质3证明">性质③证明 😨</span></h3><h4><span id="欧几里得算法辗转相除法">欧几里得算法（辗转相除法）</span></h4><p>设 $ d = \text{gcd}(a, b) $。<br>用辗转相除法：<br>$ a = bq<em>1 + r_1 $， $0 &lt; r_1 &lt; b $<br>$ b = r_1q_2 + r_2 $， $0 &lt; r_2 &lt; r_1 $<br>…<br>$ r</em>{n-2} = r<em>{n-1}q_n + r_n $， $0 &lt; r_n &lt; r</em>{n-1} $<br>$ r<em>{n-1} = r_nq</em>{n+1} + 0 $， $r_n = d $<br>最后余数为 0，说明 $ r_n = d = \text{gcd}(a, b) $。</p><h4><span id="反向替换求解-x-和-y">反向替换求解 $ x $ 和 $ y $</span></h4><p>倒数第二步：<br>$ d = r<em>n = r</em>{n-2} - r_{n-1}q_n $</p><p>再把$r<em>{n-1}$用上一行表示：<br>$r</em>{n-1} = r<em>{n-3} - r</em>{n-2}q_{n-1}$</p><p>带入：<br>$d = A·r<em>{n-2} + B·r</em>{n-3}$,  $ A ,B  \in \mathbb{Z} $</p><p>一直往上带入，最终可以表示为：<br>$d = x·a + y·b$，其中 $ x, y \in \mathbb{Z} $，证明完毕。</p>]]>
+      <![CDATA[<p>在上一章中，我们探讨了整数关系的基本概念，这些工具为我们理解数字之间的关系奠定了基础。而在本章中，我们将进入一个更深层次的领域：同余关系与模运算。这些概念不仅是数论中的重要内容，也是密码学中不可或缺的工具。</p><p>同余关系和模运算为我们提供了一种新的视角来看待整数之间的关系。它们让我们能够在一个有限的范围内进行计算，这对于设计和分析加密算法来说至关重要。无论是经典的凯撒密码，还是现代的 RSA 加密算法，同余关系和模运算都在其中扮演着重要的角色。</p><p>事不宜迟，Let’s our story begin! 🚀</p>]]>
+    </content>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/1002.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/1002.html"/>
+    <published>2026-02-19T15:12:00.000Z</published>
+    <summary>
+      <![CDATA[<p>在上一章中，我们探讨了整数关系的基本概念，这些工具为我们理解数字之间的关系奠定了基础。而在本章中，我们将进入一个更深层次的领域：同余关系与模运算。这些概念不仅是数论中的重要内容，也是密码学中不可或缺的工具。</p>
+<p>同余关系和模运算为我们提供了一种新的视角来看待整数之]]>
+    </summary>
+    <title>密码学数学基础 - 同余关系与模运算</title>
+    <updated>2026-02-19T16:19:04.435Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="密码学数学基础" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    <category term="数论" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
+    <content>
+      <![CDATA[<p>在我们踏上密码学数学基础的冒险之旅后，第一站就是整数关系的世界。这个领域虽然看似简单，但却是构建整个密码学大厦的基石。无论是最基本的整除关系，还是更复杂的同余关系，它们都在为我们揭示数字之间的神秘联系。</p><p>本章将带你深入了解整数关系的核心概念，包括整除、素数、最大公约数和最小公倍数等。我们将通过生动的例子和直观的解释，帮助你掌握这些基本工具，为后续的密码学学习打下坚实的基础。</p><p>别看我说的很高大上，放轻松，这一章真的非常简单口牙。😁</p><h2><span id="整除关系与素数">整除关系与素数 😋</span></h2><p>在整数的世界里，整除关系是最基本的关系之一。我们说一个整数 $ a $ 整除另一个整数 $ b $，记作 $ a \mid b $，如果存在一个整数 $ k $ 使得 $ b = ak $。换句话说，$ b $ 可以被 $ a $ 整除，没有余数。例如，$ 3 \mid 12 $ 因为 $ 12 = 3 \times 4 $，但 $ 5 \nmid 12 $ 因为 $ 12 $ 不能被 $ 5 $ 整除。</p><p>素数是大于 1 的整数，除了 1 和它本身之外没有其他正整数因数。素数在密码学中扮演着重要的角色，因为许多加密算法都依赖于大素数的性质。例如，RSA 加密算法就是基于两个大素数的乘积来实现安全性的。</p><h2><span id="最大公约数与最小公倍数">最大公约数与最小公倍数 😛</span></h2><p>最大公约数（GCD）是指两个或多个整数的公共约数中最大的一个。比如，$ \text{gcd}(12, 15) = 3 $，因为 3 是 12 和 15 的最大公共约数。</p><p>最小公倍数（LCM）则是指两个或多个整数的公共倍数中最小的一个。例如，$ \text{lcm}(4, 6) = 12 $，因为 12 是 4 和 6 的最小公共倍数。</p><h3><span id="如何求解最大公约数与最小公倍数">如何求解最大公约数与最小公倍数 🤨</span></h3><p>计算最大公约数的一种高效方法是辗转相除法（Euclidean Algorithm）。<br>这个算法基于一个重要的性质①：对于两个整数 $ a $ 和 $ b $，如果 $ a &gt; b $，那么</p><script type="math/tex; mode=display">\text{gcd}(a, b) = \text{gcd}(b, a \mod b)</script><p>通过不断地将较大的数替换为较小的数和它们的余数，我们可以快速找到最大公约数。</p><p>再根据最大公约数和最小公倍数的性质②：</p><script type="math/tex; mode=display">\text{lcm}(a, b) = \frac{|a \times b|}{\text{gcd}(a, b)}</script><p>求出最小公倍数。</p><h2><span id="裴蜀定理与扩展欧几里得算法">裴蜀定理与扩展欧几里得算法 🥰</span></h2><p>裴蜀定理（Bézout’s Identity）是整数关系中的一个重要定理，它告诉我们对于任意两个整数 $ a $ 和 $ b $，存在整数 $ x $ 和 $ y $，使得性质③：<br>$ ax + by = \text{gcd}(a, b) $<br>扩展欧几里得算法（Extended Euclidean Algorithm）就是基于裴蜀定理的一种算法，它不仅可以计算最大公约数，还可以找到满足裴蜀定理的整数 $ x $ 和 $ y $。</p><h2><span id="性质123证明">性质①②③证明 🤓👆</span></h2><p>由于本章节的定理和算法都比较基础，我们来简单证明一下吧。</p><h3><span id="性质1证明">性质①证明 😑</span></h3><h4><span id="带余除法分解">带余除法分解</span></h4><p>假设 $ a = bq + r $，其中 $ q $ 是商，$ r $ 是余数，且 $ 0 \leq r &lt; b $。我们记$ r $为 $ a \mod b $。</p><h4><span id="证明gcdab是b和r的公约数">证明$gcd(a,b)$是$b$和$r$的公约数</span></h4><p>设 $ d = \text{gcd}(a, b) $，则 $ d \mid a $ 和 $ d \mid b $。<br>因为 $ d $ 整除 $ a $ 和 $ bq $，$ d $ 也必须整除 $ r = a - bq $，即 $ d \mid r $。<br>所以，$ d $ 是 $ b $ 和 $ r $ 的公因数，故 $ \text{gcd}(a, b) \leq \text{gcd}(b, r) $。</p><h4><span id="证明gcdbr是a和b的公约数">证明$gcd(b,r)$是$a$和$b$的公约数</span></h4><p>设 $ d’ = \text{gcd}(b, r) $，则 $ d’ \mid b $ 和 $ d’ \mid r $。<br>因为 $ d’ $ 整除 $ b $ 和 $ r $，$ d’ $ 也必须整除 $ a = bq + r $，即 $ d’ \mid a $。<br>所以，$ d’ $ 是 $ a $ 和 $ b $ 的公因数，故 $ \text{gcd}(b, r) \leq \text{gcd}(a, b) $。</p><h4><span id="结论">结论</span></h4><p>综上所述，$ \text{gcd}(a, b) = \text{gcd}(b, r) $，证明完毕。</p><h3><span id="性质2证明">性质②证明 😪</span></h3><p>设 $ d = \text{gcd}(a, b) $，则 $ a = da’ $ 和 $ b = db’ $，其中 $ a’ $ 和 $ b’ $ 是互质的整数。<br>因此，$ \text{lcm}(a, b) = d \times a’ \times b’ = \frac{|da’ \times db’|}{d} = \frac{|a \times b|}{\text{gcd}(a, b)} $，证明完毕。</p><h3><span id="性质3证明">性质③证明 😨</span></h3><h4><span id="欧几里得算法辗转相除法">欧几里得算法（辗转相除法）</span></h4><p>设 $ d = \text{gcd}(a, b) $。<br>用辗转相除法：</p><script type="math/tex; mode=display">a = bq_1 + r_1 ， 0 < r_1 < b</script><script type="math/tex; mode=display">b = r_1q_2 + r_2 ， 0 < r_2 < r_1</script><p>不断进行下去，直到余数为 0：</p><script type="math/tex; mode=display">r_{n-2} = r_{n-1}q_n + r_n ， 0 < r_n < r_{n-1}</script><script type="math/tex; mode=display">r_{n-1} = r_nq_{n+1} + 0 ， r_n = d</script><p>最后余数为 0，说明 $ r_n = d = \text{gcd}(a, b) $。</p><h4><span id="反向替换求解-x-和-y">反向替换求解 $ x $ 和 $ y $</span></h4><p>倒数第二步：</p><script type="math/tex; mode=display">d = r_n = r_{n-2} - r_{n-1}q_n</script><p>再把$r_{n-1}$用上一行表示：</p><script type="math/tex; mode=display">r_{n-1} = r_{n-3} - r_{n-2}q_{n-1}</script><p>带入：</p><script type="math/tex; mode=display">d = A·r_{n-2} + B·r_{n-3},   A ,B  \in \mathbb{Z}</script><p>一直往上带入，最终可以表示为：<br>$d = x·a + y·b$，其中 $ x, y \in \mathbb{Z} $，证明完毕。</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1000.html">密码学数学基础 - 前言</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1002.html">密码学数学基础 - 同余关系与模运算</a> 👈</p>]]>
     </content>
     <id>https://lr2006-robot.github.io/myblog.github.io/post/1001.html</id>
     <link href="https://lr2006-robot.github.io/myblog.github.io/post/1001.html"/>
     <published>2026-02-19T09:18:00.000Z</published>
     <summary>
-      <![CDATA[<p>在我们踏上密码学数学基础的冒险之旅后，第一站就是整数关系的世界。这个领域虽然看似简单，但却是构建整个密码学大厦的基石。无论是最基本的整除关系，还是更复杂的同余关系，它们都在为我们揭示数字之间的神秘联系。<br>本章将带你深入了解整数关系的核心概念，包括整除、素数、最大公约数]]>
+      <![CDATA[<p>在我们踏上密码学数学基础的冒险之旅后，第一站就是整数关系的世界。这个领域虽然看似简单，但却是构建整个密码学大厦的基石。无论是最基本的整除关系，还是更复杂的同余关系，它们都在为我们揭示数字之间的神秘联系。</p>
+<p>本章将带你深入了解整数关系的核心概念，包括整除、素数、最]]>
     </summary>
     <title>密码学数学基础 - 整数关系</title>
-    <updated>2026-02-19T14:20:51.447Z</updated>
+    <updated>2026-02-19T16:03:29.883Z</updated>
   </entry>
   <entry>
     <author>
@@ -40,7 +62,7 @@
     <category term="数论" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     <category term="前言" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%89%8D%E8%A8%80/"/>
     <content>
-      <![CDATA[<p>你有没有想过，当你在深夜网购🛒、和朋友发私密消息💬、或是登录银行账户🏦时，那些看似 “坚不可摧” 的安全屏障🔒，背后其实是一群数学精灵🧚在默默守护？✨<br>欢迎来到《密码学数学基础》的奇妙世界！这里没有枯燥的公式堆砌（真的假的😋），只有一把把打开信息安全大门的钥匙🗝️。<br>在信息安全的宇宙🌌里，密码学就像是一位神秘的魔法师🧙，而数学则是它手中的魔法棒🪄。本系列文章将带你解锁密码学中最核心的数学知识，特别是数论和代数这两大 “护法”🛡️。从最基础的整除、同余，到高深莫测的群论、环论和域论，我们会一步步揭开这些数学工具的神秘面纱🎭。<br>别担心，我会用轻松有趣的方式（🤣👉🤡），让你发现这些看似高冷的数学概念，其实是设计和分析加密算法与协议的基石🧱。它们不仅是密码学的 “幕后英雄”🦸，还在编码理论、计算复杂性等领域大放异彩🌟。<br>想象一下：<br>当你用 HTTPS 浏览网页时🌐，大素数的乘积正在帮你抵御窃听👂；<br>当你用数字签名确认身份时✍️，椭圆曲线的点运算正在为你保驾护航🚢；<br>当区块链上的交易被永久记录时⛓️，哈希函数的单向性正在守护数据的不可篡改性📜。<br>这些听起来高大上的技术，本质上都是数学规律的巧妙应用🎯。<br>在这个系列里，我们会像侦探🕵️一样，拆解每一个加密算法背后的数学逻辑；像探险家🗺️一样，从最基础的数论概念出发，逐步深入到更复杂的数学工具。你会发现，原来那些让你头疼的抽象概念，其实是构建安全世界的砖瓦🧱；那些看似枯燥的定理，其实是守护数字生活的盾牌🛡️。<br>当然，我们主要用于密码学学习，故而我会将重点放在结论和应用上，而不是过多地纠结于太难的证明和特殊情况（毕竟我们不是数学家😎）。但如果你对某些定理的证明感兴趣，我也会提供一些参考资料，供你深入探索🔍。<br>准备好了吗？让我们一起踏上这场充满挑战与惊喜的数学冒险🚀，解锁信息安全的终极奥义吧！💡</p>]]>
+      <![CDATA[<p>你有没有想过，当你在深夜网购🛒、和朋友发私密消息💬、或是登录银行账户🏦时，那些看似 “坚不可摧” 的安全屏障🔒，背后其实是一群数学精灵🧚在默默守护？✨<br>欢迎来到《密码学数学基础》的奇妙世界！这里没有枯燥的公式堆砌（真的假的😋），只有一把把打开信息安全大门的钥匙🗝️。<br>在信息安全的宇宙🌌里，密码学就像是一位神秘的魔法师🧙，而数学则是它手中的魔法棒🪄。本系列文章将带你解锁密码学中最核心的数学知识，特别是数论和代数这两大 “护法”🛡️。从最基础的整除、同余，到高深莫测的群论、环论和域论，我们会一步步揭开这些数学工具的神秘面纱🎭。<br>别担心，我会用轻松有趣的方式（🤣👉🤡），让你发现这些看似高冷的数学概念，其实是设计和分析加密算法与协议的基石🧱。它们不仅是密码学的 “幕后英雄”🦸，还在编码理论、计算复杂性等领域大放异彩🌟。<br>想象一下：<br>当你用 HTTPS 浏览网页时🌐，大素数的乘积正在帮你抵御窃听👂；<br>当你用数字签名确认身份时✍️，椭圆曲线的点运算正在为你保驾护航🚢；<br>当区块链上的交易被永久记录时⛓️，哈希函数的单向性正在守护数据的不可篡改性📜。<br>这些听起来高大上的技术，本质上都是数学规律的巧妙应用🎯。<br>在这个系列里，我们会像侦探🕵️一样，拆解每一个加密算法背后的数学逻辑；像探险家🗺️一样，从最基础的数论概念出发，逐步深入到更复杂的数学工具。你会发现，原来那些让你头疼的抽象概念，其实是构建安全世界的砖瓦🧱；那些看似枯燥的定理，其实是守护数字生活的盾牌🛡️。<br>当然，我们主要用于密码学学习，故而我会将重点放在结论和应用上，而不是过多地纠结于太难的证明和特殊情况（毕竟我们不是数学家😎）。但如果你对某些定理的证明感兴趣，我也会提供一些参考资料，供你深入探索🔍。<br>准备好了吗？让我们一起踏上这场充满挑战与惊喜的数学冒险🚀，解锁信息安全的终极奥义吧！💡</p><p>注：本系列文章编号从 1000 开始，后续章节将依次递增。每篇文章都会在结尾提供下一章的链接，敬请期待！😉<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/post/0.html">关于我</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1001.html">密码学数学基础 - 整数关系</a> 👈</p>]]>
     </content>
     <id>https://lr2006-robot.github.io/myblog.github.io/post/1000.html</id>
     <link href="https://lr2006-robot.github.io/myblog.github.io/post/1000.html"/>
@@ -49,6 +71,6 @@
       <![CDATA[<p>你有没有想过，当你在深夜网购🛒、和朋友发私密消息💬、或是登录银行账户🏦时，那些看似 “坚不可摧” 的安全屏障🔒，背后其实是一群数学精灵🧚在默默守护？✨<br>欢迎来到《密码学数学基础》的奇妙世界！这里没有枯燥的公式堆砌（真的假的😋），只有一把把打开信息安全大门的]]>
     </summary>
     <title>密码学数学基础 - 前言</title>
-    <updated>2026-02-19T09:37:31.498Z</updated>
+    <updated>2026-02-19T16:03:56.114Z</updated>
   </entry>
 </feed>

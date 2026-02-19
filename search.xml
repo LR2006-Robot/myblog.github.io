@@ -4,11 +4,40 @@
   
     
     <entry>
+      <title>密码学数学基础 - 同余关系与模运算</title>
+      <link href="/myblog.github.io/post/1002.html"/>
+      <url>/myblog.github.io/post/1002.html</url>
+      
+        <content type="html"><![CDATA[<p>在上一章中，我们探讨了整数关系的基本概念，这些工具为我们理解数字之间的关系奠定了基础。而在本章中，我们将进入一个更深层次的领域：同余关系与模运算。这些概念不仅是数论中的重要内容，也是密码学中不可或缺的工具。</p><p>同余关系和模运算为我们提供了一种新的视角来看待整数之间的关系。它们让我们能够在一个有限的范围内进行计算，这对于设计和分析加密算法来说至关重要。无论是经典的凯撒密码，还是现代的 RSA 加密算法，同余关系和模运算都在其中扮演着重要的角色。</p><p>事不宜迟，Let’s our story begin! 🚀</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 密码学数学基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 密码学 </tag>
+            
+            <tag> 数学 </tag>
+            
+            <tag> 数论 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>密码学数学基础 - 整数关系</title>
       <link href="/myblog.github.io/post/1001.html"/>
       <url>/myblog.github.io/post/1001.html</url>
       
-        <content type="html"><![CDATA[<p>在我们踏上密码学数学基础的冒险之旅后，第一站就是整数关系的世界。这个领域虽然看似简单，但却是构建整个密码学大厦的基石。无论是最基本的整除关系，还是更复杂的同余关系，它们都在为我们揭示数字之间的神秘联系。<br>本章将带你深入了解整数关系的核心概念，包括整除、素数、最大公约数和最小公倍数等。我们将通过生动的例子和直观的解释，帮助你掌握这些基本工具，为后续的密码学学习打下坚实的基础。<br>别看我说的很高大上，放轻松，这一章非常简单。😁</p><h2><span id="整除关系与素数">整除关系与素数 😋</span></h2><p>在整数的世界里，整除关系是最基本的关系之一。我们说一个整数 $ a $ 整除另一个整数 $ b $，记作 $ a \mid b $，如果存在一个整数 $ k $ 使得 $ b = ak $。换句话说，$ b $ 可以被 $ a $ 整除，没有余数。例如，$ 3 \mid 12 $ 因为 $ 12 = 3 \times 4 $，但 $ 5 \nmid 12 $ 因为 $ 12 $ 不能被 $ 5 $ 整除。</p><p>素数是大于 1 的整数，除了 1 和它本身之外没有其他正整数因数。素数在密码学中扮演着重要的角色，因为许多加密算法都依赖于大素数的性质。例如，RSA 加密算法就是基于两个大素数的乘积来实现安全性的。</p><h2><span id="最大公约数与最小公倍数">最大公约数与最小公倍数 😛</span></h2><p>最大公约数（GCD）是指两个或多个整数的公共约数中最大的一个。比如，$ \text{gcd}(12, 15) = 3 $，因为 3 是 12 和 15 的最大公共约数。</p><p>最小公倍数（LCM）则是指两个或多个整数的公共倍数中最小的一个。例如，$ \text{lcm}(4, 6) = 12 $，因为 12 是 4 和 6 的最小公共倍数。</p><h3><span id="如何求解最大公约数与最小公倍数">如何求解最大公约数与最小公倍数 🤨</span></h3><p>计算最大公约数的一种高效方法是辗转相除法（Euclidean Algorithm）。<br>这个算法基于一个重要的性质①：对于两个整数 $ a $ 和 $ b $，如果 $ a &gt; b $，那么<br>$ \text{gcd}(a, b) = \text{gcd}(b, a \mod b) $<br>通过不断地将较大的数替换为较小的数和它们的余数，我们可以快速找到最大公约数。</p><p>再根据最大公约数和最小公倍数的性质②：<br>$\text{lcm}(a, b) = \frac{|a \times b|}{\text{gcd}(a, b)} $<br>求出最小公倍数。</p><h2><span id="裴蜀定理与扩展欧几里得算法">裴蜀定理与扩展欧几里得算法 🥰</span></h2><p>裴蜀定理（Bézout’s Identity）是整数关系中的一个重要定理，它告诉我们对于任意两个整数 $ a $ 和 $ b $，存在整数 $ x $ 和 $ y $，使得性质③：<br>$ ax + by = \text{gcd}(a, b) $<br>扩展欧几里得算法（Extended Euclidean Algorithm）就是基于裴蜀定理的一种算法，它不仅可以计算最大公约数，还可以找到满足裴蜀定理的整数 $ x $ 和 $ y $。</p><h2><span id="性质123证明">性质①②③证明 🤓👆</span></h2><p>由于本章节的定理和算法都比较基础，我们来简单证明一下吧。</p><h3><span id="性质1证明">性质①证明 😑</span></h3><h4><span id="带余除法分解">带余除法分解</span></h4><p>假设 $ a = bq + r $，其中 $ q $ 是商，$ r $ 是余数，且 $ 0 \leq r &lt; b $。我们记$ r $为 $ a \mod b $。</p><h4><span id="证明gcdab是b和r的公约数">证明$gcd(a,b)$是$b$和$r$的公约数</span></h4><p>设 $ d = \text{gcd}(a, b) $，则 $ d \mid a $ 和 $ d \mid b $。<br>因为 $ d $ 整除 $ a $ 和 $ bq $，$ d $ 也必须整除 $ r = a - bq $，即 $ d \mid r $。<br>所以，$ d $ 是 $ b $ 和 $ r $ 的公因数，故 $ \text{gcd}(a, b) \leq \text{gcd}(b, r) $。</p><h4><span id="证明gcdbr是a和b的公约数">证明$gcd(b,r)$是$a$和$b$的公约数</span></h4><p>设 $ d’ = \text{gcd}(b, r) $，则 $ d’ \mid b $ 和 $ d’ \mid r $。<br>因为 $ d’ $ 整除 $ b $ 和 $ r $，$ d’ $ 也必须整除 $ a = bq + r $，即 $ d’ \mid a $。<br>所以，$ d’ $ 是 $ a $ 和 $ b $ 的公因数，故 $ \text{gcd}(b, r) \leq \text{gcd}(a, b) $。</p><h4><span id="结论">结论</span></h4><p>综上所述，$ \text{gcd}(a, b) = \text{gcd}(b, r) $，证明完毕。</p><h3><span id="性质2证明">性质②证明 😪</span></h3><p>设 $ d = \text{gcd}(a, b) $，则 $ a = da’ $ 和 $ b = db’ $，其中 $ a’ $ 和 $ b’ $ 是互质的整数。<br>因此，$ \text{lcm}(a, b) = d \times a’ \times b’ = \frac{|da’ \times db’|}{d} = \frac{|a \times b|}{\text{gcd}(a, b)} $，证明完毕。</p><h3><span id="性质3证明">性质③证明 😨</span></h3><h4><span id="欧几里得算法辗转相除法">欧几里得算法（辗转相除法）</span></h4><p>设 $ d = \text{gcd}(a, b) $。<br>用辗转相除法：<br>$ a = bq<em>1 + r_1 $， $0 &lt; r_1 &lt; b $<br>$ b = r_1q_2 + r_2 $， $0 &lt; r_2 &lt; r_1 $<br>…<br>$ r</em>{n-2} = r<em>{n-1}q_n + r_n $， $0 &lt; r_n &lt; r</em>{n-1} $<br>$ r<em>{n-1} = r_nq</em>{n+1} + 0 $， $r_n = d $<br>最后余数为 0，说明 $ r_n = d = \text{gcd}(a, b) $。</p><h4><span id="反向替换求解-x-和-y">反向替换求解 $ x $ 和 $ y $</span></h4><p>倒数第二步：<br>$ d = r<em>n = r</em>{n-2} - r_{n-1}q_n $</p><p>再把$r<em>{n-1}$用上一行表示：<br>$r</em>{n-1} = r<em>{n-3} - r</em>{n-2}q_{n-1}$</p><p>带入：<br>$d = A·r<em>{n-2} + B·r</em>{n-3}$,  $ A ,B  \in \mathbb{Z} $</p><p>一直往上带入，最终可以表示为：<br>$d = x·a + y·b$，其中 $ x, y \in \mathbb{Z} $，证明完毕。</p>]]></content>
+        <content type="html"><![CDATA[<p>在我们踏上密码学数学基础的冒险之旅后，第一站就是整数关系的世界。这个领域虽然看似简单，但却是构建整个密码学大厦的基石。无论是最基本的整除关系，还是更复杂的同余关系，它们都在为我们揭示数字之间的神秘联系。</p><p>本章将带你深入了解整数关系的核心概念，包括整除、素数、最大公约数和最小公倍数等。我们将通过生动的例子和直观的解释，帮助你掌握这些基本工具，为后续的密码学学习打下坚实的基础。</p><p>别看我说的很高大上，放轻松，这一章真的非常简单口牙。😁</p><h2><span id="整除关系与素数">整除关系与素数 😋</span></h2><p>在整数的世界里，整除关系是最基本的关系之一。我们说一个整数 $ a $ 整除另一个整数 $ b $，记作 $ a \mid b $，如果存在一个整数 $ k $ 使得 $ b = ak $。换句话说，$ b $ 可以被 $ a $ 整除，没有余数。例如，$ 3 \mid 12 $ 因为 $ 12 = 3 \times 4 $，但 $ 5 \nmid 12 $ 因为 $ 12 $ 不能被 $ 5 $ 整除。</p><p>素数是大于 1 的整数，除了 1 和它本身之外没有其他正整数因数。素数在密码学中扮演着重要的角色，因为许多加密算法都依赖于大素数的性质。例如，RSA 加密算法就是基于两个大素数的乘积来实现安全性的。</p><h2><span id="最大公约数与最小公倍数">最大公约数与最小公倍数 😛</span></h2><p>最大公约数（GCD）是指两个或多个整数的公共约数中最大的一个。比如，$ \text{gcd}(12, 15) = 3 $，因为 3 是 12 和 15 的最大公共约数。</p><p>最小公倍数（LCM）则是指两个或多个整数的公共倍数中最小的一个。例如，$ \text{lcm}(4, 6) = 12 $，因为 12 是 4 和 6 的最小公共倍数。</p><h3><span id="如何求解最大公约数与最小公倍数">如何求解最大公约数与最小公倍数 🤨</span></h3><p>计算最大公约数的一种高效方法是辗转相除法（Euclidean Algorithm）。<br>这个算法基于一个重要的性质①：对于两个整数 $ a $ 和 $ b $，如果 $ a &gt; b $，那么</p><script type="math/tex; mode=display">\text{gcd}(a, b) = \text{gcd}(b, a \mod b)</script><p>通过不断地将较大的数替换为较小的数和它们的余数，我们可以快速找到最大公约数。</p><p>再根据最大公约数和最小公倍数的性质②：</p><script type="math/tex; mode=display">\text{lcm}(a, b) = \frac{|a \times b|}{\text{gcd}(a, b)}</script><p>求出最小公倍数。</p><h2><span id="裴蜀定理与扩展欧几里得算法">裴蜀定理与扩展欧几里得算法 🥰</span></h2><p>裴蜀定理（Bézout’s Identity）是整数关系中的一个重要定理，它告诉我们对于任意两个整数 $ a $ 和 $ b $，存在整数 $ x $ 和 $ y $，使得性质③：<br>$ ax + by = \text{gcd}(a, b) $<br>扩展欧几里得算法（Extended Euclidean Algorithm）就是基于裴蜀定理的一种算法，它不仅可以计算最大公约数，还可以找到满足裴蜀定理的整数 $ x $ 和 $ y $。</p><h2><span id="性质123证明">性质①②③证明 🤓👆</span></h2><p>由于本章节的定理和算法都比较基础，我们来简单证明一下吧。</p><h3><span id="性质1证明">性质①证明 😑</span></h3><h4><span id="带余除法分解">带余除法分解</span></h4><p>假设 $ a = bq + r $，其中 $ q $ 是商，$ r $ 是余数，且 $ 0 \leq r &lt; b $。我们记$ r $为 $ a \mod b $。</p><h4><span id="证明gcdab是b和r的公约数">证明$gcd(a,b)$是$b$和$r$的公约数</span></h4><p>设 $ d = \text{gcd}(a, b) $，则 $ d \mid a $ 和 $ d \mid b $。<br>因为 $ d $ 整除 $ a $ 和 $ bq $，$ d $ 也必须整除 $ r = a - bq $，即 $ d \mid r $。<br>所以，$ d $ 是 $ b $ 和 $ r $ 的公因数，故 $ \text{gcd}(a, b) \leq \text{gcd}(b, r) $。</p><h4><span id="证明gcdbr是a和b的公约数">证明$gcd(b,r)$是$a$和$b$的公约数</span></h4><p>设 $ d’ = \text{gcd}(b, r) $，则 $ d’ \mid b $ 和 $ d’ \mid r $。<br>因为 $ d’ $ 整除 $ b $ 和 $ r $，$ d’ $ 也必须整除 $ a = bq + r $，即 $ d’ \mid a $。<br>所以，$ d’ $ 是 $ a $ 和 $ b $ 的公因数，故 $ \text{gcd}(b, r) \leq \text{gcd}(a, b) $。</p><h4><span id="结论">结论</span></h4><p>综上所述，$ \text{gcd}(a, b) = \text{gcd}(b, r) $，证明完毕。</p><h3><span id="性质2证明">性质②证明 😪</span></h3><p>设 $ d = \text{gcd}(a, b) $，则 $ a = da’ $ 和 $ b = db’ $，其中 $ a’ $ 和 $ b’ $ 是互质的整数。<br>因此，$ \text{lcm}(a, b) = d \times a’ \times b’ = \frac{|da’ \times db’|}{d} = \frac{|a \times b|}{\text{gcd}(a, b)} $，证明完毕。</p><h3><span id="性质3证明">性质③证明 😨</span></h3><h4><span id="欧几里得算法辗转相除法">欧几里得算法（辗转相除法）</span></h4><p>设 $ d = \text{gcd}(a, b) $。<br>用辗转相除法：</p><script type="math/tex; mode=display">a = bq_1 + r_1 ， 0 < r_1 < b</script><script type="math/tex; mode=display">b = r_1q_2 + r_2 ， 0 < r_2 < r_1</script><p>不断进行下去，直到余数为 0：</p><script type="math/tex; mode=display">r_{n-2} = r_{n-1}q_n + r_n ， 0 < r_n < r_{n-1}</script><script type="math/tex; mode=display">r_{n-1} = r_nq_{n+1} + 0 ， r_n = d</script><p>最后余数为 0，说明 $ r_n = d = \text{gcd}(a, b) $。</p><h4><span id="反向替换求解-x-和-y">反向替换求解 $ x $ 和 $ y $</span></h4><p>倒数第二步：</p><script type="math/tex; mode=display">d = r_n = r_{n-2} - r_{n-1}q_n</script><p>再把$r_{n-1}$用上一行表示：</p><script type="math/tex; mode=display">r_{n-1} = r_{n-3} - r_{n-2}q_{n-1}</script><p>带入：</p><script type="math/tex; mode=display">d = A·r_{n-2} + B·r_{n-3},   A ,B  \in \mathbb{Z}</script><p>一直往上带入，最终可以表示为：<br>$d = x·a + y·b$，其中 $ x, y \in \mathbb{Z} $，证明完毕。</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1000.html">密码学数学基础 - 前言</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1002.html">密码学数学基础 - 同余关系与模运算</a> 👈</p>]]></content>
       
       
       <categories>
@@ -37,7 +66,7 @@
       <link href="/myblog.github.io/post/1000.html"/>
       <url>/myblog.github.io/post/1000.html</url>
       
-        <content type="html"><![CDATA[<p>你有没有想过，当你在深夜网购🛒、和朋友发私密消息💬、或是登录银行账户🏦时，那些看似 “坚不可摧” 的安全屏障🔒，背后其实是一群数学精灵🧚在默默守护？✨<br>欢迎来到《密码学数学基础》的奇妙世界！这里没有枯燥的公式堆砌（真的假的😋），只有一把把打开信息安全大门的钥匙🗝️。<br>在信息安全的宇宙🌌里，密码学就像是一位神秘的魔法师🧙，而数学则是它手中的魔法棒🪄。本系列文章将带你解锁密码学中最核心的数学知识，特别是数论和代数这两大 “护法”🛡️。从最基础的整除、同余，到高深莫测的群论、环论和域论，我们会一步步揭开这些数学工具的神秘面纱🎭。<br>别担心，我会用轻松有趣的方式（🤣👉🤡），让你发现这些看似高冷的数学概念，其实是设计和分析加密算法与协议的基石🧱。它们不仅是密码学的 “幕后英雄”🦸，还在编码理论、计算复杂性等领域大放异彩🌟。<br>想象一下：<br>当你用 HTTPS 浏览网页时🌐，大素数的乘积正在帮你抵御窃听👂；<br>当你用数字签名确认身份时✍️，椭圆曲线的点运算正在为你保驾护航🚢；<br>当区块链上的交易被永久记录时⛓️，哈希函数的单向性正在守护数据的不可篡改性📜。<br>这些听起来高大上的技术，本质上都是数学规律的巧妙应用🎯。<br>在这个系列里，我们会像侦探🕵️一样，拆解每一个加密算法背后的数学逻辑；像探险家🗺️一样，从最基础的数论概念出发，逐步深入到更复杂的数学工具。你会发现，原来那些让你头疼的抽象概念，其实是构建安全世界的砖瓦🧱；那些看似枯燥的定理，其实是守护数字生活的盾牌🛡️。<br>当然，我们主要用于密码学学习，故而我会将重点放在结论和应用上，而不是过多地纠结于太难的证明和特殊情况（毕竟我们不是数学家😎）。但如果你对某些定理的证明感兴趣，我也会提供一些参考资料，供你深入探索🔍。<br>准备好了吗？让我们一起踏上这场充满挑战与惊喜的数学冒险🚀，解锁信息安全的终极奥义吧！💡</p>]]></content>
+        <content type="html"><![CDATA[<p>你有没有想过，当你在深夜网购🛒、和朋友发私密消息💬、或是登录银行账户🏦时，那些看似 “坚不可摧” 的安全屏障🔒，背后其实是一群数学精灵🧚在默默守护？✨<br>欢迎来到《密码学数学基础》的奇妙世界！这里没有枯燥的公式堆砌（真的假的😋），只有一把把打开信息安全大门的钥匙🗝️。<br>在信息安全的宇宙🌌里，密码学就像是一位神秘的魔法师🧙，而数学则是它手中的魔法棒🪄。本系列文章将带你解锁密码学中最核心的数学知识，特别是数论和代数这两大 “护法”🛡️。从最基础的整除、同余，到高深莫测的群论、环论和域论，我们会一步步揭开这些数学工具的神秘面纱🎭。<br>别担心，我会用轻松有趣的方式（🤣👉🤡），让你发现这些看似高冷的数学概念，其实是设计和分析加密算法与协议的基石🧱。它们不仅是密码学的 “幕后英雄”🦸，还在编码理论、计算复杂性等领域大放异彩🌟。<br>想象一下：<br>当你用 HTTPS 浏览网页时🌐，大素数的乘积正在帮你抵御窃听👂；<br>当你用数字签名确认身份时✍️，椭圆曲线的点运算正在为你保驾护航🚢；<br>当区块链上的交易被永久记录时⛓️，哈希函数的单向性正在守护数据的不可篡改性📜。<br>这些听起来高大上的技术，本质上都是数学规律的巧妙应用🎯。<br>在这个系列里，我们会像侦探🕵️一样，拆解每一个加密算法背后的数学逻辑；像探险家🗺️一样，从最基础的数论概念出发，逐步深入到更复杂的数学工具。你会发现，原来那些让你头疼的抽象概念，其实是构建安全世界的砖瓦🧱；那些看似枯燥的定理，其实是守护数字生活的盾牌🛡️。<br>当然，我们主要用于密码学学习，故而我会将重点放在结论和应用上，而不是过多地纠结于太难的证明和特殊情况（毕竟我们不是数学家😎）。但如果你对某些定理的证明感兴趣，我也会提供一些参考资料，供你深入探索🔍。<br>准备好了吗？让我们一起踏上这场充满挑战与惊喜的数学冒险🚀，解锁信息安全的终极奥义吧！💡</p><p>注：本系列文章编号从 1000 开始，后续章节将依次递增。每篇文章都会在结尾提供下一章的链接，敬请期待！😉<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/post/0.html">关于我</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1001.html">密码学数学基础 - 整数关系</a> 👈</p>]]></content>
       
       
       <categories>
@@ -89,11 +118,11 @@
     
     
     <entry>
-      <title>about</title>
-      <link href="/myblog.github.io/about/index.html"/>
-      <url>/myblog.github.io/about/index.html</url>
+      <title></title>
+      <link href="/myblog.github.io/manifest.json"/>
+      <url>/myblog.github.io/manifest.json</url>
       
-        <content type="html"><![CDATA[<p>Hi！</p>]]></content>
+        <content type="html"><![CDATA[{"name":"Alice and Bodの神秘小屋","short_name":"密码博客","theme_color":"#49b1f5","background_color":"#49b1f5","display":"standalone","scope":"/","start_url":"/","icons":[{"src":"/img/siteicon/16.png","sizes":"16x16","type":"image/png"},{"src":"/img/siteicon/32.png","sizes":"32x32","type":"image/png"},{"src":"/img/siteicon/48.png","sizes":"48x48","type":"image/png"},{"src":"/img/siteicon/64.png","sizes":"64x64","type":"image/png"},{"src":"/img/siteicon/128.png","sizes":"128x128","type":"image/png"},{"src":"/img/siteicon/256.png","sizes":"256x256","type":"image/png"},{"src":"/img/siteicon/512.png","sizes":"512x512","type":"image/png"}],"splash_pages":null}]]></content>
       
     </entry>
     
@@ -111,11 +140,11 @@
     
     
     <entry>
-      <title></title>
-      <link href="/myblog.github.io/manifest.json"/>
-      <url>/myblog.github.io/manifest.json</url>
+      <title>about</title>
+      <link href="/myblog.github.io/about/index.html"/>
+      <url>/myblog.github.io/about/index.html</url>
       
-        <content type="html"><![CDATA[{"name":"Alice and Bodの神秘小屋","short_name":"密码博客","theme_color":"#49b1f5","background_color":"#49b1f5","display":"standalone","scope":"/","start_url":"/","icons":[{"src":"/img/siteicon/16.png","sizes":"16x16","type":"image/png"},{"src":"/img/siteicon/32.png","sizes":"32x32","type":"image/png"},{"src":"/img/siteicon/48.png","sizes":"48x48","type":"image/png"},{"src":"/img/siteicon/64.png","sizes":"64x64","type":"image/png"},{"src":"/img/siteicon/128.png","sizes":"128x128","type":"image/png"},{"src":"/img/siteicon/256.png","sizes":"256x256","type":"image/png"},{"src":"/img/siteicon/512.png","sizes":"512x512","type":"image/png"}],"splash_pages":null}]]></content>
+        <content type="html"><![CDATA[<p>🔐✨ 欢迎来到我的密码学学习小站！​</p><p>如果你对密码学感兴趣，Alice和Bob的故事一定会让你眼前一亮！😉</p><p>这里是一个专注于密码学知识分享与学习记录的角落📝—— 没有晦涩难懂的学术堆砌，也没有刻意迎合的趣味过度，只希望以平实的语言、清晰的脉络，和同样对 “数字安全”🛡️充满好奇的你，一起探索密码学的奇妙世界🌍～​</p><p>密码学的故事，远比我们想象中更悠久。它并非诞生于冰冷的计算机机房💻，而是源于人类对 “秘密” 的守护欲🔒：早在公元前 400 年，斯巴达士兵用缠绕的 “密码棒”🪢传递军事指令，文字随着布条的缠绕呈现，解开才能读懂信息📜；古罗马时期，凯撒大帝👑用 “字母移位 3 位” 的简单规则加密公文（也就是著名的凯撒密码🔤），成为最早的实用加密方案；中世纪的欧洲，外交官们用 “维吉尼亚密码”📑构建多层加密，让信息在复杂的政治博弈♟️中不被截获 —— 这些古代加密方式虽简陋，却奠定了 “隐藏信息、验证身份” 的核心逻辑✅。​</p><p>而密码学真正从 “经验技巧” 升级为 “科学体系”📚，离不开一位关键人物：克劳德・香农 👨‍🔬🎓（没错，我们不是图0派，也不是冯诺1曼派，我们是香农派😋）。1949 年，这位 “信息论之父” 发表了划时代的论文《保密系统的通信理论》📖，第一次用数学语言🧮定义了密码学的核心概念：他提出的 “完善保密性”（即攻击者无法通过密文获取任何明文信息✅）、“唯一解距离”（破解密码所需的最小密文长度📏）等理论，为加密方案的设计与安全性分析提供了严格的数学基础，让密码学彻底脱离 “玄学”，成为一门可证明、可量化的严谨学科。香农的贡献，就像为密码学搭建了坚实的地基🏗️，后续所有现代加密算法（无论是对称加密的 AES🔑，还是非对称加密的 RSA🔐），都建立在他的理论框架之上。​</p><p>进入数字时代后，密码学更是成为了我们生活的 “隐形守护者”👤！微信聊天的端到端加密💬、网上银行的支付验证🏦、区块链的签名机制⛓️、甚至是手机解锁的指纹识别👆，背后都藏着密码学的智慧。它不再是军事、外交专属的 “高端技术”⚙️，而是渗透到数字生活的每一个角落，默默守护着我们的隐私与安全🛡️。​</p><p>在这个博客里，我会记录自己的密码学学习轨迹🗺️：从基础的古典密码算法拆解🧩，到现代加密技术的原理分析💻；从香农理论的深度解读📖，到实际应用中的安全案例⚠️；从入门级的概念科普🌱，到进阶的算法实现🚀—— 每一篇内容都力求 “易懂、实用、有逻辑”。​</p><p>如果你也对 “如何给信息上锁”🔒、“如何抵御破解攻击”🛡️、“数字世界的信任如何建立”🤝等问题感兴趣，不妨和我一起启程！这里没有绝对的权威，只有持续的学习与探索🔍；欢迎在评论区交流疑问❓、分享见解💡，让我们在密码学的海洋🌊里，慢慢积累、共同进步📈～​<br>✨ 愿我们都能在学习中读懂密码学的魅力，成为数字时代的 “安全守护者”🦸‍♂️！</p><p>系列文章目录：</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/1000.html">密码学数学基础 - 前言</a> 👈</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/2000.html">加解密算法分析 - 前言</a> 👈</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/3000.html">RSA算法经典考法解析 - 前言</a> 👈</p>]]></content>
       
     </entry>
     
