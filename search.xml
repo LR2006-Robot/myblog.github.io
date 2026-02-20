@@ -96,20 +96,20 @@
     
     
     <entry>
-      <title></title>
-      <link href="/myblog.github.io/manifest.json"/>
-      <url>/myblog.github.io/manifest.json</url>
+      <title>about</title>
+      <link href="/myblog.github.io/about/index.html"/>
+      <url>/myblog.github.io/about/index.html</url>
       
-        <content type="html"><![CDATA[{"name":"Alice and Bodの神秘小屋","short_name":"密码博客","theme_color":"#49b1f5","background_color":"#49b1f5","display":"standalone","scope":"/","start_url":"/","icons":[{"src":"/img/siteicon/16.png","sizes":"16x16","type":"image/png"},{"src":"/img/siteicon/32.png","sizes":"32x32","type":"image/png"},{"src":"/img/siteicon/48.png","sizes":"48x48","type":"image/png"},{"src":"/img/siteicon/64.png","sizes":"64x64","type":"image/png"},{"src":"/img/siteicon/128.png","sizes":"128x128","type":"image/png"},{"src":"/img/siteicon/256.png","sizes":"256x256","type":"image/png"},{"src":"/img/siteicon/512.png","sizes":"512x512","type":"image/png"}],"splash_pages":null}]]></content>
+        <content type="html"><![CDATA[<p>🔐✨ 欢迎来到我的密码学学习小站！​</p><p>如果你对密码学感兴趣，Alice和Bob的故事一定会让你眼前一亮！😉</p><p>这里是一个专注于密码学知识分享与学习记录的角落📝—— 没有晦涩难懂的学术堆砌，也没有刻意迎合的趣味过度，只希望以平实的语言、清晰的脉络，和同样对 “数字安全”🛡️充满好奇的你，一起探索密码学的奇妙世界🌍～​</p><p>密码学的故事，远比我们想象中更悠久。它并非诞生于冰冷的计算机机房💻，而是源于人类对 “秘密” 的守护欲🔒：早在公元前 400 年，斯巴达士兵用缠绕的 “密码棒”🪢传递军事指令，文字随着布条的缠绕呈现，解开才能读懂信息📜；古罗马时期，凯撒大帝👑用 “字母移位 3 位” 的简单规则加密公文（也就是著名的凯撒密码🔤），成为最早的实用加密方案；中世纪的欧洲，外交官们用 “维吉尼亚密码”📑构建多层加密，让信息在复杂的政治博弈♟️中不被截获 —— 这些古代加密方式虽简陋，却奠定了 “隐藏信息、验证身份” 的核心逻辑✅。​</p><p>而密码学真正从 “经验技巧” 升级为 “科学体系”📚，离不开一位关键人物：克劳德・香农 👨‍🔬🎓（没错，我们不是图0派，也不是冯诺1曼派，我们是香农派😋）。1949 年，这位 “信息论之父” 发表了划时代的论文《保密系统的通信理论》📖，第一次用数学语言🧮定义了密码学的核心概念：他提出的 “完善保密性”（即攻击者无法通过密文获取任何明文信息✅）、“唯一解距离”（破解密码所需的最小密文长度📏）等理论，为加密方案的设计与安全性分析提供了严格的数学基础，让密码学彻底脱离 “玄学”，成为一门可证明、可量化的严谨学科。香农的贡献，就像为密码学搭建了坚实的地基🏗️，后续所有现代加密算法（无论是对称加密的 AES🔑，还是非对称加密的 RSA🔐），都建立在他的理论框架之上。​</p><p>进入数字时代后，密码学更是成为了我们生活的 “隐形守护者”👤！微信聊天的端到端加密💬、网上银行的支付验证🏦、区块链的签名机制⛓️、甚至是手机解锁的指纹识别👆，背后都藏着密码学的智慧。它不再是军事、外交专属的 “高端技术”⚙️，而是渗透到数字生活的每一个角落，默默守护着我们的隐私与安全🛡️。​</p><p>在这个博客里，我会记录自己的密码学学习轨迹🗺️：从基础的古典密码算法拆解🧩，到现代加密技术的原理分析💻；从香农理论的深度解读📖，到实际应用中的安全案例⚠️；从入门级的概念科普🌱，到进阶的算法实现🚀—— 每一篇内容都力求 “易懂、实用、有逻辑”。​</p><p>如果你也对 “如何给信息上锁”🔒、“如何抵御破解攻击”🛡️、“数字世界的信任如何建立”🤝等问题感兴趣，不妨和我一起启程！这里没有绝对的权威，只有持续的学习与探索🔍；欢迎在评论区交流疑问❓、分享见解💡，让我们在密码学的海洋🌊里，慢慢积累、共同进步📈～​<br>✨ 愿我们都能在学习中读懂密码学的魅力，成为数字时代的 “安全守护者”🦸‍♂️！</p><p>系列文章目录：</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/1000.html">密码学数学基础 - 前言</a> 👈</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/2000.html">加解密算法分析 - 前言</a> 👈</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/3000.html">RSA算法经典考法解析 - 前言</a> 👈</p>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>tags</title>
-      <link href="/myblog.github.io/tags/index.html"/>
-      <url>/myblog.github.io/tags/index.html</url>
+      <title>categories</title>
+      <link href="/myblog.github.io/categories/index.html"/>
+      <url>/myblog.github.io/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -118,11 +118,11 @@
     
     
     <entry>
-      <title>about</title>
-      <link href="/myblog.github.io/about/index.html"/>
-      <url>/myblog.github.io/about/index.html</url>
+      <title></title>
+      <link href="/myblog.github.io/manifest.json"/>
+      <url>/myblog.github.io/manifest.json</url>
       
-        <content type="html"><![CDATA[<p>🔐✨ 欢迎来到我的密码学学习小站！​</p><p>如果你对密码学感兴趣，Alice和Bob的故事一定会让你眼前一亮！😉</p><p>这里是一个专注于密码学知识分享与学习记录的角落📝—— 没有晦涩难懂的学术堆砌，也没有刻意迎合的趣味过度，只希望以平实的语言、清晰的脉络，和同样对 “数字安全”🛡️充满好奇的你，一起探索密码学的奇妙世界🌍～​</p><p>密码学的故事，远比我们想象中更悠久。它并非诞生于冰冷的计算机机房💻，而是源于人类对 “秘密” 的守护欲🔒：早在公元前 400 年，斯巴达士兵用缠绕的 “密码棒”🪢传递军事指令，文字随着布条的缠绕呈现，解开才能读懂信息📜；古罗马时期，凯撒大帝👑用 “字母移位 3 位” 的简单规则加密公文（也就是著名的凯撒密码🔤），成为最早的实用加密方案；中世纪的欧洲，外交官们用 “维吉尼亚密码”📑构建多层加密，让信息在复杂的政治博弈♟️中不被截获 —— 这些古代加密方式虽简陋，却奠定了 “隐藏信息、验证身份” 的核心逻辑✅。​</p><p>而密码学真正从 “经验技巧” 升级为 “科学体系”📚，离不开一位关键人物：克劳德・香农 👨‍🔬🎓（没错，我们不是图0派，也不是冯诺1曼派，我们是香农派😋）。1949 年，这位 “信息论之父” 发表了划时代的论文《保密系统的通信理论》📖，第一次用数学语言🧮定义了密码学的核心概念：他提出的 “完善保密性”（即攻击者无法通过密文获取任何明文信息✅）、“唯一解距离”（破解密码所需的最小密文长度📏）等理论，为加密方案的设计与安全性分析提供了严格的数学基础，让密码学彻底脱离 “玄学”，成为一门可证明、可量化的严谨学科。香农的贡献，就像为密码学搭建了坚实的地基🏗️，后续所有现代加密算法（无论是对称加密的 AES🔑，还是非对称加密的 RSA🔐），都建立在他的理论框架之上。​</p><p>进入数字时代后，密码学更是成为了我们生活的 “隐形守护者”👤！微信聊天的端到端加密💬、网上银行的支付验证🏦、区块链的签名机制⛓️、甚至是手机解锁的指纹识别👆，背后都藏着密码学的智慧。它不再是军事、外交专属的 “高端技术”⚙️，而是渗透到数字生活的每一个角落，默默守护着我们的隐私与安全🛡️。​</p><p>在这个博客里，我会记录自己的密码学学习轨迹🗺️：从基础的古典密码算法拆解🧩，到现代加密技术的原理分析💻；从香农理论的深度解读📖，到实际应用中的安全案例⚠️；从入门级的概念科普🌱，到进阶的算法实现🚀—— 每一篇内容都力求 “易懂、实用、有逻辑”。​</p><p>如果你也对 “如何给信息上锁”🔒、“如何抵御破解攻击”🛡️、“数字世界的信任如何建立”🤝等问题感兴趣，不妨和我一起启程！这里没有绝对的权威，只有持续的学习与探索🔍；欢迎在评论区交流疑问❓、分享见解💡，让我们在密码学的海洋🌊里，慢慢积累、共同进步📈～​<br>✨ 愿我们都能在学习中读懂密码学的魅力，成为数字时代的 “安全守护者”🦸‍♂️！</p><p>系列文章目录：</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/1000.html">密码学数学基础 - 前言</a> 👈</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/2000.html">加解密算法分析 - 前言</a> 👈</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/3000.html">RSA算法经典考法解析 - 前言</a> 👈</p>]]></content>
+        <content type="html"><![CDATA[{"name":"Alice and Bodの神秘小屋","short_name":"密码博客","theme_color":"#49b1f5","background_color":"#49b1f5","display":"standalone","scope":"/","start_url":"/","icons":[{"src":"/img/siteicon/16.png","sizes":"16x16","type":"image/png"},{"src":"/img/siteicon/32.png","sizes":"32x32","type":"image/png"},{"src":"/img/siteicon/48.png","sizes":"48x48","type":"image/png"},{"src":"/img/siteicon/64.png","sizes":"64x64","type":"image/png"},{"src":"/img/siteicon/128.png","sizes":"128x128","type":"image/png"},{"src":"/img/siteicon/256.png","sizes":"256x256","type":"image/png"},{"src":"/img/siteicon/512.png","sizes":"512x512","type":"image/png"}],"splash_pages":null}]]></content>
       
     </entry>
     
@@ -140,9 +140,9 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/myblog.github.io/categories/index.html"/>
-      <url>/myblog.github.io/categories/index.html</url>
+      <title>tags</title>
+      <link href="/myblog.github.io/tags/index.html"/>
+      <url>/myblog.github.io/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
