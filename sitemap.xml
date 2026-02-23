@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://lr2006-robot.github.io/myblog.github.io/about/index.html</loc>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/post/102.html</loc>
     
     <lastmod>2026-02-23</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://lr2006-robot.github.io/myblog.github.io/post/1.html</loc>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/post/101.html</loc>
     
     <lastmod>2026-02-23</lastmod>
     
@@ -20,7 +20,34 @@
   </url>
   
   <url>
-    <loc>https://lr2006-robot.github.io/myblog.github.io/post/3000.html</loc>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/post/100.html</loc>
+    
+    <lastmod>2026-02-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/post/1002.html</loc>
+    
+    <lastmod>2026-02-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/post/1001.html</loc>
+    
+    <lastmod>2026-02-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/post/3001.html</loc>
     
     <lastmod>2026-02-23</lastmod>
     
@@ -47,16 +74,7 @@
   </url>
   
   <url>
-    <loc>https://lr2006-robot.github.io/myblog.github.io/post/3001.html</loc>
-    
-    <lastmod>2026-02-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://lr2006-robot.github.io/myblog.github.io/post/1001.html</loc>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/post/1004.html</loc>
     
     <lastmod>2026-02-23</lastmod>
     
@@ -74,7 +92,7 @@
   </url>
   
   <url>
-    <loc>https://lr2006-robot.github.io/myblog.github.io/post/1004.html</loc>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/post/1.html</loc>
     
     <lastmod>2026-02-23</lastmod>
     
@@ -83,7 +101,16 @@
   </url>
   
   <url>
-    <loc>https://lr2006-robot.github.io/myblog.github.io/post/1002.html</loc>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/post/3000.html</loc>
+    
+    <lastmod>2026-02-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/about/index.html</loc>
     
     <lastmod>2026-02-23</lastmod>
     
@@ -171,6 +198,13 @@
   
   <url>
     <loc>https://lr2006-robot.github.io/myblog.github.io/tags/SageMath/</loc>
+    <lastmod>2026-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
