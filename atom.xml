@@ -271,19 +271,12 @@
     <category term="密码学算法" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95/"/>
     <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
     <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    <category term="前言" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%89%8D%E8%A8%80/"/>
     <category term="算法" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    <content>
-      <![CDATA[<p>当你在验证数字证书的真伪📜、向钱包里导入私钥🔑、或是在区块链上完成一笔跨链交易⛓️时，那些在代码底层飞速运转的 “黑盒”，背后其实是一群不知疲倦的算法工匠在精准操刀⚙️。<br>欢迎来到《密码学核心算法实战》的硬核工坊！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安全的精密齿轮⚙️。</p><p>在密码学的兵器谱里，数学是铸造神兵的矿石⛰️，而算法就是将矿石锻造成利剑的炉火与锤法🔨。本系列专题将带你亲手拆解密码学中最经典、最核心的算法实现，特别是数论算法、开方算法和离散对数算法这三大 “王牌工具”🧰。从古老却依旧强悍的欧几里得算法，到堪称 “中国智慧之光” 的孙子定理（CRT），再到能在有限域中 “求根问底” 的 Tonelli-Shanks 算法，我们会一层层剥开这些算法的外衣，看清它们最核心的运行逻辑。</p><p>别害怕，我会用庖丁解牛的方式（🔪➡️🐂），让你发现这些看似复杂的逻辑，其实是构建现代密码体系的精密发条。它们不仅是 RSA、ECC 这些非对称加密的 “心脏”❤️，更是零知识证明、多方安全计算等前沿领域的基石。</p><p>想象一下：<br>当你计算私钥的模逆元时♻️，扩展欧几里得算法正在毫秒间为你打通密钥的 “任督二脉”；<br>当你在算法中需要并行计算、加速解密时⚡，中国剩余定理（CRT） 正像一位精明的管家，帮你把巨大的计算量 “化整为零”；<br>当你在椭圆曲线上进行平方根运算时📐，Tonelli-Shanks 算法 正像一把灵巧的钥匙，在无解的荒漠中为你精准定位那唯一的坐标点。<br>这些支撑起整个数字世界安全的操作，本质上都是算法逻辑的极致演绎🎯。</p><p>在这个系列里，我们会像工程师🔧一样，一行行拆解算法的执行步骤；像调试员💻一样，从最基础的模运算出发，逐步攻克那些密码学中的 “计算难关”。你会发现，原来那些教科书里的寥寥数语，背后藏着如此精妙的逻辑分支；那些看似晦涩的算法名称，其实是解决特定数学难题的 “最优解”。</p><p>当然，我们主要用于工程落地与实战理解，故而我会将重点放在步骤拆解和代码级逻辑上，而不是纠结于繁琐的复杂度证明（毕竟我们不是理论计算机科学家😎）。实际上，大多数算法都可以在sagemath中直接以函数的形式调用，所以在介绍时我也会加入sage环境中的引入运用方式。🙃</p><p>准备好了吗？让我们一起走进这个由逻辑与代码构建的工坊🛠️，亲手锻造属于你的密码学利刃，解锁信息安全的实战奥义吧！💡</p><p>注：本系列文章编号从 3000 开始，后续章节将依次递增。每篇文章都会在结尾提供下一章的链接，敬请期待！😉</p><p>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3001.html">密码学算法 - 欧几里得算法</a> 👈</p><p>相关链接：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1.html">密码学环境配置 - SageMath</a> 👈</p>]]>
-    </content>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/3000.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/3000.html"/>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/3001.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/3001.html"/>
     <published>2026-02-23T08:00:00.000Z</published>
-    <summary>
-      <![CDATA[<p>当你在验证数字证书的真伪📜、向钱包里导入私钥🔑、或是在区块链上完成一笔跨链交易⛓️时，那些在代码底层飞速运转的 “黑盒”，背后其实是一群不知疲倦的算法工匠在精准操刀⚙️。<br>欢迎来到《密码学核心算法实战》的硬核工坊！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只]]>
-    </summary>
-    <title>密码学算法 - 前言</title>
-    <updated>2026-02-24T06:46:31.339Z</updated>
+    <title>密码学算法 - 欧几里得算法</title>
+    <updated>2026-02-24T06:20:45.650Z</updated>
   </entry>
   <entry>
     <author>
@@ -312,12 +305,19 @@
     <category term="密码学算法" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95/"/>
     <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
     <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    <category term="前言" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%89%8D%E8%A8%80/"/>
     <category term="算法" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/3001.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/3001.html"/>
+    <content>
+      <![CDATA[<p>当你在验证数字证书的真伪📜、向钱包里导入私钥🔑、或是在区块链上完成一笔跨链交易⛓️时，那些在代码底层飞速运转的 “黑盒”，背后其实是一群不知疲倦的算法工匠在精准操刀⚙️。<br>欢迎来到《密码学核心算法实战》的硬核工坊！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安全的精密齿轮⚙️。</p><p>在密码学的兵器谱里，数学是铸造神兵的矿石⛰️，而算法就是将矿石锻造成利剑的炉火与锤法🔨。本系列专题将带你亲手拆解密码学中最经典、最核心的算法实现，特别是数论算法、开方算法和离散对数算法这三大 “王牌工具”🧰。从古老却依旧强悍的欧几里得算法，到堪称 “中国智慧之光” 的孙子定理（CRT），再到能在有限域中 “求根问底” 的 Tonelli-Shanks 算法，我们会一层层剥开这些算法的外衣，看清它们最核心的运行逻辑。</p><p>别害怕，我会用庖丁解牛的方式（🔪➡️🐂），让你发现这些看似复杂的逻辑，其实是构建现代密码体系的精密发条。它们不仅是 RSA、ECC 这些非对称加密的 “心脏”❤️，更是零知识证明、多方安全计算等前沿领域的基石。</p><p>想象一下：<br>当你计算私钥的模逆元时♻️，扩展欧几里得算法正在毫秒间为你打通密钥的 “任督二脉”；<br>当你在算法中需要并行计算、加速解密时⚡，中国剩余定理（CRT） 正像一位精明的管家，帮你把巨大的计算量 “化整为零”；<br>当你在椭圆曲线上进行平方根运算时📐，Tonelli-Shanks 算法 正像一把灵巧的钥匙，在无解的荒漠中为你精准定位那唯一的坐标点。<br>这些支撑起整个数字世界安全的操作，本质上都是算法逻辑的极致演绎🎯。</p><p>在这个系列里，我们会像工程师🔧一样，一行行拆解算法的执行步骤；像调试员💻一样，从最基础的模运算出发，逐步攻克那些密码学中的 “计算难关”。你会发现，原来那些教科书里的寥寥数语，背后藏着如此精妙的逻辑分支；那些看似晦涩的算法名称，其实是解决特定数学难题的 “最优解”。</p><p>当然，我们主要用于工程落地与实战理解，故而我会将重点放在步骤拆解和代码级逻辑上，而不是纠结于繁琐的复杂度证明（毕竟我们不是理论计算机科学家😎）。实际上，大多数算法都可以在sagemath中直接以函数的形式调用，所以在介绍时我也会加入sage环境中的引入运用方式。🙃</p><p>准备好了吗？让我们一起走进这个由逻辑与代码构建的工坊🛠️，亲手锻造属于你的密码学利刃，解锁信息安全的实战奥义吧！💡</p><p>注：本系列文章编号从 3000 开始，后续章节将依次递增。每篇文章都会在结尾提供下一章的链接，敬请期待！😉</p><p>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3001.html">密码学算法 - 欧几里得算法</a> 👈</p><p>相关链接：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1.html">密码学环境配置 - SageMath</a> 👈</p>]]>
+    </content>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/3000.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/3000.html"/>
     <published>2026-02-23T08:00:00.000Z</published>
-    <title>密码学算法 - 欧几里得算法</title>
-    <updated>2026-02-24T06:20:45.650Z</updated>
+    <summary>
+      <![CDATA[<p>当你在验证数字证书的真伪📜、向钱包里导入私钥🔑、或是在区块链上完成一笔跨链交易⛓️时，那些在代码底层飞速运转的 “黑盒”，背后其实是一群不知疲倦的算法工匠在精准操刀⚙️。<br>欢迎来到《密码学核心算法实战》的硬核工坊！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只]]>
+    </summary>
+    <title>密码学算法 - 前言</title>
+    <updated>2026-02-24T06:46:31.339Z</updated>
   </entry>
   <entry>
     <author>
