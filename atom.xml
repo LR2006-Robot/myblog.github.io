@@ -9,7 +9,63 @@
   <link href="https://lr2006-robot.github.io/myblog.github.io/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, Dorange</rights>
   <title>Alice and Bobの神秘小屋</title>
-  <updated>2026-02-25T09:53:16.134Z</updated>
+  <updated>2026-02-25T14:37:53.313Z</updated>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="密码学算法" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    <category term="算法" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/3002.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/3002.html"/>
+    <published>2026-02-25T14:36:00.000Z</published>
+    <title>密码学算法 - 中国剩余定理CRT</title>
+    <updated>2026-02-25T14:37:53.313Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="密码学算法" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    <category term="算法" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    <content>
+      <![CDATA[<p>本章节我们将深入探讨欧几里得算法（Euclidean Algorithm），这是一个古老而又强大的工具，用于计算两个整数的最大公约数（GCD）。这个算法不仅在数学领域有着重要的地位，更是密码学中不可或缺的基础算法之一。</p><p>在密码学中，我们常常使用这个算法完成对裴蜀定理的解决，计算模逆元，以及在一些加密算法中进行关键的数论运算。通过理解欧几里得算法的原理和实现，我们可以更好地掌握密码学中的许多核心概念。</p><p>别看我说的很高大上，放轻松，这一章真的非常简单口牙。😁</p><h2><span id="欧几里得算法的原理">欧几里得算法的原理 😋</span></h2><p>欧几里得算法基于一个重要的性质：对于两个整数 $ a $ 和 $ b $，如果 $ a &gt; b $，那么</p><script type="math/tex; mode=display">\text{gcd}(a, b) = \text{gcd}(b, a \mod b)</script><p>这个性质告诉我们，两个数的最大公约数等于较小的数和较大的数对较小的数取模后的结果的最大公约数。通过不断地将较大的数替换为较小的数和它们的余数，我们可以快速找到最大公约数。</p><h3><span id="欧几里得算法的实现">欧几里得算法的实现 🤨</span></h3><p>下面是欧几里得算法的一个简单实现：</p><pre><code class="lang-python">def gcd(a, b):    # a, b = max(a, b), min(a, b)    # 先确保 a &gt;= b，简化后续循环逻辑（也可以省略这一步，循环本身能处理）    while b != 0: # 当b不为0时，不断用余数替换，直到b为0        a, b = b, a % b    return a</code></pre><h2><span id="裴蜀定理与扩展欧几里得算法">裴蜀定理与扩展欧几里得算法 🥰</span></h2><p>裴蜀定理（Bézout’s Identity）是整数关系中的一个重要定理，它告诉我们对于任意两个整数 $ a $ 和 $ b $，存在整数 $ x $ 和 $ y $，使得性质：</p><script type="math/tex; mode=display">ax + by = \text{gcd}(a, b)</script><p>扩展欧几里得算法（Extended Euclidean Algorithm）就是基于裴蜀定理的一种算法，它不仅可以计算最大公约数，还可以找到满足裴蜀定理的整数 $ x $ 和 $ y $。</p><h3><span id="扩展欧几里得算法的原理">扩展欧几里得算法的原理 🙃</span></h3><p>设 $ d = \text{gcd}(a, b) $。<br>用辗转相除法：</p><script type="math/tex; mode=display">a = bq_1 + r_1 ， 0 < r_1 < b</script><script type="math/tex; mode=display">b = r_1q_2 + r_2 ， 0 < r_2 < r_1</script><p>不断进行下去，直到余数为 0：</p><script type="math/tex; mode=display">r_{n-2} = r_{n-1}q_n + r_n ， 0 < r_n < r_{n-1}</script><script type="math/tex; mode=display">r_{n-1} = r_nq_{n+1} + 0 ， r_n = d</script><p>最后余数为 0，说明 $ r_n = d = \text{gcd}(a, b) $。</p><h4><span id="反向替换求解-x-和-y">反向替换求解 $ x $ 和 $ y $</span></h4><p>倒数第二步：</p><script type="math/tex; mode=display">d = r_n = r_{n-2} - r_{n-1}q_n</script><p>再把$r_{n-1}$用上一行表示：</p><script type="math/tex; mode=display">r_{n-1} = r_{n-3} - r_{n-2}q_{n-1}</script><p>带入：</p><script type="math/tex; mode=display">d = A·r_{n-2} + B·r_{n-3},   A ,B  \in \mathbb{Z}</script><p>一直往上带入，最终可以表示为：<br>$d = x·a + y·b$，其中 $ x, y \in \mathbb{Z} $</p><h3><span id="扩展欧几里得算法的实现">扩展欧几里得算法的实现 🤪</span></h3><pre><code class="lang-python">def extended_gcd(a, b):    # 递归终止条件：当a=0时，gcd就是b，此时等式为0*x + b*y = b，解为x=0, y=1    if a == 0:        return b, 0, 1    # 递归调用：把问题规模缩小，计算 gcd(b%a, a) 及其对应的解x1, y1    # 此时满足：(b%a)*x1 + a*y1 = gcd(b%a, a) = gcd(a, b)    gcd, x1, y1 = extended_gcd(b % a, a)    # 核心推导：将 b%a 替换为 b - (b//a)*a，推导当前层的x和y    # 替换后：(b - (b//a)*a)*x1 + a*y1 = gcd    # 整理得：a*(y1 - (b//a)*x1) + b*x1 = gcd    # 因此当前层的x = y1 - (b//a)*x1，y = x1    x = y1 - (b // a) * x1    y = x1    # 返回当前层的gcd和对应的x、y    return gcd, x, y</code></pre><h2><span id="sagemath-偷懒">SageMath 偷懒</span></h2><p>有同学说：“博主，博主，你的算法确实很厉害，但是还是太吃操作了，有没有更加简单无脑的用法？”👻</p><p>有的，兄弟有的，这样的算法在 SageMath 中早就已经被封装好了，我们直接调用就行了：</p><pre><code class="lang-python">from sage.all import xgcd # sage环境中才生效g, x, y = xgcd(a, b) # 直接获得 x·a + y·b = g 的解</code></pre><p>怎么样，是不是非常简单？🤣👉🤡</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3000.html">密码学算法 - 前言</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3002.html">密码学算法 - 中国剩余定理CRT</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p><p>相关链接：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1001.html">密码学数学基础 - 整数关系</a> 👈</p>]]>
+    </content>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/3001.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/3001.html"/>
+    <published>2026-02-25T14:30:00.000Z</published>
+    <summary>
+      <![CDATA[<p>本章节我们将深入探讨欧几里得算法（Euclidean Algorithm），这是一个古老而又强大的工具，用于计算两个整数的最大公约数（GCD）。这个算法不仅在数学领域有着重要的地位，更是密码学中不可或缺的基础算法之一。</p>
+<p>在密码学中，我们常常使用这个算法完成对裴]]>
+    </summary>
+    <title>密码学算法 - 欧几里得算法</title>
+    <updated>2026-02-25T14:34:52.075Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="密码学算法" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    <category term="前言" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%89%8D%E8%A8%80/"/>
+    <category term="算法" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    <content>
+      <![CDATA[<p>当你在验证数字证书的真伪📜、向钱包里导入私钥🔑、或是在区块链上完成一笔跨链交易⛓️时，那些在代码底层飞速运转的 “黑盒”，背后其实是一群不知疲倦的算法工匠在精准操刀⚙️。<br>欢迎来到《密码学核心算法实战》的硬核工坊！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安全的精密齿轮⚙️。</p><p>在密码学的兵器谱里，数学是铸造神兵的矿石⛰️，而算法就是将矿石锻造成利剑的炉火与锤法🔨。本系列专题将带你亲手拆解密码学中最经典、最核心的算法实现，特别是数论算法、开方算法和离散对数算法这三大 “王牌工具”🧰。从古老却依旧强悍的欧几里得算法，到堪称 “中国智慧之光” 的孙子定理（CRT），再到能在有限域中 “求根问底” 的 Tonelli-Shanks 算法，我们会一层层剥开这些算法的外衣，看清它们最核心的运行逻辑。</p><p>别害怕，我会用庖丁解牛的方式（🔪➡️🐂），让你发现这些看似复杂的逻辑，其实是构建现代密码体系的精密发条。它们不仅是 RSA、ECC 这些非对称加密的 “心脏”❤️，更是零知识证明、多方安全计算等前沿领域的基石。</p><p>想象一下：<br>当你计算私钥的模逆元时♻️，扩展欧几里得算法正在毫秒间为你打通密钥的 “任督二脉”；<br>当你在算法中需要并行计算、加速解密时⚡，中国剩余定理（CRT） 正像一位精明的管家，帮你把巨大的计算量 “化整为零”；<br>当你在椭圆曲线上进行平方根运算时📐，Tonelli-Shanks 算法 正像一把灵巧的钥匙，在无解的荒漠中为你精准定位那唯一的坐标点。<br>这些支撑起整个数字世界安全的操作，本质上都是算法逻辑的极致演绎🎯。</p><p>在这个系列里，我们会像工程师🔧一样，一行行拆解算法的执行步骤；像调试员💻一样，从最基础的模运算出发，逐步攻克那些密码学中的 “计算难关”。你会发现，原来那些教科书里的寥寥数语，背后藏着如此精妙的逻辑分支；那些看似晦涩的算法名称，其实是解决特定数学难题的 “最优解”。</p><p>当然，我们主要用于工程落地与实战理解，故而我会将重点放在步骤拆解和代码级逻辑上，而不是纠结于繁琐的复杂度证明（毕竟我们不是理论计算机科学家😎）。实际上，大多数算法都可以在sagemath中直接以函数的形式调用，所以在介绍时我也会加入sage环境中的引入运用方式。🙃</p><p>准备好了吗？让我们一起走进这个由逻辑与代码构建的工坊🛠️，亲手锻造属于你的密码学利刃，解锁信息安全的实战奥义吧！💡</p><p>注：本系列文章编号从 3000 开始，后续章节将依次递增。每篇文章都会在结尾提供下一章的链接，敬请期待！😉</p><p>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3001.html">密码学算法 - 欧几里得算法</a> 👈</p><p>相关链接：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1.html">密码学环境配置 - SageMath</a> 👈</p>]]>
+    </content>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/3000.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/3000.html"/>
+    <published>2026-02-25T14:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>当你在验证数字证书的真伪📜、向钱包里导入私钥🔑、或是在区块链上完成一笔跨链交易⛓️时，那些在代码底层飞速运转的 “黑盒”，背后其实是一群不知疲倦的算法工匠在精准操刀⚙️。<br>欢迎来到《密码学核心算法实战》的硬核工坊！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只]]>
+    </summary>
+    <title>密码学算法 - 前言</title>
+    <updated>2026-02-25T14:36:14.192Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Dorange</name>
@@ -315,59 +371,5 @@
     </summary>
     <title>音乐 - 《Irresistible Love》</title>
     <updated>2026-02-24T03:26:55.593Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
-    <content>
-      <![CDATA[<p>这首英语说唱改编自经典中文歌曲《今天你要嫁给我》，是一首经典老歌，试试按照原曲的旋律唱出来吧！🎤<br>欢快的旋律和甜蜜的歌词，适合在阳光明媚的日子里听，感受其中的幸福和喜悦。希望你喜欢！🥰</p><script type="math/tex; mode=display">Fallen \ from \ the \ sky,</script><script type="math/tex; mode=display">I \ just \ met \ my \ Kryptonite.</script><script type="math/tex; mode=display">Look, \ two \ angels \ in \ the \ front \ of \ my \ eyes.</script><script type="math/tex; mode=display">Barbara, \ Violet,</script><script type="math/tex; mode=display">this \ might \ be \ hard \ to \ believe.</script><script type="math/tex; mode=display">But \ prolly \ this \ just \ how \ its \ meant \ to \ be.</script><script type="math/tex; mode=display">Baby \ Barbara, \ sorry \ we \ dont \ feel \ the \ same.</script><script type="math/tex; mode=display">Cuz \ Im \ really \ digging \ your \ name.</script><script type="math/tex; mode=display">If \ Im \ with \ u, \ Id \ be \ playing \ no \ games.</script><script type="math/tex; mode=display">But \ if \ Im \ not \ with \ you,</script><script type="math/tex; mode=display">I \ would \ be \ going \ insane.</script><script type="math/tex; mode=display">Cant \ believe \ the \ fact \ that \ weve \ come \ this \ far.</script><script type="math/tex; mode=display">I \ been \ looking \ for \ a \ dime \ baby \ wherever \ you \ are.</script><script type="math/tex; mode=display">I \ love \ your \ curly \ hair \ it \ really \ curled \ into \ my \ heart.</script><script type="math/tex; mode=display">Take \ you \ to \ the \ beaches \ wanna \ take \ you \ to \ my \ car.</script><script type="math/tex; mode=display">I \ wanna \ drive \ u \ to \ everywhere \ u \ go.</script><script type="math/tex; mode=display">\ Telling \ all \ the \ good \ news \ to \ everyone \ you \ know.</script><script type="math/tex; mode=display">Mama \ told \ me \ I \ better \ find \ a \ Scorpio.</script><script type="math/tex; mode=display">When \ the \ trip \ is \ over \ baby \ youll \ be \ leaving \ me \ five \ stars.</script><script type="math/tex; mode=display">Hold \ up.</script><script type="math/tex; mode=display">Finally\sim.</script><script type="math/tex; mode=display">Now \ is \ the \ time \ to \ be</script><script type="math/tex; mode=display">I \ believe.</script><script type="math/tex; mode=display">When \ the \ call \ begins,</script><script type="math/tex; mode=display">Yall \ said \ yall \ twins.</script><script type="math/tex; mode=display">I \ was \ like,what?</script><script type="math/tex; mode=display">That \ doesnt \ make \ sense.</script><script type="math/tex; mode=display">Letting \ u \ silde,that \ would \ be \ a \ sin.</script><script type="math/tex; mode=display">Have \ I \ told \ u \ that \ I \ really \ love \ ur \ grin?</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/104.html">音乐 - 《Anyas》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/106.html">音乐 - 《Pegan》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
-    </content>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/105.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/105.html"/>
-    <published>2026-02-23T13:56:00.000Z</published>
-    <summary>
-      <![CDATA[<p>这首英语说唱改编自经典中文歌曲《今天你要嫁给我》，是一首经典老歌，试试按照原曲的旋律唱出来吧！🎤<br>欢快的旋律和甜蜜的歌词，适合在阳光明媚的日子里听，感受其中的幸福和喜悦。希望你喜欢！🥰</p>
-<script type="math/tex; mode=displa]]>
-    </summary>
-    <title>音乐 - 《Marry Me》</title>
-    <updated>2026-02-24T03:26:59.640Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
-    <content>
-      <![CDATA[<p>这首英文说唱歌叫做《Hi Enslie》，希望你喜欢！🙃<br>我做了一下删减，原歌词里有一些不太适合的内容，我就没有放在这里了。😅<br>对女孩要大胆哦，$may \ be \ she \ will \ say \ yes.$😝</p><script type="math/tex; mode=display">Hi, \ first \ of \ all \ thx \ for \ sticking \ by \ my \ side.</script><script type="math/tex; mode=display">Thx \ for \ not \ hanging \ up \ and \ say \ goobye.</script><script type="math/tex; mode=display">Lemme \ switch \ it \ back \ and \ then \ start \ a \ full \ rewind.</script><script type="math/tex; mode=display">This \ is \ good, \ cuz \ u \ look \ surprised.</script><script type="math/tex; mode=display">I \ have \ a \ dream \ last \ night.</script><script type="math/tex; mode=display">It \  was \ all \ purple.</script><script type="math/tex; mode=display">But \ now \ I \ realize \ it \ was \ full \ circle.</script><script type="math/tex; mode=display">So \  lemme \ focus \ ur \ internal.</script><script type="math/tex; mode=display">But \ yo, \ Imma \ draw \ u \ in \ my \ old \ journal.</script><script type="math/tex; mode=display">Oh, \ Enslie! \ I \ swear \ ur \ the \ cutest \ girl.</script><script type="math/tex; mode=display">I \ be \ willing \ to \ put \ on \ a \ show.</script><script type="math/tex; mode=display">When \ I \ look \ into \ ur \ eyes,</script><script type="math/tex; mode=display">I \ can \ see \ ur \ face \ glow.</script><script type="math/tex; mode=display">Anything \ u \ want, \ baby, \ I \ will \ never \ say \ no.</script><script type="math/tex; mode=display">Yo, \ Im \ here \ with \ Enslie,</script><script type="math/tex; mode=display">with \ the \ purest \ smile \ of \ this \ century.</script><script type="math/tex; mode=display">I \ got \ ur \ curly \ hair \ in \ my \ memory.</script><script type="math/tex; mode=display">Ur \ the \ kinda \ girl \ living \ in \ my \ fantasy.</script><script type="math/tex; mode=display">Hold \ up.</script><script type="math/tex; mode=display">When \ Im \ rapping, \ I \ be \ in \ the \ zone.</script><script type="math/tex; mode=display">I \ really \ wanna \ take \ u\ home.</script><script type="math/tex; mode=display">I \ dont \ mean \ it \ that \ way.</script><script type="math/tex; mode=display">There \ no \ special \ undertone.</script><script type="math/tex; mode=display">So  \ can \ I \ be \ please \ have \ ur \ number \ in \ my \ phone?</script><script type="math/tex; mode=display">But \ hold \ up.</script><script type="math/tex; mode=display">Help \ me \ finish \ this \ sentence \ next.</script><script type="math/tex; mode=display">I \ know \ I \ failed \ on \ the \ looking \ test.</script><script type="math/tex; mode=display">But \ I \ wish \ that \ after \ this \ bit \ I \ got \ u \ impressed.</script><script type="math/tex; mode=display">If \ I \ ask \ for \ ur \ number, \ maybe \ she \ will \ say \sim\sim\sim</script><script type="math/tex; mode=display">yes!</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/101.html">音乐 - 《A Little》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/103.html">音乐 - 《Irresistible Love》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
-    </content>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/102.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/102.html"/>
-    <published>2026-02-23T09:56:00.000Z</published>
-    <summary>
-      <![CDATA[<p>这首英文说唱歌叫做《Hi Enslie》，希望你喜欢！🙃<br>我做了一下删减，原歌词里有一些不太适合的内容，我就没有放在这里了。😅<br>对女孩要大胆哦，$may \ be \ she \ will \ say \ yes.$😝</p>
-<script type="]]>
-    </summary>
-    <title>音乐 - 《Hi Enslie》</title>
-    <updated>2026-02-25T03:35:27.916Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
-    <content>
-      <![CDATA[<p>这首英语说唱改编自中文流行歌曲《一点》🥰，希望你喜欢这个英文版本！😊<br>可能会有些不太一样，但尽力保持了原歌词的情感和韵律。🎶</p><script type="math/tex; mode=display">When \ I \ thought \ my \ fault \ that \ caused \ all \ the \ title \ to \ go</script><script type="math/tex; mode=display">is \ only \ cuz \ I \ always \ move \ way \ to \ slow.</script><script type="math/tex; mode=display">Bout \ to \ say \ goobye, \ bout \ to \ give \ up,</script><script type="math/tex; mode=display">until \ I \ met \ u, \ Mari, \ I \ cant \ control.</script><script type="math/tex; mode=display">Shouldve \ said \ I \ do \ believe</script><script type="math/tex; mode=display">it \ was \ cool \ to \ be</script><script type="math/tex; mode=display">the \ one \ that \ got \ a \ chance \ to \ show.</script><script type="math/tex; mode=display">Every \ day \ and \ night \ I \ might \ apply</script><script type="math/tex; mode=display">what \ u \ taught \ me \ right \ back \ at \ u.</script><script type="math/tex; mode=display">Dont \ understand \ what \ u \ said.</script><script type="math/tex; mode=display">But \ I  \ still \ know \ what \ u \ meant.</script><script type="math/tex; mode=display">What \ could \ be \ the \ odds?</script><script type="math/tex; mode=display">Maybe \ I \ should \ be \ ur \ man.</script><script type="math/tex; mode=display">Just \ remember \ baby \ ur \ a \ ten.</script><script type="math/tex; mode=display">Mari, \ ur \ the \ one \ yet \ to \ come.Dont \ say \ no.</script><script type="math/tex; mode=display">Slim \ to \ none,plz \ dont \  run, \ its \ ok \ tho.</script><script type="math/tex; mode=display">Have \ some \ fun, \ when \ Im \ done, \ u \ may \ go.</script><script type="math/tex; mode=display">Just \ begun, \ I \ can \ see \ ur \ face glow.</script><script type="math/tex; mode=display">Kown \ I \ said \ a \ lot.</script><script type="math/tex; mode=display">Lemme \ tell \ u \ another \ thing.</script><script type="math/tex; mode=display">When \ I \ look \ into \ ur \ eyes,</script><script type="math/tex; mode=display">baby, \ I \ can \ see \ the \ bling.</script><script type="math/tex; mode=display">Can \ u \ take \ that \ off \ ur \ finger?</script><script type="math/tex; mode=display">Cuz \ Ill \ get \ u \ another \ ring.</script><script type="math/tex; mode=display">I \ really \ love \ ur \ smile,</script><script type="math/tex; mode=display">Ill \ treat \ u \ like \ a \ queen.</script><script type="math/tex; mode=display">When \ it \ comes \ to \ freestyle,</script><script type="math/tex; mode=display">u \ know \ I \ am \ the \ king.</script><script type="math/tex; mode=display">if \ u \ wanna \ fly, \ baby \ I \ can \ be \ ur \ wing.</script><script type="math/tex; mode=display">Us, \ I \ believe \  in</script><script type="math/tex; mode=display">jsut \ let \ our \ story \ begin \sim\sim\sim</script><p>$from \ bloger: \ Whatevs$</p><p>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/102.html">音乐 - 《Hi Enslie》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
-    </content>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/101.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/101.html"/>
-    <published>2026-02-23T09:00:00.000Z</published>
-    <summary>
-      <![CDATA[<p>这首英语说唱改编自中文流行歌曲《一点》🥰，希望你喜欢这个英文版本！😊<br>可能会有些不太一样，但尽力保持了原歌词的情感和韵律。🎶</p>
-<script type="math/tex; mode=display">When \ I \ thought \ my \]]>
-    </summary>
-    <title>音乐 - 《A Little》</title>
-    <updated>2026-02-24T03:27:22.723Z</updated>
   </entry>
 </feed>
