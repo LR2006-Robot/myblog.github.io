@@ -9,7 +9,7 @@
   <link href="https://lr2006-robot.github.io/myblog.github.io/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, Dorange</rights>
   <title>Alice and Bobの神秘小屋</title>
-  <updated>2026-02-26T03:45:59.805Z</updated>
+  <updated>2026-02-26T16:10:41.476Z</updated>
   <entry>
     <author>
       <name>Dorange</name>
@@ -18,39 +18,18 @@
     <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
     <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     <category term="算法" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    <content>
+      <![CDATA[<p>当你在处理多项式方程的根时📐，需要将模 $p$ 的解提升到模 $p^k$ 的解时😱，别担心，这时候 Hensel-lifting 算法 就像一把神奇的梯子🪜，能帮你一步步攀登到更高的解空间。</p><p>欢迎来到《密码学核心算法实战》的 Hensel-lifting 专题！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安全的精密齿轮⚙️。</p><h2><span id="hensel-lifting算法">Hensel-lifting算法 🌟</span></h2><p>Hensel-lifting 算法用于将模 $p$ 的多项式方程的解提升到模 $p^k$ 的解。具体来说，如果我们有一个多项式 $f(x)$ 和一个整数 $a$，满足 $f(a) \equiv 0 \pmod{p}$，并且 $f’(a) \not\equiv 0 \pmod{p}$，那么 Hensel-lifting 算法可以帮助我们找到一个整数 $b$，使得 $f(b) \equiv 0 \pmod{p^k}$。</p><h2><span id="hensel-lifting算法的原理">Hensel-lifting算法的原理 😵</span></h2><p>设 $k ≥ 1$ 是整数，$a$ 在模 $p^k$ 下的平方根是 $b$，即 $b^2 \equiv a \pmod{p^k}$。<br>目标：利用 $b$，求出 $a$ 在模 $p^{k+1}$ 下的平方根 $c$。</p><p>因为$a \text{ 是模 } p^k \text{ 的二次剩余} \iff a \text{ 是模 } p \text{ 的二次剩余}$<br>所以</p><script type="math/tex; mode=display">\begin{align*}c^2 \equiv a \pmod{p^{k+1}}  &\implies c^2 \equiv a \pmod{p^k} \\  &\implies c^2 \equiv b^2 \pmod{p^k} \\  &\implies c \equiv \pm b \pmod{p^k}\end{align*}</script><p>$c \equiv \pm b \pmod{p^k}$，所以设 $c \equiv b + vp^k$，由于 $2t ≥ t +1 $，则有</p><script type="math/tex; mode=display">c^2 \equiv (b + vp^k)^2 \equiv b^2 + 2bvp^k + v^2p^{2k} \equiv b^2 + 2bvp^k \pmod{p^{k+1}}</script><p>已知 $c^2 \equiv a \pmod{p^{k+1}}$，所以有</p><script type="math/tex; mode=display">a - b^2 \equiv 2bvp^k \pmod{p^{k+1}}</script><p>注意，一个神奇的技巧：</p><script type="math/tex; mode=display">\begin{align*}p \nmid 2b \implies \gcd(2bp^k, p^{k+1}) = p^k \\b^2 \equiv a \pmod{p^k} \implies p^k | (a - b^2)\end{align*}</script><p>所以我们直接对 $a - b^2 \equiv 2bvp^k \pmod{p^{k+1}}$ 使用消去律得到：</p><script type="math/tex; mode=display">\begin{align*}\frac{a - b^2}{p^k} &\equiv 2bv \pmod{p} \\v &\equiv (\frac{a - b^2}{p^k})(2b)^{-1} \pmod{p}\end{align*}</script><p>由此不断迭代，就可以将模 $p$ 的解提升到模 $p^k$ 的解了。</p><h2><span id="hensel-lifting算法的实现">Hensel-lifting算法的实现 🙃</span></h2><p>虽然 Hensel-lifting 算法的原理看起来有点抽象，但它的操作步骤非常直接，就是直接把 $v$ 的计算公式套用到每次迭代中，直到达到所需的 $k$，这里就直接演示了。</p><p>下面是 Hensel-lifting 算法的一个简单实现：</p><pre><code class="lang-python">from sage.all import tonelli_shanks, inversedef hensel_lift(n, p, k):    b = tonelli_shanks(n, p)    t = 1    while (t != k):        v = ((n - b*b)//pow(p,t)) % p        c = (b + pow(p,t)*inverse(2*b, p)*v) % pow(p,t+1)        b = c        t += 1    return c</code></pre><h2><span id="sagemath-偷懒">SageMath 偷懒 🤓👆</span></h2><p>有同学说：“博主，博主，你的算法确实很厉害，但是还是太吃操作了，有没有更加简单无脑的用法？”👻<br>有的，兄弟有的，这样的算法在 SageMath 中早就已经被封装好了🤫，我们直接调用就行了：</p><pre><code class="lang-python">from sage.all import solve_mod, var # sage环境中才生效# 实际上solve_mod函数已经封装好了Hensel-lifting算法，我们直接调用就行了x = var(&#39;x&#39;)mod = 7f = x**3 - 8r = solve_mod(f, mod)</code></pre><p>实际上，对于二次剩余问题，SageMath 中的 <code>solve_mod</code> 函数已经内置了Tonelli-Shanks，Hensel-lifting，CRT 算法，所以一般情况下，我们直接使用 <code>solve_mod</code> 就可以得到方程的解了（不管模数是 $p$ 或 $p^k$ 或 $n$）。</p><p>怎么样，是不是非常简单？🤣👉🤡</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3001.html">密码学算法 - 欧几里得算法</a> 👈<br>下一章：<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p><p>相关链接：<a href="https://lr2006-robot.github.io/myblog.github.io/post/1004.html">密码学数学基础 - 扩展二次剩余</a> 👈</p>]]>
+    </content>
     <id>https://lr2006-robot.github.io/myblog.github.io/post/3004.html</id>
     <link href="https://lr2006-robot.github.io/myblog.github.io/post/3004.html"/>
     <published>2026-02-26T03:45:00.000Z</published>
+    <summary>
+      <![CDATA[<p>当你在处理多项式方程的根时📐，需要将模 $p$ 的解提升到模 $p^k$ 的解时😱，别担心，这时候 Hensel-lifting 算法 就像一把神奇的梯子🪜，能帮你一步步攀登到更高的解空间。</p>
+<p>欢迎来到《密码学核心算法实战》的 Hensel-lifting]]>
+    </summary>
     <title>密码学算法 - Hensel-lifting算法</title>
-    <updated>2026-02-26T03:45:59.805Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="密码学算法" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95/"/>
-    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
-    <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    <category term="算法" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/3003.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/3003.html"/>
-    <published>2026-02-26T03:36:00.000Z</published>
-    <title>密码学算法 - Tonelli-Shanks算法</title>
-    <updated>2026-02-26T03:45:14.810Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="密码学算法" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95/"/>
-    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
-    <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    <category term="算法" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/3002.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/3002.html"/>
-    <published>2026-02-25T14:36:00.000Z</published>
-    <title>密码学算法 - 中国剩余定理CRT</title>
-    <updated>2026-02-25T14:52:55.038Z</updated>
+    <updated>2026-02-26T16:10:41.476Z</updated>
   </entry>
   <entry>
     <author>
@@ -61,7 +40,49 @@
     <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     <category term="算法" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     <content>
-      <![CDATA[<p>本章节我们将深入探讨欧几里得算法（Euclidean Algorithm），这是一个古老而又强大的工具，用于计算两个整数的最大公约数（GCD）。这个算法不仅在数学领域有着重要的地位，更是密码学中不可或缺的基础算法之一。</p><p>在密码学中，我们常常使用这个算法完成对裴蜀定理的解决，计算模逆元，以及在一些加密算法中进行关键的数论运算。通过理解欧几里得算法的原理和实现，我们可以更好地掌握密码学中的许多核心概念。</p><p>别看我说的很高大上，放轻松，这一章真的非常简单口牙。😁</p><h2><span id="欧几里得算法的原理">欧几里得算法的原理 😋</span></h2><p>欧几里得算法基于一个重要的性质：对于两个整数 $ a $ 和 $ b $，如果 $ a &gt; b $，那么</p><script type="math/tex; mode=display">\text{gcd}(a, b) = \text{gcd}(b, a \mod b)</script><p>这个性质告诉我们，两个数的最大公约数等于较小的数和较大的数对较小的数取模后的结果的最大公约数。通过不断地将较大的数替换为较小的数和它们的余数，我们可以快速找到最大公约数。</p><h3><span id="欧几里得算法的实现">欧几里得算法的实现 🤨</span></h3><p>下面是欧几里得算法的一个简单实现：</p><pre><code class="lang-python">def gcd(a, b):    # a, b = max(a, b), min(a, b)    # 先确保 a &gt;= b，简化后续循环逻辑（也可以省略这一步，循环本身能处理）    while b != 0: # 当b不为0时，不断用余数替换，直到b为0        a, b = b, a % b    return a</code></pre><h2><span id="裴蜀定理与扩展欧几里得算法">裴蜀定理与扩展欧几里得算法 🥰</span></h2><p>裴蜀定理（Bézout’s Identity）是整数关系中的一个重要定理，它告诉我们对于任意两个整数 $ a $ 和 $ b $，存在整数 $ x $ 和 $ y $，使得性质：</p><script type="math/tex; mode=display">ax + by = \text{gcd}(a, b)</script><p>扩展欧几里得算法（Extended Euclidean Algorithm）就是基于裴蜀定理的一种算法，它不仅可以计算最大公约数，还可以找到满足裴蜀定理的整数 $ x $ 和 $ y $。</p><h3><span id="扩展欧几里得算法的原理">扩展欧几里得算法的原理 🙃</span></h3><p>设 $ d = \text{gcd}(a, b) $。<br>用辗转相除法：</p><script type="math/tex; mode=display">a = bq_1 + r_1 ， 0 < r_1 < b</script><script type="math/tex; mode=display">b = r_1q_2 + r_2 ， 0 < r_2 < r_1</script><p>不断进行下去，直到余数为 0：</p><script type="math/tex; mode=display">r_{n-2} = r_{n-1}q_n + r_n ， 0 < r_n < r_{n-1}</script><script type="math/tex; mode=display">r_{n-1} = r_nq_{n+1} + 0 ， r_n = d</script><p>最后余数为 0，说明 $ r_n = d = \text{gcd}(a, b) $。</p><h4><span id="反向替换求解-x-和-y">反向替换求解 $ x $ 和 $ y $</span></h4><p>倒数第二步：</p><script type="math/tex; mode=display">d = r_n = r_{n-2} - r_{n-1}q_n</script><p>再把$r_{n-1}$用上一行表示：</p><script type="math/tex; mode=display">r_{n-1} = r_{n-3} - r_{n-2}q_{n-1}</script><p>带入：</p><script type="math/tex; mode=display">d = A·r_{n-2} + B·r_{n-3},   A ,B  \in \mathbb{Z}</script><p>一直往上带入，最终可以表示为：<br>$d = x·a + y·b$，其中 $ x, y \in \mathbb{Z} $</p><h3><span id="扩展欧几里得算法的实现">扩展欧几里得算法的实现 🤪</span></h3><pre><code class="lang-python">def extended_gcd(a, b):    # 递归终止条件：当a=0时，gcd就是b，此时等式为0*x + b*y = b，解为x=0, y=1    if a == 0:        return b, 0, 1    # 递归调用：把问题规模缩小，计算 gcd(b%a, a) 及其对应的解x1, y1    # 此时满足：(b%a)*x1 + a*y1 = gcd(b%a, a) = gcd(a, b)    gcd, x1, y1 = extended_gcd(b % a, a)    # 核心推导：将 b%a 替换为 b - (b//a)*a，推导当前层的x和y    # 替换后：(b - (b//a)*a)*x1 + a*y1 = gcd    # 整理得：a*(y1 - (b//a)*x1) + b*x1 = gcd    # 因此当前层的x = y1 - (b//a)*x1，y = x1    x = y1 - (b // a) * x1    y = x1    # 返回当前层的gcd和对应的x、y    return gcd, x, y</code></pre><h2><span id="sagemath-偷懒">SageMath 偷懒</span></h2><p>有同学说：“博主，博主，你的算法确实很厉害，但是还是太吃操作了，有没有更加简单无脑的用法？”👻</p><p>有的，兄弟有的，这样的算法在 SageMath 中早就已经被封装好了，我们直接调用就行了：</p><pre><code class="lang-python">from sage.all import xgcd # sage环境中才生效g, x, y = xgcd(a, b) # 直接获得 x·a + y·b = g 的解</code></pre><p>怎么样，是不是非常简单？🤣👉🤡</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3000.html">密码学算法 - 前言</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3002.html">密码学算法 - 中国剩余定理CRT</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p><p>相关链接：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1001.html">密码学数学基础 - 整数关系</a> 👈</p>]]>
+      <![CDATA[<p>当你在椭圆曲线上进行加密操作时📐，需要计算某个点的平方根，但又发现这个点在有限域中没有平方根时😱，别担心，这时候 Tonelli-Shanks 算法 就像一把灵巧的钥匙🔑，能帮你在无解的荒漠中精准定位那唯一的坐标点。</p><p>欢迎来到《密码学核心算法实战》的 Tonelli-Shanks 专题！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安全的精密齿轮⚙️。</p><h2><span id="tonelli-shanks算法">Tonelli-Shanks算法 🌟</span></h2><p>Tonelli-Shanks 算法用于求解形如：</p><script type="math/tex; mode=display">x^2 \equiv a \pmod{p}</script><p>的同余方程，其中 $ p $ 是奇素数，$ a $ 是模 $ p $ 下的平方数。</p><h2><span id="tonelli-shanks算法的操作">Tonelli-Shanks算法的操作 🙃</span></h2><p>输入：一个整数 $ a $ 和一个奇素数 $ p $，满足 $ a $ 是模 $ p $ 下的平方数。则 $ (\frac{a}{p}) = 1 $。<br>输出：一个整数 $ x $，满足 $ x^2 \equiv a \pmod{p} $。</p><p>算法步骤：</p><ol><li>将 $ p-1 $ 分解为 $ Q \cdot 2^s $，其中 $ Q $ 是奇数。<br>（如果 $s = 1$，即 $ p \equiv 3 \pmod{4} $，则直接计算 $ x \equiv \pm a^{\frac{p+1}{4}} \pmod{p} $）</li><li>找到一个非平方数 $ z $，即满足 $ (\frac{z}{p}) = -1 $ 的整数，令 $ c \equiv z^Q \pmod{p} $。</li><li>令 $ x \equiv a^{\frac{Q+1}{2}} \pmod{p} $，$ t \equiv a^Q \pmod{p} $，$ m = s $。</li><li><p>循环：</p><ul><li>如果 $ t \equiv 1 \pmod{p} $，则返回 $ x $。</li><li>否则，找一个最小的 $ i $，使得 $ t^{2^i} \equiv 1 \pmod{p} $（重复平方）。</li><li>令 $ b \equiv c^{2^{m-i-1}} \pmod{p} $，更新 $ x \equiv x \cdot b \pmod{p} $，$ t \equiv t \cdot b^2 \pmod{p} $，$ c \equiv b^2 \pmod{p} $，$ m = i $。</li><li>如果 $x$ 是一个解，那么第二个解为 $p - x$。</li></ul></li></ol><h2><span id="tonelli-shanks算法的原理">Tonelli-Shanks算法的原理 😭</span></h2><p>已知</p><script type="math/tex; mode=display">\begin{align*}p - 1 = Q \cdot 2^s \\r \equiv a^{\frac{Q+1}{2}} \pmod{p} \\t \equiv a^Q \pmod{p}\end{align*}</script><p>所以，$r^2 \equiv at \pmod{p}$，对于每次迭代都为真。</p><p>如果 $t \equiv 1 \pmod{p}$，则 $r^2 \equiv a \pmod{p}$，并且 $x \equiv \pm r \pmod{p}$，算法结束。</p><p>如果 $t \not\equiv 1 \pmod{p}$，那么认为 $z$ 为模 $p$ 的平方非剩余。<br>令 $c \equiv z^Q \pmod{p}$，那么</p><script type="math/tex; mode=display">c^{2^s} \equiv z^{Q \cdot 2^s} \equiv z^{p-1} \equiv 1 \pmod{p}</script><p>并且</p><script type="math/tex; mode=display">c^{2^{s-1}} \equiv z^{Q \cdot 2^{s-1}} \equiv z^{\frac{p-1}{2}} \equiv -1 \pmod{p}</script><p>所以 $c$ 的乘法阶为 $2^s$。</p><p>同理，有 $t^{2^s} \equiv 1 \pmod{p}$，所以 $t$ 的乘法阶整除 $2^s$。<br>假设 $t$ 的乘法阶为 $2^{s^<em>}$，由于 $a$ 是模 $p$ 的平方剩余，所以 $t \equiv a^Q \equiv 1 \pmod{p}$也是一个平方，所以 $s^</em> &lt; s - 1$。</p><p>之后令</p><script type="math/tex; mode=display">\begin{align*}b \equiv c^{2^{s - s^* - 1}} \pmod{p} \\r^* \equiv r \cdot b \pmod{p} \\c^* \equiv b^2 \pmod{p} \\t^* \equiv t \cdot c^* \pmod{p}\end{align*}</script><p>和上述一致，有 $(r^<em>)^2 \equiv a t^</em> \pmod{p}$ 成立。</p><p>然而 $t$ 和 $c^<em>$ 的阶都是 $2^{s^</em>}$，所以 $t^<em>$ 的阶数为 $2^{s^<strong>}$ 满足 $s^</strong> &lt; s^</em>$。</p><p>如果 $s^<em>* = 0$，则 $t^</em> \equiv 1 \pmod{p}$，并且 $x \equiv \pm r^<em> \pmod{p}$，算法结束。<br>否则，用 $r^</em>$、$t^<em>$ 和 $c^</em>$ 替换 $r$、$t$ 和 $c$，继续迭代重新开始循环，直到 $s^{<em> \ldots </em>}$。<br>因此，一系列的 $s$ 是属于严格减少的算法，一定会终止。</p><h2><span id="tonelli-shanks算法的实现">Tonelli-Shanks算法的实现 🤠</span></h2><p>看懂了吗，下面是 Tonelli-Shanks 算法的一个简单实现：</p><pre><code class="lang-python">def tonelli_shanks(n, p):    if n == 0:        return 0    if pow(n, (p - 1) // 2, p) != 1:        print(&quot;No square root exists&quot;)        return None    if p % 4 == 3:        return pow(n, (p + 1) // 4, p)    q = p - 1    s = 0    while q % 2 == 0:        s += 1        q //= 2    z = 2    while pow(z, (p - 1) // 2, p) != p - 1:        z += 1    c = pow(z, q, p)    x = pow(n, (q + 1) // 2, p)    t = pow(n, q, p)    m = s    while t != 1:        i = 1        t2 = pow(t, 2, p)        while t2 != 1:            t2 = pow(t2, 2, p)            i += 1        b = pow(c, 1 &lt;&lt; (m - i - 1), p)        x = (x * b) % p        t = (t * b * b) % p        c = (b * b) % p        m = i    return x, p - x</code></pre><h2><span id="sagemath-偷懒">SageMath 偷懒 🤓👆</span></h2><p>有同学说：“博主，博主，你的算法确实很厉害，但是还是太吃操作了，有没有更加简单无脑的用法？”👻<br>有的，兄弟有的，这样的算法在 SageMath 中早就已经被封装好了🤫，我们直接调用就行了：</p><pre><code class="lang-python">from sage.all import solve_mod, var # sage环境中才生效# solve_mod 中已经有 Tonelli-Shanks 算法的实现了，直接用就好x = var(&#39;x&#39;) # 一定要记得定义变量，不然会报错的哦mod = 7f = x**2 - 4r = solve_mod(f, mod)</code></pre><p>怎么样，是不是非常简单？🤣👉🤡</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3002.html">密码学算法 - 中国剩余定理CRT</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3004.html">密码学算法 - Hensel-lifting算法</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p><p>相关链接：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1003.html">密码学数学基础 - 二次剩余</a> 👈</p>]]>
+    </content>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/3003.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/3003.html"/>
+    <published>2026-02-26T03:36:00.000Z</published>
+    <summary>
+      <![CDATA[<p>当你在椭圆曲线上进行加密操作时📐，需要计算某个点的平方根，但又发现这个点在有限域中没有平方根时😱，别担心，这时候 Tonelli-Shanks 算法 就像一把灵巧的钥匙🔑，能帮你在无解的荒漠中精准定位那唯一的坐标点。</p>
+<p>欢迎来到《密码学核心算法实战》的 T]]>
+    </summary>
+    <title>密码学算法 - Tonelli-Shanks算法</title>
+    <updated>2026-02-26T15:51:30.835Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="密码学算法" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    <category term="算法" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    <content>
+      <![CDATA[<p>在上一章我们介绍了欧几里得算法和扩展欧几里得算法，这些算法在计算最大公约数和模逆元方面非常有用，但当我们需要处理多个模数时，效率可能会变得很低。中国剩余定理（Chinese Remainder Theorem，CRT）就是为了解决这个问题而诞生的。</p><p>这个定理也可以叫做孙子定理（Sunzi Theorem），是中国古代数学家孙子在《孙子算经》中提出的一个重要定理。原文是：“今有物不知其数，三三数之剩二，五五数之剩三，七七数之剩二，问物几何？”这个定理就是在这里提取的。👻</p><p>欢迎来到《密码学核心算法实战》的中国剩余定理CRT专题！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安全的精密齿轮⚙️。</p><h2><span id="中国剩余定理">中国剩余定理 😋</span></h2><p>中国剩余定理的核心思想是：如果模数两两互质，那么一个同余方程组的解可以通过将各个模数对应的解进行组合来得到。具体来说，给定一组同余方程：</p><script type="math/tex; mode=display">\begin{cases}x \equiv a_1 \pmod{m_1} \\x \equiv a_2 \pmod{m_2} \\\vdots \\x \equiv a_n \pmod{m_n}\end{cases}</script><p>其中 $ m_1, m_2, \ldots, m_n $ 两两互质，则存在唯一的解 $ x $ 满足所有这些同余方程，且解在模 $ M = m_1 m_2 \cdots m_n $ 下唯一。</p><h2><span id="中国剩余定理的原理">中国剩余定理的原理 🙃</span></h2><p>设 $N = \prod_{i=1}^{m} n_i$。</p><p>构造</p><script type="math/tex; mode=display">n^*_1 = \frac{N}{n_1}, \ n^*_2 = \frac{N}{n_2}, \ \ldots, \ n^*_m = \frac{N}{n_m}</script><p>模数 $n_i$ 与 $n^*_i$ 互质，因此存在逆元 $t_i$ 使得</p><script type="math/tex; mode=display">t_1 n^*_1 \equiv 1 \mod n_1, \ t_2 n^*_2 \equiv 1 \mod n_2, \ \ldots, \ t_m n^*_m \equiv 1 \mod n_m</script><p>我们发现</p><script type="math/tex; mode=display">e_i = t_i n_i^* \equiv\begin{cases}1 \pmod{n_i} \\0 \pmod{n_j}, & j \neq i\end{cases}</script><p>用 $e_i$ 乘以 $a_i$，然后将它们相加，我们得到方程的一个解</p><script type="math/tex; mode=display">x = \sum_{i=1}^{m} a_i e_i \equiv \sum_{i=1}^{m} a_i t_i n^*_i \mod N</script><p>因为 $x$ 里所包含的那些下标不等于 $i$ 的单项式因为 $e$ 的性质而在模 $n_i$ 下为 $0$，只留下下标等于 $i$ 的单项式 $a_i t_i n^<em>_i$，而 $t_i n^</em>_i \equiv 1 \mod n_i$，所以 $x \equiv a_i \mod n_i$。</p><h2><span id="中国剩余定理的算法操作">中国剩余定理的算法操作 😚</span></h2><p>中国剩余定理的算法操作主要包括以下步骤：</p><ol><li>计算 $N = \prod_{i=1}^{m} n_i$。</li><li>对于每个 $i$，计算 $n^*_i = \frac{N}{n_i}$。</li><li>对于每个 $i$，计算 $t_i$，使得 $t_i n^*_i \equiv 1 \mod n_i$。</li><li>最后，计算 $x = \sum_{i=1}^{m} a_i t_i n^*_i \mod N$。</li><li>返回 $x$ 作为同余方程组的解。</li></ol><h2><span id="中国剩余定理的实现">中国剩余定理的实现 🤨</span></h2><p>下面是中国剩余定理的一个简单实现：</p><pre><code class="lang-python">def chinese_remainder_theorem(a, n):    # a 是同余方程组的余数列表，n 是模数列表    N = 1    for ni in n:        N *= ni    x = 0    for ai, ni in zip(a, n):        Ni = N // ni        yi = pow(Ni, -1, ni)  # 计算 Ni 的逆元        x += ai * yi * Ni    return x % N</code></pre><h2><span id="sagemath-偷懒">SageMath 偷懒 🤓👆</span></h2><p>有同学说：“博主，博主，你的算法确实很厉害，但是还是太吃操作了，有没有更加简单无脑的用法？”👻<br>有的，兄弟有的，这样的算法在 SageMath 中早就已经被封装好了🤫，我们直接调用就行了：</p><pre><code class="lang-python">from sage.all import crt # sage环境中才生效# a 是同余方程组的余数列表，n 是模数列表x = crt(a, n) # 直接获得同余方程组的解# 也可以将列表直接展开x = crt([a1, a2, a3], [n1, n2, n3])</code></pre><p>怎么样，是不是非常简单？🤣👉🤡</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3001.html">密码学算法 - 欧几里得算法</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3003.html">密码学算法 - Tonelli-Shanks算法</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p><p>相关链接：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1002.html">密码学数学基础 - 同余关系与模运算</a> 👈</p>]]>
+    </content>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/3002.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/3002.html"/>
+    <published>2026-02-25T14:36:00.000Z</published>
+    <summary>
+      <![CDATA[<p>在上一章我们介绍了欧几里得算法和扩展欧几里得算法，这些算法在计算最大公约数和模逆元方面非常有用，但当我们需要处理多个模数时，效率可能会变得很低。中国剩余定理（Chinese Remainder Theorem，CRT）就是为了解决这个问题而诞生的。</p>
+<p>这个定理也]]>
+    </summary>
+    <title>密码学算法 - 中国剩余定理CRT</title>
+    <updated>2026-02-26T13:50:22.754Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="密码学算法" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    <category term="算法" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    <content>
+      <![CDATA[<p>本章节我们将深入探讨欧几里得算法（Euclidean Algorithm），这是一个古老而又强大的工具，用于计算两个整数的最大公约数（GCD）。这个算法不仅在数学领域有着重要的地位，更是密码学中不可或缺的基础算法之一。</p><p>在密码学中，我们常常使用这个算法完成对裴蜀定理的解决，计算模逆元，以及在一些加密算法中进行关键的数论运算。通过理解欧几里得算法的原理和实现，我们可以更好地掌握密码学中的许多核心概念。</p><p>欢迎来到《密码学核心算法实战》的欧几里得算法专题！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安全的精密齿轮⚙️。</p><h2><span id="欧几里得算法的原理">欧几里得算法的原理 😋</span></h2><p>欧几里得算法基于一个重要的性质：对于两个整数 $ a $ 和 $ b $，如果 $ a &gt; b $，那么</p><script type="math/tex; mode=display">\text{gcd}(a, b) = \text{gcd}(b, a \mod b)</script><p>这个性质告诉我们，两个数的最大公约数等于较小的数和较大的数对较小的数取模后的结果的最大公约数。通过不断地将较大的数替换为较小的数和它们的余数，我们可以快速找到最大公约数。</p><h3><span id="欧几里得算法的实现">欧几里得算法的实现 🤨</span></h3><p>下面是欧几里得算法的一个简单实现：</p><pre><code class="lang-python">def gcd(a, b):    # a, b = max(a, b), min(a, b)    # 先确保 a &gt;= b，简化后续循环逻辑（也可以省略这一步，循环本身能处理）    while b != 0: # 当b不为0时，不断用余数替换，直到b为0        a, b = b, a % b    return a</code></pre><h2><span id="裴蜀定理与扩展欧几里得算法">裴蜀定理与扩展欧几里得算法 🥰</span></h2><p>裴蜀定理（Bézout’s Identity）是整数关系中的一个重要定理，它告诉我们对于任意两个整数 $ a $ 和 $ b $，存在整数 $ x $ 和 $ y $，使得性质：</p><script type="math/tex; mode=display">ax + by = \text{gcd}(a, b)</script><p>扩展欧几里得算法（Extended Euclidean Algorithm）就是基于裴蜀定理的一种算法，它不仅可以计算最大公约数，还可以找到满足裴蜀定理的整数 $ x $ 和 $ y $。</p><h3><span id="扩展欧几里得算法的原理">扩展欧几里得算法的原理 🙃</span></h3><p>操作步骤也是这样的，证明的时候顺便就是算法的步骤了。</p><p>设 $ d = \text{gcd}(a, b) $。<br>用辗转相除法：</p><script type="math/tex; mode=display">\begin{align*}a = bq_1 + r_1 ， 0 < r_1 < b \\b = r_1q_2 + r_2 ， 0 < r_2 < r_1\end{align*}</script><p>不断进行下去，直到余数为 0：</p><script type="math/tex; mode=display">\begin{align*}r_{n-2} = r_{n-1}q_n + r_n ， 0 < r_n < r_{n-1} \\r_{n-1} = r_nq_{n+1} + 0 ， r_n = d\end{align*}</script><p>最后余数为 0，说明 $ r_n = d = \text{gcd}(a, b) $。</p><h4><span id="反向替换求解-x-和-y">反向替换求解 $ x $ 和 $ y $</span></h4><p>倒数第二步：</p><script type="math/tex; mode=display">d = r_n = r_{n-2} - r_{n-1}q_n</script><p>再把$r_{n-1}$用上一行表示：</p><script type="math/tex; mode=display">r_{n-1} = r_{n-3} - r_{n-2}q_{n-1}</script><p>往回带入：</p><script type="math/tex; mode=display">d = A·r_{n-2} + B·r_{n-3},   A ,B  \in \mathbb{Z}</script><p>一直往上带入，最终可以表示为：<br>$d = x·a + y·b$，其中 $ x, y \in \mathbb{Z} $</p><h3><span id="扩展欧几里得算法的实现">扩展欧几里得算法的实现 🤪</span></h3><p>下面是扩展欧几里得算法的一个简单实现：</p><pre><code class="lang-python">def extended_gcd(a, b):    # 递归终止条件：当a=0时，gcd就是b，此时等式为0*x + b*y = b，解为x=0, y=1    if a == 0:        return b, 0, 1    # 递归调用：把问题规模缩小，计算 gcd(b%a, a) 及其对应的解x1, y1    # 此时满足：(b%a)*x1 + a*y1 = gcd(b%a, a) = gcd(a, b)    gcd, x1, y1 = extended_gcd(b % a, a)    # 核心推导：将 b%a 替换为 b - (b//a)*a，推导当前层的x和y    # 替换后：(b - (b//a)*a)*x1 + a*y1 = gcd    # 整理得：a*(y1 - (b//a)*x1) + b*x1 = gcd    # 因此当前层的x = y1 - (b//a)*x1，y = x1    x = y1 - (b // a) * x1    y = x1    # 返回当前层的gcd和对应的x、y    return gcd, x, y</code></pre><h2><span id="sagemath-偷懒">SageMath 偷懒 🤓👆</span></h2><p>有同学说：“博主，博主，你的算法确实很厉害，但是还是太吃操作了，有没有更加简单无脑的用法？”👻<br>有的，兄弟有的，这样的算法在 SageMath 中早就已经被封装好了🤫，我们直接调用就行了：</p><pre><code class="lang-python">from sage.all import xgcd # sage环境中才生效g, x, y = xgcd(a, b) # 直接获得 x·a + y·b = g 的解</code></pre><p>怎么样，是不是非常简单？🤣👉🤡</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3000.html">密码学算法 - 前言</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3002.html">密码学算法 - 中国剩余定理CRT</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p><p>相关链接：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1001.html">密码学数学基础 - 整数关系</a> 👈</p>]]>
     </content>
     <id>https://lr2006-robot.github.io/myblog.github.io/post/3001.html</id>
     <link href="https://lr2006-robot.github.io/myblog.github.io/post/3001.html"/>
@@ -71,7 +92,7 @@
 <p>在密码学中，我们常常使用这个算法完成对裴]]>
     </summary>
     <title>密码学算法 - 欧几里得算法</title>
-    <updated>2026-02-25T14:52:04.123Z</updated>
+    <updated>2026-02-26T14:53:48.393Z</updated>
   </entry>
   <entry>
     <author>
