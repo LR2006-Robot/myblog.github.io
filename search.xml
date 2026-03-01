@@ -4,6 +4,233 @@
   
     
     <entry>
+      <title>音乐 - 《My Queen》</title>
+      <link href="/myblog.github.io/post/121.html"/>
+      <url>/myblog.github.io/post/121.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 音乐 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>加解密模式分析 - RC4 加密算法</title>
+      <link href="/myblog.github.io/post/2005.html"/>
+      <url>/myblog.github.io/post/2005.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 加解密模式分析 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 密码学 </tag>
+            
+            <tag> 加解密 </tag>
+            
+            <tag> 现代密码 </tag>
+            
+            <tag> 对称加密 </tag>
+            
+            <tag> 流加密 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>加解密模式分析 - ElGamal 加密算法</title>
+      <link href="/myblog.github.io/post/2004.html"/>
+      <url>/myblog.github.io/post/2004.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 加解密模式分析 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 密码学 </tag>
+            
+            <tag> 加解密 </tag>
+            
+            <tag> 现代密码 </tag>
+            
+            <tag> 非对称加密 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>加解密模式分析 - RSA 加密算法</title>
+      <link href="/myblog.github.io/post/2003.html"/>
+      <url>/myblog.github.io/post/2003.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 加解密模式分析 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 密码学 </tag>
+            
+            <tag> 加解密 </tag>
+            
+            <tag> 现代密码 </tag>
+            
+            <tag> 非对称加密 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>加解密模式分析 - 维吉尼亚密码</title>
+      <link href="/myblog.github.io/post/2002.html"/>
+      <url>/myblog.github.io/post/2002.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 加解密模式分析 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 密码学 </tag>
+            
+            <tag> 加解密 </tag>
+            
+            <tag> 古典密码 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>加解密模式分析 - 单表替换密码</title>
+      <link href="/myblog.github.io/post/2001.html"/>
+      <url>/myblog.github.io/post/2001.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 加解密模式分析 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 密码学 </tag>
+            
+            <tag> 加解密 </tag>
+            
+            <tag> 古典密码 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>加解密模式分析 - 前言</title>
+      <link href="/myblog.github.io/post/2000.html"/>
+      <url>/myblog.github.io/post/2000.html</url>
+      
+        <content type="html"><![CDATA[<p>当你在给私密文件加密归档📁、用端到端加密发送消息📱、或是为区块链资产设置加密钱包🪙时，那些让数据从 “明文可读” 变为 “密文难解” 的神奇转换，背后其实是一套套精妙的加解密模式在精准运转⚙️。</p><p>欢迎来到《加解密模式分析》的解密工坊！这里没有空洞的概念堆砌（真的不玩文字游戏😜），只有一把把解锁加解密核心逻辑的金钥匙🗝️。</p><p>在密码学的世界里，数学是底层根基🏗️，算法是实现工具🔨，而加解密模式就是将二者融合、让加密能力落地的 “桥梁与蓝图”🗺️。本系列文章将带你拆解密码学中最经典、最常用的加解密模式，从古典密码的简单替换、移位模式，到对称加密的分组 / 流加密模式，再到非对称加密的密钥交换、签名验证模式，我们会一步步揭开这些模式的设计思路与运行奥秘🎭。</p><p>别担心，我会用通俗直白的方式（🔍➡️🧩），让你发现这些看似抽象的加解密模式，其实是决定加密体系安全性、实用性的核心关键。它们不仅是凯撒密码、维吉尼亚密码这些古典密码的 “灵魂”👻，更是 AES、DES、RSA、ECC 这些现代加密算法落地应用的 “骨架”🦴，甚至在混合加密、零知识证明等前沿密码学领域，也离不开经典加解密模式的延伸与创新。</p><p>想象一下：<br>当你用凯撒密码简单隐藏信息时🔤，字符移位的基础模式正在帮你完成最朴素的明文混淆；<br>当你用维吉尼亚密码提升加密复杂度时📜，多表替换的模式正在让密文的破解难度指数级上升；<br>当你用 RSA 完成跨网络安全通信时🌐，非对称的公钥加密、私钥解密模式正在构建起安全的密钥交换通道；<br>当你用 ECC 为区块链交易签名时⛓️，椭圆曲线的点运算加密模式正在用更小的密钥实现更高的安全等级。<br>这些从古典到现代的加解密操作，本质上都是不同加解密模式的巧妙设计与灵活应用🎯。</p><p>在这个系列里，我们会像解谜者🧩一样，拆解每一种加解密模式的核心逻辑；像工程师🔧一样，分析不同模式的适用场景与优劣特点；像实战者⚔️一样，探究模式在实际加密场景中的落地技巧。你会发现，原来古典密码的简单模式里藏着现代加密的设计雏形；原来看似复杂的现代加解密算法，核心都是基础模式的组合与优化。</p><p>准备好了吗？让我们一起踏上这场加解密模式的探索之旅🚀，解锁密码学加解密的核心逻辑，亲手搭建属于自己的安全加密体系吧！💡</p><p>在这里简单介绍密码的分类：</p><ul><li>古典密码：如凯撒密码、维吉尼亚密码等，主要通过字符替换和移位来实现加密，安全性较低，容易被频率分析等方法破解。</li><li>现代对称加密：如 AES、DES 等，使用相同的密钥进行加密和解密，适用于大量数据的加密，但密钥管理较为复杂。</li><li>现代非对称加密：如 RSA、ECC 等，使用一对公钥和私钥进行加密和解密，适用于安全通信和数字签名，但加密效率较低。</li><li>混合加密：结合对称加密和非对称加密的优点，使用非对称加密来安全传输对称加密的密钥，从而实现高效且安全的数据加密。</li><li>零知识证明：一种特殊的加密模式，允许一方在不泄露任何信息的情况下向另一方证明某个陈述是正确的，广泛应用于隐私保护和区块链等领域。</li><li>哈希函数：虽然不属于加密算法，但在密码学中也扮演着重要角色，用于数据完整性验证、数字签名等场景，如 SHA-256、MD5 等。</li><li>消息认证码（MAC）：用于验证消息的完整性和真实性，常见的有 HMAC、CMAC 等，广泛应用于网络通信和数据存储等领域。</li><li>数字签名：用于验证消息的来源和完整性，常见的有 RSA 签名、ECDSA 等，广泛应用于电子邮件、软件分发等场景。</li><li>密钥交换协议：用于安全地交换加密密钥，常见的有 Diffie-Hellman、ECDH 等，广泛应用于安全通信和加密协议中。</li><li>同态加密：允许在密文上直接进行计算，而不需要解密，常见的有 Paillier、BFV 等，广泛应用于隐私保护和云计算等领域。</li><li>量子加密：利用量子力学原理实现的加密方法，如量子密钥分发（QKD）等，具有理论上的绝对安全性，但目前仍处于实验阶段。</li><li>后量子加密：针对量子计算机攻击设计的加密算法，如 lattice-based、code-based 等，旨在抵御未来量子计算机的威胁，目前正在积极研究和标准化中。</li></ul><p>注：本系列文章编号从 2000 开始，后续章节将依次递增。每篇文章都会在结尾提供下一章的链接，敬请期待！😉</p><p>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/2001.html">加解密模式分析 - 凯撒密码</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 加解密模式分析 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 密码学 </tag>
+            
+            <tag> 加解密 </tag>
+            
+            <tag> 现代密码 </tag>
+            
+            <tag> 非对称加密 </tag>
+            
+            <tag> 古典密码 </tag>
+            
+            <tag> 前言 </tag>
+            
+            <tag> 混合加密 </tag>
+            
+            <tag> 零知识证明 </tag>
+            
+            <tag> 哈希函数 </tag>
+            
+            <tag> 消息认证码 </tag>
+            
+            <tag> 数字签名 </tag>
+            
+            <tag> 密钥交换协议 </tag>
+            
+            <tag> 同态加密 </tag>
+            
+            <tag> 量子加密 </tag>
+            
+            <tag> 后量子加密 </tag>
+            
+            <tag> 对称加密 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>密码学算法 - Miller-Rabin素数检验</title>
       <link href="/myblog.github.io/post/3007.html"/>
       <url>/myblog.github.io/post/3007.html</url>
@@ -269,7 +496,7 @@
       <link href="/myblog.github.io/post/3000.html"/>
       <url>/myblog.github.io/post/3000.html</url>
       
-        <content type="html"><![CDATA[<p>当你在验证数字证书的真伪📜、向钱包里导入私钥🔑、或是在区块链上完成一笔跨链交易⛓️时，那些在代码底层飞速运转的 “黑盒”，背后其实是一群不知疲倦的算法工匠在精准操刀⚙️。<br>欢迎来到《密码学核心算法实战》的硬核工坊！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安全的精密齿轮⚙️。</p><p>在密码学的兵器谱里，数学是铸造神兵的矿石⛰️，而算法就是将矿石锻造成利剑的炉火与锤法🔨。本系列专题将带你亲手拆解密码学中最经典、最核心的算法实现，特别是数论算法、开方算法和离散对数算法这三大 “王牌工具”🧰。从古老却依旧强悍的欧几里得算法，到堪称 “中国智慧之光” 的孙子定理（CRT），再到能在有限域中 “求根问底” 的 Tonelli-Shanks 算法，我们会一层层剥开这些算法的外衣，看清它们最核心的运行逻辑。</p><p>别害怕，我会用庖丁解牛的方式（🔪➡️🐂），让你发现这些看似复杂的逻辑，其实是构建现代密码体系的精密发条。它们不仅是 RSA、ECC 这些非对称加密的 “心脏”❤️，更是零知识证明、多方安全计算等前沿领域的基石。</p><p>想象一下：<br>当你计算私钥的模逆元时♻️，扩展欧几里得算法正在毫秒间为你打通密钥的 “任督二脉”；<br>当你在算法中需要并行计算、加速解密时⚡，中国剩余定理（CRT） 正像一位精明的管家，帮你把巨大的计算量 “化整为零”；<br>当你在椭圆曲线上进行平方根运算时📐，Tonelli-Shanks 算法 正像一把灵巧的钥匙，在无解的荒漠中为你精准定位那唯一的坐标点。<br>这些支撑起整个数字世界安全的操作，本质上都是算法逻辑的极致演绎🎯。</p><p>在这个系列里，我们会像工程师🔧一样，一行行拆解算法的执行步骤；像调试员💻一样，从最基础的模运算出发，逐步攻克那些密码学中的 “计算难关”。你会发现，原来那些教科书里的寥寥数语，背后藏着如此精妙的逻辑分支；那些看似晦涩的算法名称，其实是解决特定数学难题的 “最优解”。</p><p>当然，我们主要用于工程落地与实战理解，故而我会将重点放在步骤拆解和代码级逻辑上，而不是纠结于繁琐的复杂度证明（毕竟我们不是理论计算机科学家😎）。实际上，大多数算法都可以在sagemath中直接以函数的形式调用，所以在介绍时我也会加入sage环境中的引入运用方式。🙃</p><p>准备好了吗？让我们一起走进这个由逻辑与代码构建的工坊🛠️，亲手锻造属于你的密码学利刃，解锁信息安全的实战奥义吧！💡</p><p>注：本系列文章编号从 3000 开始，后续章节将依次递增。每篇文章都会在结尾提供下一章的链接，敬请期待！😉</p><p>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3001.html">密码学算法 - 欧几里得算法</a> 👈</p><p>相关链接：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1.html">密码学环境配置 - SageMath</a> 👈</p>]]></content>
+        <content type="html"><![CDATA[<p>当你在验证数字证书的真伪📜、向钱包里导入私钥🔑、或是在区块链上完成一笔跨链交易⛓️时，那些在代码底层飞速运转的 “黑盒”，背后其实是一群不知疲倦的算法工匠在精准操刀⚙️。<br>欢迎来到《密码学核心算法实战》的硬核工坊！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安全的精密齿轮⚙️。</p><p>在密码学的兵器谱里，数学是铸造神兵的矿石⛰️，而算法就是将矿石锻造成利剑的炉火与锤法🔨。本系列专题将带你亲手拆解密码学中最经典、最核心的算法实现，特别是数论算法、开方算法和离散对数算法这三大 “王牌工具”🧰。从古老却依旧强悍的欧几里得算法，到堪称 “中国智慧之光” 的孙子定理（CRT），再到能在有限域中 “求根问底” 的 Tonelli-Shanks 算法，我们会一层层剥开这些算法的外衣，看清它们最核心的运行逻辑。</p><p>别害怕，我会用庖丁解牛的方式（🔪➡️🐂），让你发现这些看似复杂的逻辑，其实是构建现代密码体系的精密发条。它们不仅是 RSA、ECC 这些非对称加密的 “心脏”❤️，更是零知识证明、多方安全计算等前沿领域的基石。</p><p>想象一下：<br>当你计算私钥的模逆元时♻️，扩展欧几里得算法正在毫秒间为你打通密钥的 “任督二脉”；<br>当你在算法中需要并行计算、加速解密时⚡，中国剩余定理（CRT） 正像一位精明的管家，帮你把巨大的计算量 “化整为零”；<br>当你在椭圆曲线上进行平方根运算时📐，Tonelli-Shanks 算法 正像一把灵巧的钥匙，在无解的荒漠中为你精准定位那唯一的坐标点。<br>这些支撑起整个数字世界安全的操作，本质上都是算法逻辑的极致演绎🎯。</p><p>在这个系列里，我们会像工程师🔧一样，一行行拆解算法的执行步骤；像调试员💻一样，从最基础的模运算出发，逐步攻克那些密码学中的 “计算难关”。你会发现，原来那些教科书里的寥寥数语，背后藏着如此精妙的逻辑分支；那些看似晦涩的算法名称，其实是解决特定数学难题的 “最优解”。</p><p>当然，我们主要用于工程落地与实战理解，故而我会将重点放在步骤拆解和代码级逻辑上，而不是纠结于繁琐的复杂度证明（毕竟我们不是理论计算机科学家😎）。实际上，大多数算法都可以在sagemath中直接以函数的形式调用，所以在介绍时我也会加入sage环境中的引入运用方式。🙃</p><p>准备好了吗？让我们一起走进这个由逻辑与代码构建的工坊🛠️，亲手锻造属于你的密码学利刃，解锁信息安全的实战奥义吧！💡</p><p>注：本系列文章编号从 3000 开始，后续章节将依次递增。每篇文章都会在结尾提供下一章的链接，敬请期待！😉</p><p>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3001.html">密码学算法 - 欧几里得算法</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p><p>相关链接：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1.html">密码学环境配置 - SageMath</a> 👈</p>]]></content>
       
       
       <categories>
@@ -283,9 +510,9 @@
             
             <tag> 密码学 </tag>
             
-            <tag> 数学 </tag>
-            
             <tag> 前言 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 算法 </tag>
             
@@ -296,7 +523,7 @@
     
     
     <entry>
-      <title>音乐 - 《Bad Girl》</title>
+      <title>音乐 - 《Mischievous Girl》</title>
       <link href="/myblog.github.io/post/120.html"/>
       <url>/myblog.github.io/post/120.html</url>
       
@@ -319,7 +546,7 @@
       <link href="/myblog.github.io/post/119.html"/>
       <url>/myblog.github.io/post/119.html</url>
       
-        <content type="html"><![CDATA[<p>这首歌改编自薛之谦的《我好像在哪里见过你》，当然，说唱的话用那首歌的DJ版的旋律和节奏来唱会更好哦！😎<br>虽然只有一小段，相信我跟着DJ的旋律你一定会上头的，那就让我们一起嗨起来吧！😋</p><script type="math/tex; mode=display">I \ thought \ that \ travelers \ burned \ my \ passion \ into \ pieces.</script><script type="math/tex; mode=display">Ur \ like \ a \ love \ letter, \ preliminary.</script><script type="math/tex; mode=display">Love \ secrets \ in \ the \ password \ is \ where \ all \ people \ keep.</script><script type="math/tex; mode=display">Full \ of \ execuses \ we \ both \ know \ its \ you \ tryna \ leave.</script><script type="math/tex; mode=display">I \ heard \ ur \ voice \ it \ felt \ so \ deep.</script><script type="math/tex; mode=display">And \ I \ saw \ ur \ heart \ that \ cant \ be \ seen.</script><script type="math/tex; mode=display">I \ hid \ in \ a \ crowd \ thats \ real \ picky.</script><script type="math/tex; mode=display">When \ the \ dark \ comes \ that \ star \ is \ what \ Ill \ seek.</script><script type="math/tex; mode=display">I \ know \ you \ cant \ hear \ when \ I \ speak.</script><script type="math/tex; mode=display">Im \ scared \ that \ Id \ name \ you \ easily.</script><script type="math/tex; mode=display">I \ wanna \ make \ sure \ we \ could \ meet.</script><script type="math/tex; mode=display">Its \ like \ weve \ exchanged \ our \ eyes \ to \ see.</script><script type="math/tex; mode=display">I \ might \ have \ met \ you \ already.</script><script type="math/tex; mode=display">I \ might \ have \ met \ you \ already.</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/118.html">音乐 - 《Rice Scent》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/120.html">音乐 - 《Bad Girl》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]></content>
+        <content type="html"><![CDATA[<p>这首歌改编自薛之谦的《我好像在哪里见过你》，当然，说唱的话用那首歌的DJ版的旋律和节奏来唱会更好哦！😎<br>虽然只有一小段，相信我跟着DJ的旋律你一定会上头的，那就让我们一起嗨起来吧！😋</p><script type="math/tex; mode=display">I \ thought \ that \ travelers \ burned \ my \ passion \ into \ pieces.</script><script type="math/tex; mode=display">Ur \ like \ a \ love \ letter, \ preliminary.</script><script type="math/tex; mode=display">Love \ secrets \ in \ the \ password \ is \ where \ all \ people \ keep.</script><script type="math/tex; mode=display">Full \ of \ execuses \ we \ both \ know \ its \ you \ tryna \ leave.</script><script type="math/tex; mode=display">I \ heard \ ur \ voice \ it \ felt \ so \ deep.</script><script type="math/tex; mode=display">And \ I \ saw \ ur \ heart \ that \ cant \ be \ seen.</script><script type="math/tex; mode=display">I \ hid \ in \ a \ crowd \ thats \ real \ picky.</script><script type="math/tex; mode=display">When \ the \ dark \ comes \ that \ star \ is \ what \ Ill \ seek.</script><script type="math/tex; mode=display">I \ know \ you \ cant \ hear \ when \ I \ speak.</script><script type="math/tex; mode=display">Im \ scared \ that \ Id \ name \ you \ easily.</script><script type="math/tex; mode=display">I \ wanna \ make \ sure \ we \ could \ meet.</script><script type="math/tex; mode=display">Its \ like \ weve \ exchanged \ our \ eyes \ to \ see.</script><script type="math/tex; mode=display">I \ might \ have \ met \ you \ already.</script><script type="math/tex; mode=display">I \ might \ have \ met \ you \ already.</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/118.html">音乐 - 《Rice Scent》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/120.html">音乐 - 《Mischievous Girl》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]></content>
       
       
       
@@ -875,7 +1102,7 @@
       <link href="/myblog.github.io/post/1000.html"/>
       <url>/myblog.github.io/post/1000.html</url>
       
-        <content type="html"><![CDATA[<p>你有没有想过，当你在深夜网购🛒、和朋友发私密消息💬、或是登录银行账户🏦时，那些看似 “坚不可摧” 的安全屏障🔒，背后其实是一群数学精灵🧚在默默守护？✨</p><p>欢迎来到《密码学数学基础》的奇妙世界！这里没有枯燥的公式堆砌（真的假的😋），只有一把把打开信息安全大门的钥匙🗝️。</p><p>在信息安全的宇宙🌌里，密码学就像是一位神秘的魔法师🧙，而数学则是它手中的魔法棒🪄。本系列文章将带你解锁密码学中最核心的数学知识，特别是数论和代数这两大 “护法”🛡️。从最基础的整除、同余，到高深莫测的群论、环论和域论，我们会一步步揭开这些数学工具的神秘面纱🎭。</p><p>别担心，我会用轻松有趣的方式（🤣👉🤡），让你发现这些看似高冷的数学概念，其实是设计和分析加密算法与协议的基石🧱。它们不仅是密码学的 “幕后英雄”🦸，还在编码理论、计算复杂性等领域大放异彩🌟。</p><p>想象一下：<br>当你用 HTTPS 浏览网页时🌐，大素数的乘积正在帮你抵御窃听👂；<br>当你用数字签名确认身份时✍️，椭圆曲线的点运算正在为你保驾护航🚢；<br>当区块链上的交易被永久记录时⛓️，哈希函数的单向性正在守护数据的不可篡改性📜。<br>这些听起来高大上的技术，本质上都是数学规律的巧妙应用🎯。</p><p>在这个系列里，我们会像侦探🕵️一样，拆解每一个加密算法背后的数学逻辑；像探险家🗺️一样，从最基础的数论概念出发，逐步深入到更复杂的数学工具。你会发现，原来那些让你头疼的抽象概念，其实是构建安全世界的砖瓦🧱；那些看似枯燥的定理，其实是守护数字生活的盾牌🛡️。<br>当然，我们主要用于密码学学习，故而我会将重点放在结论和应用上，而不是过多地纠结于太难的证明和特殊情况（毕竟我们不是数学家😎）。但如果你对某些定理的证明感兴趣，我也会提供一些参考资料，供你深入探索🔍。</p><p>准备好了吗？让我们一起踏上这场充满挑战与惊喜的数学冒险🚀，解锁信息安全的终极奥义吧！💡</p><p>注：本系列文章编号从 1000 开始，后续章节将依次递增。每篇文章都会在结尾提供下一章的链接，敬请期待！😉</p><p>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1001.html">密码学数学基础 - 整数关系</a> 👈</p>]]></content>
+        <content type="html"><![CDATA[<p>你有没有想过，当你在深夜网购🛒、和朋友发私密消息💬、或是登录银行账户🏦时，那些看似 “坚不可摧” 的安全屏障🔒，背后其实是一群数学精灵🧚在默默守护？✨</p><p>欢迎来到《密码学数学基础》的奇妙世界！这里没有枯燥的公式堆砌（真的假的😋），只有一把把打开信息安全大门的钥匙🗝️。</p><p>在信息安全的宇宙🌌里，密码学就像是一位神秘的魔法师🧙，而数学则是它手中的魔法棒🪄。本系列文章将带你解锁密码学中最核心的数学知识，特别是数论和代数这两大 “护法”🛡️。从最基础的整除、同余，到高深莫测的群论、环论和域论，我们会一步步揭开这些数学工具的神秘面纱🎭。</p><p>别担心，我会用轻松有趣的方式（🤣👉🤡），让你发现这些看似高冷的数学概念，其实是设计和分析加密算法与协议的基石🧱。它们不仅是密码学的 “幕后英雄”🦸，还在编码理论、计算复杂性等领域大放异彩🌟。</p><p>想象一下：<br>当你用 HTTPS 浏览网页时🌐，大素数的乘积正在帮你抵御窃听👂；<br>当你用数字签名确认身份时✍️，椭圆曲线的点运算正在为你保驾护航🚢；<br>当区块链上的交易被永久记录时⛓️，哈希函数的单向性正在守护数据的不可篡改性📜。<br>这些听起来高大上的技术，本质上都是数学规律的巧妙应用🎯。</p><p>在这个系列里，我们会像侦探🕵️一样，拆解每一个加密算法背后的数学逻辑；像探险家🗺️一样，从最基础的数论概念出发，逐步深入到更复杂的数学工具。你会发现，原来那些让你头疼的抽象概念，其实是构建安全世界的砖瓦🧱；那些看似枯燥的定理，其实是守护数字生活的盾牌🛡️。<br>当然，我们主要用于密码学学习，故而我会将重点放在结论和应用上，而不是过多地纠结于太难的证明和特殊情况（毕竟我们不是数学家😎）。但如果你对某些定理的证明感兴趣，我也会提供一些参考资料，供你深入探索🔍。</p><p>准备好了吗？让我们一起踏上这场充满挑战与惊喜的数学冒险🚀，解锁信息安全的终极奥义吧！💡</p><p>注：本系列文章编号从 1000 开始，后续章节将依次递增。每篇文章都会在结尾提供下一章的链接，敬请期待！😉</p><p>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1001.html">密码学数学基础 - 整数关系</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]></content>
       
       
       <categories>
@@ -889,11 +1116,11 @@
             
             <tag> 密码学 </tag>
             
+            <tag> 前言 </tag>
+            
             <tag> 数学 </tag>
             
             <tag> 数论 </tag>
-            
-            <tag> 前言 </tag>
             
         </tags>
       
@@ -902,6 +1129,28 @@
     
   
   
+    
+    
+    <entry>
+      <title>about</title>
+      <link href="/myblog.github.io/about/index.html"/>
+      <url>/myblog.github.io/about/index.html</url>
+      
+        <content type="html"><![CDATA[<p>🔐✨ 欢迎来到我的密码学学习小站！​</p><p>如果你对密码学感兴趣，Alice和Bob的故事一定会让你眼前一亮！😉</p><p>这里是一个专注于密码学知识分享与学习记录的角落📝—— 没有晦涩难懂的学术堆砌，也没有刻意迎合的趣味过度，只希望以平实的语言、清晰的脉络，和同样对 “数字安全”🛡️充满好奇的你，一起探索密码学的奇妙世界🌍～​</p><p>密码学的故事，远比我们想象中更悠久。它并非诞生于冰冷的计算机机房💻，而是源于人类对 “秘密” 的守护欲🔒：早在公元前 400 年，斯巴达士兵用缠绕的 “密码棒”🪢传递军事指令，文字随着布条的缠绕呈现，解开才能读懂信息📜；古罗马时期，凯撒大帝👑用 “字母移位 3 位” 的简单规则加密公文（也就是著名的凯撒密码🔤），成为最早的实用加密方案；中世纪的欧洲，外交官们用 “维吉尼亚密码”📑构建多层加密，让信息在复杂的政治博弈♟️中不被截获 —— 这些古代加密方式虽简陋，却奠定了 “隐藏信息、验证身份” 的核心逻辑✅。​</p><p>而密码学真正从 “经验技巧” 升级为 “科学体系”📚，离不开一位关键人物：克劳德・香农 👨‍🔬🎓（没错，我们不是图0派，也不是冯诺1曼派，我们是香农派😋）。1949 年，这位 “信息论之父” 发表了划时代的论文《保密系统的通信理论》📖，第一次用数学语言🧮定义了密码学的核心概念：他提出的 “完善保密性”（即攻击者无法通过密文获取任何明文信息✅）、“唯一解距离”（破解密码所需的最小密文长度📏）等理论，为加密方案的设计与安全性分析提供了严格的数学基础，让密码学彻底脱离 “玄学”，成为一门可证明、可量化的严谨学科。香农的贡献，就像为密码学搭建了坚实的地基🏗️，后续所有现代加密算法（无论是对称加密的 AES🔑，还是非对称加密的 RSA🔐），都建立在他的理论框架之上。​</p><p>进入数字时代后，密码学更是成为了我们生活的 “隐形守护者”👤！微信聊天的端到端加密💬、网上银行的支付验证🏦、区块链的签名机制⛓️、甚至是手机解锁的指纹识别👆，背后都藏着密码学的智慧。它不再是军事、外交专属的 “高端技术”⚙️，而是渗透到数字生活的每一个角落，默默守护着我们的隐私与安全🛡️。​</p><p>在这个博客里，我会记录自己的密码学学习轨迹🗺️：从基础的古典密码算法拆解🧩，到现代加密技术的原理分析💻；从香农理论的深度解读📖，到实际应用中的安全案例⚠️；从入门级的概念科普🌱，到进阶的算法实现🚀—— 每一篇内容都力求 “易懂、实用、有逻辑”。​</p><p>如果你也对 “如何给信息上锁”🔒、“如何抵御破解攻击”🛡️、“数字世界的信任如何建立”🤝等问题感兴趣，不妨和我一起启程！这里没有绝对的权威，只有持续的学习与探索🔍；欢迎在评论区交流疑问❓、分享见解💡，让我们在密码学的海洋🌊里，慢慢积累、共同进步📈～​</p><p>✨ 愿我们都能在学习中读懂密码学的魅力，成为数字时代的 “安全守护者”🦸‍♂️！</p><p>系列文章目录：</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/1000.html">密码学数学基础 - 前言</a> 👈</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/2000.html">加解密模式分析 - 前言</a> 👈</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/3000.html">密码学算法 - 前言</a> 👈</p><p>环境配置：</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/1.html">密码学环境配置 - SageMath</a> 👈</p>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tags</title>
+      <link href="/myblog.github.io/tags/index.html"/>
+      <url>/myblog.github.io/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
     
     
     <entry>
@@ -919,28 +1168,6 @@
       <title>categories</title>
       <link href="/myblog.github.io/categories/index.html"/>
       <url>/myblog.github.io/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>about</title>
-      <link href="/myblog.github.io/about/index.html"/>
-      <url>/myblog.github.io/about/index.html</url>
-      
-        <content type="html"><![CDATA[<p>🔐✨ 欢迎来到我的密码学学习小站！​</p><p>如果你对密码学感兴趣，Alice和Bob的故事一定会让你眼前一亮！😉</p><p>这里是一个专注于密码学知识分享与学习记录的角落📝—— 没有晦涩难懂的学术堆砌，也没有刻意迎合的趣味过度，只希望以平实的语言、清晰的脉络，和同样对 “数字安全”🛡️充满好奇的你，一起探索密码学的奇妙世界🌍～​</p><p>密码学的故事，远比我们想象中更悠久。它并非诞生于冰冷的计算机机房💻，而是源于人类对 “秘密” 的守护欲🔒：早在公元前 400 年，斯巴达士兵用缠绕的 “密码棒”🪢传递军事指令，文字随着布条的缠绕呈现，解开才能读懂信息📜；古罗马时期，凯撒大帝👑用 “字母移位 3 位” 的简单规则加密公文（也就是著名的凯撒密码🔤），成为最早的实用加密方案；中世纪的欧洲，外交官们用 “维吉尼亚密码”📑构建多层加密，让信息在复杂的政治博弈♟️中不被截获 —— 这些古代加密方式虽简陋，却奠定了 “隐藏信息、验证身份” 的核心逻辑✅。​</p><p>而密码学真正从 “经验技巧” 升级为 “科学体系”📚，离不开一位关键人物：克劳德・香农 👨‍🔬🎓（没错，我们不是图0派，也不是冯诺1曼派，我们是香农派😋）。1949 年，这位 “信息论之父” 发表了划时代的论文《保密系统的通信理论》📖，第一次用数学语言🧮定义了密码学的核心概念：他提出的 “完善保密性”（即攻击者无法通过密文获取任何明文信息✅）、“唯一解距离”（破解密码所需的最小密文长度📏）等理论，为加密方案的设计与安全性分析提供了严格的数学基础，让密码学彻底脱离 “玄学”，成为一门可证明、可量化的严谨学科。香农的贡献，就像为密码学搭建了坚实的地基🏗️，后续所有现代加密算法（无论是对称加密的 AES🔑，还是非对称加密的 RSA🔐），都建立在他的理论框架之上。​</p><p>进入数字时代后，密码学更是成为了我们生活的 “隐形守护者”👤！微信聊天的端到端加密💬、网上银行的支付验证🏦、区块链的签名机制⛓️、甚至是手机解锁的指纹识别👆，背后都藏着密码学的智慧。它不再是军事、外交专属的 “高端技术”⚙️，而是渗透到数字生活的每一个角落，默默守护着我们的隐私与安全🛡️。​</p><p>在这个博客里，我会记录自己的密码学学习轨迹🗺️：从基础的古典密码算法拆解🧩，到现代加密技术的原理分析💻；从香农理论的深度解读📖，到实际应用中的安全案例⚠️；从入门级的概念科普🌱，到进阶的算法实现🚀—— 每一篇内容都力求 “易懂、实用、有逻辑”。​</p><p>如果你也对 “如何给信息上锁”🔒、“如何抵御破解攻击”🛡️、“数字世界的信任如何建立”🤝等问题感兴趣，不妨和我一起启程！这里没有绝对的权威，只有持续的学习与探索🔍；欢迎在评论区交流疑问❓、分享见解💡，让我们在密码学的海洋🌊里，慢慢积累、共同进步📈～​<br>✨ 愿我们都能在学习中读懂密码学的魅力，成为数字时代的 “安全守护者”🦸‍♂️！</p><p>系列文章目录：</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/1000.html">密码学数学基础 - 前言</a> 👈</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/2000.html">加解密模式分析 - 前言</a> 👈</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/3000.html">密码学算法 - 前言</a> 👈</p><p>环境配置：</p><p><a href="http://lr2006-robot.github.io/myblog.github.io/post/1.html">密码学环境配置 - SageMath</a> 👈</p>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>tags</title>
-      <link href="/myblog.github.io/tags/index.html"/>
-      <url>/myblog.github.io/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

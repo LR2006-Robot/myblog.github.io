@@ -9,7 +9,126 @@
   <link href="https://lr2006-robot.github.io/myblog.github.io/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, Dorange</rights>
   <title>Alice and Bobの神秘小屋</title>
-  <updated>2026-02-28T15:40:30.206Z</updated>
+  <updated>2026-03-01T08:14:03.943Z</updated>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/121.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/121.html"/>
+    <published>2026-03-01T09:10:00.000Z</published>
+    <title>音乐 - 《My Queen》</title>
+    <updated>2026-03-01T08:14:03.943Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="加解密模式分析" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%8A%A0%E8%A7%A3%E5%AF%86%E6%A8%A1%E5%BC%8F%E5%88%86%E6%9E%90/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="加解密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/"/>
+    <category term="现代密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81/"/>
+    <category term="对称加密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/"/>
+    <category term="流加密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%B5%81%E5%8A%A0%E5%AF%86/"/>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/2005.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/2005.html"/>
+    <published>2026-03-01T07:30:00.000Z</published>
+    <title>加解密模式分析 - RC4 加密算法</title>
+    <updated>2026-03-01T08:10:47.130Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="加解密模式分析" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%8A%A0%E8%A7%A3%E5%AF%86%E6%A8%A1%E5%BC%8F%E5%88%86%E6%9E%90/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="加解密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/"/>
+    <category term="现代密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81/"/>
+    <category term="非对称加密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/"/>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/2004.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/2004.html"/>
+    <published>2026-03-01T07:24:00.000Z</published>
+    <title>加解密模式分析 - ElGamal 加密算法</title>
+    <updated>2026-03-01T07:28:10.409Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="加解密模式分析" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%8A%A0%E8%A7%A3%E5%AF%86%E6%A8%A1%E5%BC%8F%E5%88%86%E6%9E%90/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="加解密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/"/>
+    <category term="现代密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81/"/>
+    <category term="非对称加密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/"/>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/2003.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/2003.html"/>
+    <published>2026-03-01T07:19:00.000Z</published>
+    <title>加解密模式分析 - RSA 加密算法</title>
+    <updated>2026-03-01T07:27:16.451Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="加解密模式分析" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%8A%A0%E8%A7%A3%E5%AF%86%E6%A8%A1%E5%BC%8F%E5%88%86%E6%9E%90/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="加解密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/"/>
+    <category term="古典密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/"/>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/2002.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/2002.html"/>
+    <published>2026-03-01T07:10:00.000Z</published>
+    <title>加解密模式分析 - 维吉尼亚密码</title>
+    <updated>2026-03-01T07:16:55.946Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="加解密模式分析" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%8A%A0%E8%A7%A3%E5%AF%86%E6%A8%A1%E5%BC%8F%E5%88%86%E6%9E%90/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="加解密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/"/>
+    <category term="古典密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/"/>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/2001.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/2001.html"/>
+    <published>2026-03-01T07:05:00.000Z</published>
+    <title>加解密模式分析 - 单表替换密码</title>
+    <updated>2026-03-01T07:33:56.509Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="加解密模式分析" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%8A%A0%E8%A7%A3%E5%AF%86%E6%A8%A1%E5%BC%8F%E5%88%86%E6%9E%90/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="加解密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/"/>
+    <category term="现代密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81/"/>
+    <category term="非对称加密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/"/>
+    <category term="古典密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/"/>
+    <category term="前言" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%89%8D%E8%A8%80/"/>
+    <category term="混合加密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%B7%B7%E5%90%88%E5%8A%A0%E5%AF%86/"/>
+    <category term="零知识证明" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9B%B6%E7%9F%A5%E8%AF%86%E8%AF%81%E6%98%8E/"/>
+    <category term="哈希函数" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0/"/>
+    <category term="消息认证码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81/"/>
+    <category term="数字签名" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/"/>
+    <category term="密钥交换协议" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E5%8D%8F%E8%AE%AE/"/>
+    <category term="同态加密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%90%8C%E6%80%81%E5%8A%A0%E5%AF%86/"/>
+    <category term="量子加密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%87%8F%E5%AD%90%E5%8A%A0%E5%AF%86/"/>
+    <category term="后量子加密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%90%8E%E9%87%8F%E5%AD%90%E5%8A%A0%E5%AF%86/"/>
+    <category term="对称加密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/"/>
+    <content>
+      <![CDATA[<p>当你在给私密文件加密归档📁、用端到端加密发送消息📱、或是为区块链资产设置加密钱包🪙时，那些让数据从 “明文可读” 变为 “密文难解” 的神奇转换，背后其实是一套套精妙的加解密模式在精准运转⚙️。</p><p>欢迎来到《加解密模式分析》的解密工坊！这里没有空洞的概念堆砌（真的不玩文字游戏😜），只有一把把解锁加解密核心逻辑的金钥匙🗝️。</p><p>在密码学的世界里，数学是底层根基🏗️，算法是实现工具🔨，而加解密模式就是将二者融合、让加密能力落地的 “桥梁与蓝图”🗺️。本系列文章将带你拆解密码学中最经典、最常用的加解密模式，从古典密码的简单替换、移位模式，到对称加密的分组 / 流加密模式，再到非对称加密的密钥交换、签名验证模式，我们会一步步揭开这些模式的设计思路与运行奥秘🎭。</p><p>别担心，我会用通俗直白的方式（🔍➡️🧩），让你发现这些看似抽象的加解密模式，其实是决定加密体系安全性、实用性的核心关键。它们不仅是凯撒密码、维吉尼亚密码这些古典密码的 “灵魂”👻，更是 AES、DES、RSA、ECC 这些现代加密算法落地应用的 “骨架”🦴，甚至在混合加密、零知识证明等前沿密码学领域，也离不开经典加解密模式的延伸与创新。</p><p>想象一下：<br>当你用凯撒密码简单隐藏信息时🔤，字符移位的基础模式正在帮你完成最朴素的明文混淆；<br>当你用维吉尼亚密码提升加密复杂度时📜，多表替换的模式正在让密文的破解难度指数级上升；<br>当你用 RSA 完成跨网络安全通信时🌐，非对称的公钥加密、私钥解密模式正在构建起安全的密钥交换通道；<br>当你用 ECC 为区块链交易签名时⛓️，椭圆曲线的点运算加密模式正在用更小的密钥实现更高的安全等级。<br>这些从古典到现代的加解密操作，本质上都是不同加解密模式的巧妙设计与灵活应用🎯。</p><p>在这个系列里，我们会像解谜者🧩一样，拆解每一种加解密模式的核心逻辑；像工程师🔧一样，分析不同模式的适用场景与优劣特点；像实战者⚔️一样，探究模式在实际加密场景中的落地技巧。你会发现，原来古典密码的简单模式里藏着现代加密的设计雏形；原来看似复杂的现代加解密算法，核心都是基础模式的组合与优化。</p><p>准备好了吗？让我们一起踏上这场加解密模式的探索之旅🚀，解锁密码学加解密的核心逻辑，亲手搭建属于自己的安全加密体系吧！💡</p><p>在这里简单介绍密码的分类：</p><ul><li>古典密码：如凯撒密码、维吉尼亚密码等，主要通过字符替换和移位来实现加密，安全性较低，容易被频率分析等方法破解。</li><li>现代对称加密：如 AES、DES 等，使用相同的密钥进行加密和解密，适用于大量数据的加密，但密钥管理较为复杂。</li><li>现代非对称加密：如 RSA、ECC 等，使用一对公钥和私钥进行加密和解密，适用于安全通信和数字签名，但加密效率较低。</li><li>混合加密：结合对称加密和非对称加密的优点，使用非对称加密来安全传输对称加密的密钥，从而实现高效且安全的数据加密。</li><li>零知识证明：一种特殊的加密模式，允许一方在不泄露任何信息的情况下向另一方证明某个陈述是正确的，广泛应用于隐私保护和区块链等领域。</li><li>哈希函数：虽然不属于加密算法，但在密码学中也扮演着重要角色，用于数据完整性验证、数字签名等场景，如 SHA-256、MD5 等。</li><li>消息认证码（MAC）：用于验证消息的完整性和真实性，常见的有 HMAC、CMAC 等，广泛应用于网络通信和数据存储等领域。</li><li>数字签名：用于验证消息的来源和完整性，常见的有 RSA 签名、ECDSA 等，广泛应用于电子邮件、软件分发等场景。</li><li>密钥交换协议：用于安全地交换加密密钥，常见的有 Diffie-Hellman、ECDH 等，广泛应用于安全通信和加密协议中。</li><li>同态加密：允许在密文上直接进行计算，而不需要解密，常见的有 Paillier、BFV 等，广泛应用于隐私保护和云计算等领域。</li><li>量子加密：利用量子力学原理实现的加密方法，如量子密钥分发（QKD）等，具有理论上的绝对安全性，但目前仍处于实验阶段。</li><li>后量子加密：针对量子计算机攻击设计的加密算法，如 lattice-based、code-based 等，旨在抵御未来量子计算机的威胁，目前正在积极研究和标准化中。</li></ul><p>注：本系列文章编号从 2000 开始，后续章节将依次递增。每篇文章都会在结尾提供下一章的链接，敬请期待！😉</p><p>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/2001.html">加解密模式分析 - 凯撒密码</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
+    </content>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/2000.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/2000.html"/>
+    <published>2026-03-01T06:58:00.000Z</published>
+    <summary>
+      <![CDATA[<p>当你在给私密文件加密归档📁、用端到端加密发送消息📱、或是为区块链资产设置加密钱包🪙时，那些让数据从 “明文可读” 变为 “密文难解” 的神奇转换，背后其实是一套套精妙的加解密模式在精准运转⚙️。</p>
+<p>欢迎来到《加解密模式分析》的解密工坊！这里没有空洞的概念堆]]>
+    </summary>
+    <title>加解密模式分析 - 前言</title>
+    <updated>2026-03-01T07:29:36.220Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Dorange</name>
@@ -205,11 +324,11 @@
     </author>
     <category term="密码学算法" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95/"/>
     <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
-    <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     <category term="前言" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%89%8D%E8%A8%80/"/>
+    <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     <category term="算法" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     <content>
-      <![CDATA[<p>当你在验证数字证书的真伪📜、向钱包里导入私钥🔑、或是在区块链上完成一笔跨链交易⛓️时，那些在代码底层飞速运转的 “黑盒”，背后其实是一群不知疲倦的算法工匠在精准操刀⚙️。<br>欢迎来到《密码学核心算法实战》的硬核工坊！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安全的精密齿轮⚙️。</p><p>在密码学的兵器谱里，数学是铸造神兵的矿石⛰️，而算法就是将矿石锻造成利剑的炉火与锤法🔨。本系列专题将带你亲手拆解密码学中最经典、最核心的算法实现，特别是数论算法、开方算法和离散对数算法这三大 “王牌工具”🧰。从古老却依旧强悍的欧几里得算法，到堪称 “中国智慧之光” 的孙子定理（CRT），再到能在有限域中 “求根问底” 的 Tonelli-Shanks 算法，我们会一层层剥开这些算法的外衣，看清它们最核心的运行逻辑。</p><p>别害怕，我会用庖丁解牛的方式（🔪➡️🐂），让你发现这些看似复杂的逻辑，其实是构建现代密码体系的精密发条。它们不仅是 RSA、ECC 这些非对称加密的 “心脏”❤️，更是零知识证明、多方安全计算等前沿领域的基石。</p><p>想象一下：<br>当你计算私钥的模逆元时♻️，扩展欧几里得算法正在毫秒间为你打通密钥的 “任督二脉”；<br>当你在算法中需要并行计算、加速解密时⚡，中国剩余定理（CRT） 正像一位精明的管家，帮你把巨大的计算量 “化整为零”；<br>当你在椭圆曲线上进行平方根运算时📐，Tonelli-Shanks 算法 正像一把灵巧的钥匙，在无解的荒漠中为你精准定位那唯一的坐标点。<br>这些支撑起整个数字世界安全的操作，本质上都是算法逻辑的极致演绎🎯。</p><p>在这个系列里，我们会像工程师🔧一样，一行行拆解算法的执行步骤；像调试员💻一样，从最基础的模运算出发，逐步攻克那些密码学中的 “计算难关”。你会发现，原来那些教科书里的寥寥数语，背后藏着如此精妙的逻辑分支；那些看似晦涩的算法名称，其实是解决特定数学难题的 “最优解”。</p><p>当然，我们主要用于工程落地与实战理解，故而我会将重点放在步骤拆解和代码级逻辑上，而不是纠结于繁琐的复杂度证明（毕竟我们不是理论计算机科学家😎）。实际上，大多数算法都可以在sagemath中直接以函数的形式调用，所以在介绍时我也会加入sage环境中的引入运用方式。🙃</p><p>准备好了吗？让我们一起走进这个由逻辑与代码构建的工坊🛠️，亲手锻造属于你的密码学利刃，解锁信息安全的实战奥义吧！💡</p><p>注：本系列文章编号从 3000 开始，后续章节将依次递增。每篇文章都会在结尾提供下一章的链接，敬请期待！😉</p><p>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3001.html">密码学算法 - 欧几里得算法</a> 👈</p><p>相关链接：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1.html">密码学环境配置 - SageMath</a> 👈</p>]]>
+      <![CDATA[<p>当你在验证数字证书的真伪📜、向钱包里导入私钥🔑、或是在区块链上完成一笔跨链交易⛓️时，那些在代码底层飞速运转的 “黑盒”，背后其实是一群不知疲倦的算法工匠在精准操刀⚙️。<br>欢迎来到《密码学核心算法实战》的硬核工坊！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安全的精密齿轮⚙️。</p><p>在密码学的兵器谱里，数学是铸造神兵的矿石⛰️，而算法就是将矿石锻造成利剑的炉火与锤法🔨。本系列专题将带你亲手拆解密码学中最经典、最核心的算法实现，特别是数论算法、开方算法和离散对数算法这三大 “王牌工具”🧰。从古老却依旧强悍的欧几里得算法，到堪称 “中国智慧之光” 的孙子定理（CRT），再到能在有限域中 “求根问底” 的 Tonelli-Shanks 算法，我们会一层层剥开这些算法的外衣，看清它们最核心的运行逻辑。</p><p>别害怕，我会用庖丁解牛的方式（🔪➡️🐂），让你发现这些看似复杂的逻辑，其实是构建现代密码体系的精密发条。它们不仅是 RSA、ECC 这些非对称加密的 “心脏”❤️，更是零知识证明、多方安全计算等前沿领域的基石。</p><p>想象一下：<br>当你计算私钥的模逆元时♻️，扩展欧几里得算法正在毫秒间为你打通密钥的 “任督二脉”；<br>当你在算法中需要并行计算、加速解密时⚡，中国剩余定理（CRT） 正像一位精明的管家，帮你把巨大的计算量 “化整为零”；<br>当你在椭圆曲线上进行平方根运算时📐，Tonelli-Shanks 算法 正像一把灵巧的钥匙，在无解的荒漠中为你精准定位那唯一的坐标点。<br>这些支撑起整个数字世界安全的操作，本质上都是算法逻辑的极致演绎🎯。</p><p>在这个系列里，我们会像工程师🔧一样，一行行拆解算法的执行步骤；像调试员💻一样，从最基础的模运算出发，逐步攻克那些密码学中的 “计算难关”。你会发现，原来那些教科书里的寥寥数语，背后藏着如此精妙的逻辑分支；那些看似晦涩的算法名称，其实是解决特定数学难题的 “最优解”。</p><p>当然，我们主要用于工程落地与实战理解，故而我会将重点放在步骤拆解和代码级逻辑上，而不是纠结于繁琐的复杂度证明（毕竟我们不是理论计算机科学家😎）。实际上，大多数算法都可以在sagemath中直接以函数的形式调用，所以在介绍时我也会加入sage环境中的引入运用方式。🙃</p><p>准备好了吗？让我们一起走进这个由逻辑与代码构建的工坊🛠️，亲手锻造属于你的密码学利刃，解锁信息安全的实战奥义吧！💡</p><p>注：本系列文章编号从 3000 开始，后续章节将依次递增。每篇文章都会在结尾提供下一章的链接，敬请期待！😉</p><p>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3001.html">密码学算法 - 欧几里得算法</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p><p>相关链接：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1.html">密码学环境配置 - SageMath</a> 👈</p>]]>
     </content>
     <id>https://lr2006-robot.github.io/myblog.github.io/post/3000.html</id>
     <link href="https://lr2006-robot.github.io/myblog.github.io/post/3000.html"/>
@@ -218,7 +337,7 @@
       <![CDATA[<p>当你在验证数字证书的真伪📜、向钱包里导入私钥🔑、或是在区块链上完成一笔跨链交易⛓️时，那些在代码底层飞速运转的 “黑盒”，背后其实是一群不知疲倦的算法工匠在精准操刀⚙️。<br>欢迎来到《密码学核心算法实战》的硬核工坊！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只]]>
     </summary>
     <title>密码学算法 - 前言</title>
-    <updated>2026-02-25T14:50:46.273Z</updated>
+    <updated>2026-03-01T07:29:12.939Z</updated>
   </entry>
   <entry>
     <author>
@@ -235,8 +354,8 @@
       <![CDATA[<p>这首英语说唱改编自徐良的《坏女孩》，是一首非常有个性的歌曲，旋律和歌词都很有趣，试着对着旋律唱出来吧！😎<br>许嵩，汪苏泷都有了，情歌怎么少了徐良呢？事不宜迟，go~😋</p>
 <script type="math/tex; mode=display">First \]]>
     </summary>
-    <title>音乐 - 《Bad Girl》</title>
-    <updated>2026-02-25T09:53:16.134Z</updated>
+    <title>音乐 - 《Mischievous Girl》</title>
+    <updated>2026-03-01T07:45:47.514Z</updated>
   </entry>
   <entry>
     <author>
@@ -244,7 +363,7 @@
     </author>
     <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
     <content>
-      <![CDATA[<p>这首歌改编自薛之谦的《我好像在哪里见过你》，当然，说唱的话用那首歌的DJ版的旋律和节奏来唱会更好哦！😎<br>虽然只有一小段，相信我跟着DJ的旋律你一定会上头的，那就让我们一起嗨起来吧！😋</p><script type="math/tex; mode=display">I \ thought \ that \ travelers \ burned \ my \ passion \ into \ pieces.</script><script type="math/tex; mode=display">Ur \ like \ a \ love \ letter, \ preliminary.</script><script type="math/tex; mode=display">Love \ secrets \ in \ the \ password \ is \ where \ all \ people \ keep.</script><script type="math/tex; mode=display">Full \ of \ execuses \ we \ both \ know \ its \ you \ tryna \ leave.</script><script type="math/tex; mode=display">I \ heard \ ur \ voice \ it \ felt \ so \ deep.</script><script type="math/tex; mode=display">And \ I \ saw \ ur \ heart \ that \ cant \ be \ seen.</script><script type="math/tex; mode=display">I \ hid \ in \ a \ crowd \ thats \ real \ picky.</script><script type="math/tex; mode=display">When \ the \ dark \ comes \ that \ star \ is \ what \ Ill \ seek.</script><script type="math/tex; mode=display">I \ know \ you \ cant \ hear \ when \ I \ speak.</script><script type="math/tex; mode=display">Im \ scared \ that \ Id \ name \ you \ easily.</script><script type="math/tex; mode=display">I \ wanna \ make \ sure \ we \ could \ meet.</script><script type="math/tex; mode=display">Its \ like \ weve \ exchanged \ our \ eyes \ to \ see.</script><script type="math/tex; mode=display">I \ might \ have \ met \ you \ already.</script><script type="math/tex; mode=display">I \ might \ have \ met \ you \ already.</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/118.html">音乐 - 《Rice Scent》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/120.html">音乐 - 《Bad Girl》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
+      <![CDATA[<p>这首歌改编自薛之谦的《我好像在哪里见过你》，当然，说唱的话用那首歌的DJ版的旋律和节奏来唱会更好哦！😎<br>虽然只有一小段，相信我跟着DJ的旋律你一定会上头的，那就让我们一起嗨起来吧！😋</p><script type="math/tex; mode=display">I \ thought \ that \ travelers \ burned \ my \ passion \ into \ pieces.</script><script type="math/tex; mode=display">Ur \ like \ a \ love \ letter, \ preliminary.</script><script type="math/tex; mode=display">Love \ secrets \ in \ the \ password \ is \ where \ all \ people \ keep.</script><script type="math/tex; mode=display">Full \ of \ execuses \ we \ both \ know \ its \ you \ tryna \ leave.</script><script type="math/tex; mode=display">I \ heard \ ur \ voice \ it \ felt \ so \ deep.</script><script type="math/tex; mode=display">And \ I \ saw \ ur \ heart \ that \ cant \ be \ seen.</script><script type="math/tex; mode=display">I \ hid \ in \ a \ crowd \ thats \ real \ picky.</script><script type="math/tex; mode=display">When \ the \ dark \ comes \ that \ star \ is \ what \ Ill \ seek.</script><script type="math/tex; mode=display">I \ know \ you \ cant \ hear \ when \ I \ speak.</script><script type="math/tex; mode=display">Im \ scared \ that \ Id \ name \ you \ easily.</script><script type="math/tex; mode=display">I \ wanna \ make \ sure \ we \ could \ meet.</script><script type="math/tex; mode=display">Its \ like \ weve \ exchanged \ our \ eyes \ to \ see.</script><script type="math/tex; mode=display">I \ might \ have \ met \ you \ already.</script><script type="math/tex; mode=display">I \ might \ have \ met \ you \ already.</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/118.html">音乐 - 《Rice Scent》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/120.html">音乐 - 《Mischievous Girl》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
     </content>
     <id>https://lr2006-robot.github.io/myblog.github.io/post/119.html</id>
     <link href="https://lr2006-robot.github.io/myblog.github.io/post/119.html"/>
@@ -254,7 +373,7 @@
 <script type="math/tex; mode=display]]>
     </summary>
     <title>音乐 - 《Might've Met You》</title>
-    <updated>2026-02-25T09:25:30.502Z</updated>
+    <updated>2026-03-01T08:12:15.806Z</updated>
   </entry>
   <entry>
     <author>
@@ -273,131 +392,5 @@
     </summary>
     <title>音乐 - 《Rice Scent》</title>
     <updated>2026-02-25T09:10:28.583Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
-    <content>
-      <![CDATA[<p>这首英语说唱改编自流行歌曲《有何不可》，说到情歌怎么能少了汪苏泷呢，在一个晴天的午后唱给她听吧！😎<br>节奏和旋律都没有改变，韵脚都是差不多的，加油吧，唱出来就对了！😋</p><script type="math/tex; mode=display">I \ know \ it \ might \ seem \ crazy.</script><script type="math/tex; mode=display">I \ just \ wanna \ make \ u \ believe.</script><script type="math/tex; mode=display">This \ girl \ in \ front \ of \ me</script><script type="math/tex; mode=display">just \ made \ my \ heart \ skip \ a \ beat.</script><script type="math/tex; mode=display">Ur \ the \ cutest \ girl \ tonight \ that \ Ive \ seen.</script><script type="math/tex; mode=display">I \ can \ sing \ u \ everything.</script><script type="math/tex; mode=display">Can \ u \ just \ walk \ outta \ my \ screen?</script><script type="math/tex; mode=display">I \ know \ u \ might \ be \ fixing \ all \ the \ joints.</script><script type="math/tex; mode=display">Ill \ be \ ur \ crutches \ in \ the \ meantime \ hitting \ all \ the \ points.</script><script type="math/tex; mode=display">Im \ not \ gonna \ deny.</script><script type="math/tex; mode=display">And \ you \ no \ need \ to \ reply.</script><script type="math/tex; mode=display">But \ can \ I \ invite \ u \ into \ my \ life?</script><script type="math/tex; mode=display">Ur \ face \ is \ turning \ red.</script><script type="math/tex; mode=display">Thats \ kinda \ cute, \ my \ Layla.</script><script type="math/tex; mode=display">Everywhere \ I \ go,</script><script type="math/tex; mode=display">Ill \ make \ sure \ that \ I \ take \ her</script><script type="math/tex; mode=display">attention, \ cuz \ I \ mean \ it \ indeed.</script><script type="math/tex; mode=display">My \ Layla, \ swear \ I \ would</script><script type="math/tex; mode=display">do \ everythin \ I \ could,</script><script type="math/tex; mode=display">to \ make \ u \ smile \ just \ cuz</script><script type="math/tex; mode=display">cuz \ why \ not \ for \ my \ love?</script><script type="math/tex; mode=display">You \ got \ me \ thinking</script><script type="math/tex; mode=display">I \ wanna \ hold \ ur \ hands.</script><script type="math/tex; mode=display">Thats \ the \ only \ way \ to \ go.</script><script type="math/tex; mode=display">I \ can \ turn \ it \ into \ a \ song</script><script type="math/tex; mode=display">Thats \ the \ only \ way \ to \ show.</script><script type="math/tex; mode=display">And \ they \ say \ that \ nothing \ would \ last \ forever.</script><script type="math/tex; mode=display">My \ Layla, \ swear \ I \ would</script><script type="math/tex; mode=display">do \ everythin \ I \ could,</script><script type="math/tex; mode=display">to \ make \ u \ smile \ just \ cuz</script><script type="math/tex; mode=display">cuz \ why \ not \ for \ my \ love?</script><script type="math/tex; mode=display">Cuz \ you \ are \ the \ one.</script><script type="math/tex; mode=display">Im \ so \ glad \ I \ got \ to \ met \ u \ tonight.</script><script type="math/tex; mode=display">My \ Layla, \ we \ vibin, \ we \ clickin \ so \ right.</script><script type="math/tex; mode=display">Now \ take \ this \ song \ as \ my \ love \ letter.</script><script type="math/tex; mode=display">To \ the \ one \ and \ only \ Layla.</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/116.html">音乐 - 《Handwritten Past》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/118.html">音乐 - 《Rice Aroma》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
-    </content>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/117.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/117.html"/>
-    <published>2026-02-25T06:09:00.000Z</published>
-    <summary>
-      <![CDATA[<p>这首英语说唱改编自流行歌曲《有何不可》，说到情歌怎么能少了汪苏泷呢，在一个晴天的午后唱给她听吧！😎<br>节奏和旋律都没有改变，韵脚都是差不多的，加油吧，唱出来就对了！😋</p>
-<script type="math/tex; mode=display">I \ kno]]>
-    </summary>
-    <title>音乐 - 《Why Not》</title>
-    <updated>2026-02-26T03:33:28.488Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
-    <content>
-      <![CDATA[<p>这首歌改编自流行歌曲《手写的从前》，杰迷狂喜快乐章，试着对着旋律唱出来吧！😎<br>情歌怎么能少了我们周董呢，还得是我们的流行天王的周氏rap强而有力，强而有力口牙！😋</p><script type="math/tex; mode=display">You \ got \ me \ at \ one \ glance.</script><script type="math/tex; mode=display">Wish \ youd \ understand.</script><script type="math/tex; mode=display">Give \ me \ just \ one \ chance.</script><script type="math/tex; mode=display">I \ want \ more \ than \ just \ friends.</script><script type="math/tex; mode=display">No \ need \ to \ hide \ from \ love \ just \ lemme \ know \ when.</script><script type="math/tex; mode=display">Let \ me \ know \ when \ I \ can</script><script type="math/tex; mode=display">let \ this \ mystery \ between \ us \ end.</script><script type="math/tex; mode=display">Always \ thought \ that \ I \ wont</script><script type="math/tex; mode=display">get \ blown \ away, \ but \ right \ on.</script><script type="math/tex; mode=display">I \ was \ from \ ur \ blue \ eyes \ and \ cutest \ smile \ that \ I \ know.</script><script type="math/tex; mode=display">Oh, \ and \ the \ pigtail \ braids.</script><script type="math/tex; mode=display">Theyre \ so \ perfectly \ combed.</script><script type="math/tex; mode=display">You \ got \ the \ mellow \ tone \ when \ u \ speak \ that \ I \ dont.</script><script type="math/tex; mode=display">Oh, \ her \ name \ is \ Hannah.</script><script type="math/tex; mode=display">I \ know \ that \ I \ just \ met \ her.</script><script type="math/tex; mode=display">I \ know \ that \ theres \ a \ lotta \ questions \ waiting \ to \ be \ answered.</script><script type="math/tex; mode=display">She \ barely \ knows \ me \ but \ she \ so \ kind \ still \ chose \ to \ help \ me \ out.</script><script type="math/tex; mode=display">And \ shes \ slowly \ starting \ to \ realize \ what \ this \ song \ is \ all \ about.</script><script type="math/tex; mode=display">You \ got \ me \ at \ one \ glance.</script><script type="math/tex; mode=display">Wish \ youd \ understand.</script><script type="math/tex; mode=display">Give \ me \ just \ one \ chance.</script><script type="math/tex; mode=display">I \ want \ more \ than \ just \ friends.</script><script type="math/tex; mode=display">No \ need \ to \ hide \ from \ love \ just \ lemme \ know \ when.</script><script type="math/tex; mode=display">Let \ me \ know \ when \ I \ can</script><script type="math/tex; mode=display">let \ this \ mystery \ end.</script><script type="math/tex; mode=display">You \ got \ me \ at \ one \ glance.</script><script type="math/tex; mode=display">Wish \ youd \ understand.</script><script type="math/tex; mode=display">Give \ me \ just \ one \ chance.</script><script type="math/tex; mode=display">Her \ name \ starts \ with \ Han.</script><script type="math/tex; mode=display">This \ whole \ things \ been \ about \ you \ from \ the \ start \ and,</script><script type="math/tex; mode=display">If \ u \ still \ dont \ get \ what \ I \ meant.</script><script type="math/tex; mode=display">I \ might \ need \ to \ reword \ this \ again.</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/115.html">音乐 - 《For Beauty》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/117.html">音乐 - 《Why Not》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
-    </content>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/116.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/116.html"/>
-    <published>2026-02-25T03:53:00.000Z</published>
-    <summary>
-      <![CDATA[<p>这首歌改编自流行歌曲《手写的从前》，杰迷狂喜快乐章，试着对着旋律唱出来吧！😎<br>情歌怎么能少了我们周董呢，还得是我们的流行天王的周氏rap强而有力，强而有力口牙！😋</p>
-<script type="math/tex; mode=display">You \ go]]>
-    </summary>
-    <title>音乐 - 《Handwritten Past》</title>
-    <updated>2026-02-25T06:24:18.186Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
-    <content>
-      <![CDATA[<p>这首英语说唱改编自ikun神曲《只因你太美》😉<br>小黑子露出鸡脚了吧~~~🐔<br>这首歌的旋律和韵脚都很有趣，试着对着旋律唱出来吧！😎</p><script type="math/tex; mode=display">When \ ur \ walking \ to \ me, \ girl, \ u \ make \ me \ hella \ confused.</script><script type="math/tex; mode=display">I \ never \ thought \ itd \ happen.</script><script type="math/tex; mode=display">Cuz \ I \ got \ a \ crush \ on \ you.</script><script type="math/tex; mode=display">Now \ I \ dont \ care \ what \ ppl \ say.</script><script type="math/tex; mode=display">I \ wanna \ see \ you \ every \ day.</script><script type="math/tex; mode=display">Getting \ closer \ and \ closer, \ girl, \ Im \ bout \ to \ snap.</script><script type="math/tex; mode=display">Tryna \ think \ hard \ of \ someting \ that \ will \ make \ you \ laugh.</script><script type="math/tex; mode=display">Give \ u \ all \ my \ heart \ just \ be \ my \ baby \ bae.</script><script type="math/tex; mode=display">My \ heart \ is \ beating \ fast \ sht \ its \ more \ than \ I \ can \ take.</script><script type="math/tex; mode=display">You \ you \ you \ you,</script><script type="math/tex; mode=display">want \ u \ at \ my \ bedside.</script><script type="math/tex; mode=display">Gonna \ do \ it \ all \ right.</script><script type="math/tex; mode=display">You \ you \ you \ you,</script><script type="math/tex; mode=display">right \ in \ front \ of \ my \ eyes.</script><script type="math/tex; mode=display">You \ you \ you \ you,</script><script type="math/tex; mode=display">thought \ about \ it \ million \ times.</script><script type="math/tex; mode=display">Ayo\sim</script><script type="math/tex; mode=display">Baby, \ wanna \ get \ ur \ outta \ my \ mind.</script><script type="math/tex; mode=display">Swear \ Im \ gonna \ do \ this \ right.</script><script type="math/tex; mode=display">Im \ really \ glad \ we \ meet \ tonight.</script><script type="math/tex; mode=display">All \ of \ my \ life \ I \ been \ searching \ for \ a \ girl \ like</script><script type="math/tex; mode=display">the \ one \ in \ front \ of \ my \ eyes.</script><script type="math/tex; mode=display">All \ of \ my \ life \ I \ been \ wondering \ why</script><script type="math/tex; mode=display">that \ I \ havent \ been \ her \ guy.</script><script type="math/tex; mode=display">Spent \ lots \ of \ time \ to \ decide \ where \ to \ go.</script><script type="math/tex; mode=display">Wanna \ take \ u \ to \ the \ beaches.</script><script type="math/tex; mode=display">Wanna \ show \ u \ girl \ whats \ dope.</script><script type="math/tex; mode=display">Man, \ I \ really \ like \ her \ eyes.</script><script type="math/tex; mode=display">And, \ I \ really \ like \ her \ nose.</script><script type="math/tex; mode=display">And, \ I \ kinda \ like \ her \ fingers.</script><script type="math/tex; mode=display">And, \ I \ prolly \ like \ her \ toes.</script><script type="math/tex; mode=display">Girl, \ u \ know \ I \ cant \ take \ it \ slow.</script><script type="math/tex; mode=display">Cuz \ I \ know \ 3 \ 2 \ 1, \ girl, \ u \ gotta \ go.</script><script type="math/tex; mode=display">Turning \ up \ the \ beat \ while \ I \ switch \ up \ the \ flow.</script><script type="math/tex; mode=display">I \ got \ i \ twitching \ p \ ur \ cheeks \ I \ see \ the \ rim \ of \ the \ glow.</script><script type="math/tex; mode=display">You \ you \ you \ you,</script><script type="math/tex; mode=display">want \ u \ at \ my \ bedside.</script><script type="math/tex; mode=display">You \ you \ you \ you,</script><script type="math/tex; mode=display">gonna \ do \ it \ all \ right.</script><script type="math/tex; mode=display">You \ you \ you \ you,</script><script type="math/tex; mode=display">right \ in \ front \ of \ my \ eyes.</script><script type="math/tex; mode=display">You \ you \ you \ you,</script><script type="math/tex; mode=display">thought \ about \ it \ million \ times.</script><script type="math/tex; mode=display">Ayo\sim</script><script type="math/tex; mode=display">Baby, \ wanna \ get \ ur \ outta \ my \ mind.</script><script type="math/tex; mode=display">Swear \ Im \ gonna \ do \ this \ right.</script><script type="math/tex; mode=display">Here \ we \ go!</script><script type="math/tex; mode=display">When \ ur \ walking \ to \ me, \ girl, \ u \ make \ me \ hella \ confused.</script><script type="math/tex; mode=display">I \ never \ thought \ itd \ happen.</script><script type="math/tex; mode=display">Cuz \ I \ got \ a \ crush \ on \ you.</script><script type="math/tex; mode=display">Now \ I \ dont \ care \ what \ ppl \ say.</script><script type="math/tex; mode=display">I \ wanna \ see \ you \ every \ day.</script><script type="math/tex; mode=display">Getting \ closer \ and \ closer, \ girl, \ Im \ bout \ to \ snap.</script><script type="math/tex; mode=display">Tryna \ think \ hard \ of \ someting \ that \ will \ make \ you \ laugh.</script><script type="math/tex; mode=display">Give \ u \ all \ my \ heart \ just \ be \ my \ baby \ bae.</script><script type="math/tex; mode=display">My \ heart \ is \ beating \ fast \ sht \ its \ more \ than \ I \ can \ take.</script><script type="math/tex; mode=display">When \ I \ look \ in \ her \ eyes, \ all \ I \ feel \ is \ surprise.</script><script type="math/tex; mode=display">Gotta \ do \ what \ I \ gotta \ do \ to \ make \ romance \ survive.</script><script type="math/tex; mode=display">Will \ provide \ you \ for \ life.</script><script type="math/tex; mode=display">Swear \ Ill \ never \ retire.</script><script type="math/tex; mode=display">I \ know \ you \ feel \ it \ too \ tonight \ the \ stars \ are \ aligned.</script><script type="math/tex; mode=display">Oh \ shoot \ shes \ here.</script><script type="math/tex; mode=display">What \ am \ I \ supposed \ to \ say \ next?</script><script type="math/tex; mode=display">Been \ thinking \ too \ much \ now \ Im \ out \ of \ my \ breath.</script><script type="math/tex; mode=display">Should \ I \ shake \ your \ hands?</script><script type="math/tex; mode=display">But \ theyre \ full \ of \ my \ sweat.</script><script type="math/tex; mode=display">Fk \ it \ noe \ chance \ I \ gotta \ take \ this \ bet!</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/114.html">音乐 - 《Sophias》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/116.html">音乐 - 《Handwritten Past》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
-    </content>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/115.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/115.html"/>
-    <published>2026-02-25T02:53:00.000Z</published>
-    <summary>
-      <![CDATA[<p>这首英语说唱改编自ikun神曲《只因你太美》😉<br>小黑子露出鸡脚了吧~~~🐔<br>这首歌的旋律和韵脚都很有趣，试着对着旋律唱出来吧！😎</p>
-<script type="math/tex; mode=display">When \ ur \ walking \]]>
-    </summary>
-    <title>音乐 - 《For Beauty》</title>
-    <updated>2026-02-25T03:29:42.963Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
-    <content>
-      <![CDATA[<p>这首英语说唱用的是最近很火的《莫愁乡》的调子，刚好也是rap，所以，如果喜欢，不妨试试唱一下，有点烫嘴哦~😋<br>当然，根据其他歌曲的画风，必然是情歌呀，这种快调子很合适做快乐的诉说呢。😉</p><script type="math/tex; mode=display">Cant \ believe \ that \ I \ got \ beaten.</script><script type="math/tex; mode=display">But \ its \ gon \ be \ even \ even \ even \ even \ even \ and \ even.</script><script type="math/tex; mode=display">Always \ failed \ but \ I \ kept \ on \ believing</script><script type="math/tex; mode=display">didnt \ think \ tonights \ the \ night \ I \ met \ my\ldots</script><script type="math/tex; mode=display">I \ thouhgt \ ur \ kinda \ quiet,</script><script type="math/tex; mode=display">but \ really \ ur \ my \ type.</script><script type="math/tex; mode=display">I \ really \ like \ ur \ eyes,</script><script type="math/tex; mode=display">but \ ur \ pajama \ I \ cant \ deny.</script><script type="math/tex; mode=display">I \ swear \ Ive \ never \ met \ a \ girl \ like \ Sophias \ in \ my \ life.</script><script type="math/tex; mode=display">And \ I \ lost \ the \ Rock \ Paper \ Scissors.</script><script type="math/tex; mode=display">And \ Ive \ been \ wondering \ why.</script><script type="math/tex; mode=display">Lost \ in \ your \ eyes!</script><script type="math/tex; mode=display">Then \ mu \ mind \ paused \ for \ a \ second \ and \ cant \ stop \ to \ think.</script><script type="math/tex; mode=display">Gimme \ a \ finger \ I \ put \ on \ that \ ring.</script><script type="math/tex; mode=display">If \ Im \ the \ king \ then \ ud \ be \ the \ queen.</script><script type="math/tex; mode=display">Gimme \ a \ wink \ and \ Ill \ know \ what \ u \ mean.</script><script type="math/tex; mode=display">No \ need \ to \ prep.</script><script type="math/tex; mode=display">I \ got \ this \ off \ the \ top \ of \ my \ head.</script><script type="math/tex; mode=display">Lemme \ take \ a \ look.</script><script type="math/tex; mode=display">What \ should \ I \ rhyme \ next?</script><script type="math/tex; mode=display">How \ bout \ the \ things \ on \ ur \ wall \ and \ ur \ bed?</script><script type="math/tex; mode=display">I \ like \ those \ pictures \ on \ the \ wall.</script><script type="math/tex; mode=display">We \ can \ play \ some \ volleyball.</script><script type="math/tex; mode=display">Back \ and \ forth \ just \ like \ were \ calling.</script><script type="math/tex; mode=display">Day \ and \ night, \ from \ night \ till \ dawn.</script><script type="math/tex; mode=display">Dont \ run, \ wait \ till \ Im \ done.</script><script type="math/tex; mode=display">Dont \ front, \ ur \ having \ fun?</script><script type="math/tex; mode=display">Only \ one \ things \ wrong.</script><script type="math/tex; mode=display">Wish \ that \ I \ couldve \ won.</script><script type="math/tex; mode=display">Wanna \ get \ ur \ number \ down,</script><script type="math/tex; mode=display">so \ I \ can \ call \ u \ all \ year \ round.</script><script type="math/tex; mode=display">I \ might \ get \ it \ later,</script><script type="math/tex; mode=display">so \ I \ can \ sing \ for \ you \ more \ hows \ that \ sound?</script><script type="math/tex; mode=display">Tonight, \ tomorrow, \ everyday \ counts.</script><script type="math/tex; mode=display">Still \ cant \ believe \ that \ I \ just \ found.</script><script type="math/tex; mode=display">All \ right, \ Im \ done.</script><script type="math/tex; mode=display">Oh, \ Sophias, \ the \ one\sim</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/113.html">音乐 - 《Bare Face》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/115.html">音乐 - 《For Beauty》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
-    </content>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/114.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/114.html"/>
-    <published>2026-02-24T15:15:00.000Z</published>
-    <summary>
-      <![CDATA[<p>这首英语说唱用的是最近很火的《莫愁乡》的调子，刚好也是rap，所以，如果喜欢，不妨试试唱一下，有点烫嘴哦~😋<br>当然，根据其他歌曲的画风，必然是情歌呀，这种快调子很合适做快乐的诉说呢。😉</p>
-<script type="math/tex; mode=displa]]>
-    </summary>
-    <title>音乐 - 《Sophias》</title>
-    <updated>2026-02-25T02:50:41.198Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
-    <content>
-      <![CDATA[<p>这首英文说唱改编自超级出名歌曲《素颜》，生活即使简单，也是甜甜的哦，而且爱也是呐~😝<br>又是一个适合在夜晚慢慢唱出来的歌曲，感觉很适合在夜深人静的时候听着唱出来，感觉会有一种特别的氛围呢！🌙</p><script type="math/tex; mode=display">No \ no \ no.</script><script type="math/tex; mode=display">Bala \ bala \ bala \ bala \ baba.</script><script type="math/tex; mode=display">Bala \ bala \ bala \ bala \ baba.</script><script type="math/tex; mode=display">Yeah\sim, \ ooooh\sim.</script><script type="math/tex; mode=display">Its \ another \ peaceful \ night.</script><script type="math/tex; mode=display">Im \ by \ myself, \ chillin \ out, \ feelin \ all \ fine.</script><script type="math/tex; mode=display">Just \ like \ an \ elder \ at \ night,</script><script type="math/tex; mode=display">what \ have \ I \ finally \ become \ yeah\sim.</script><script type="math/tex; mode=display">Heard \ u \ been \ tryna \ look \ for \ the \ right \ one.</script><script type="math/tex; mode=display">They \ dont \ seem \ like \ the \ type \ that \ u \ might \ want.</script><script type="math/tex; mode=display">Shoulda \ spent \ some \ time \ to \ rewind.</script><script type="math/tex; mode=display">But \ ur \ so \ beautiful \ gotta \ get \ u \ outta \ my \ mind.</script><script type="math/tex; mode=display">Well \ tonight \ my \ makeups \ all \ done.</script><script type="math/tex; mode=display">I \ believe \ u \ would \ leave \ me \ real \ stunned.</script><script type="math/tex; mode=display">Wanna \ dance \ the \ night \ is \ still \ young.</script><script type="math/tex; mode=display">And \ I \ knew \ that \ u \ were \ the \ one.</script><script type="math/tex; mode=display">Im \ making \ my \ own \ changes.</script><script type="math/tex; mode=display">No \ need \ to \ complicate.</script><script type="math/tex; mode=display">Plz \ dont \ find \ a \ way \ to \ step \ on \ the \ brake.</script><script type="math/tex; mode=display">If \ I \ give \ another \ glance,</script><script type="math/tex; mode=display">would \ I \ still \ feel \ Im \ attached?</script><script type="math/tex; mode=display">Back \ then \ we \ didnt \ give \ a \ damn \ how \ we \ look, \ full \ of \ innocence.</script><script type="math/tex; mode=display">No \ eyeliner \ to \ pretend.</script><script type="math/tex; mode=display">No \ more \ makeup \ to \ defend.</script><script type="math/tex; mode=display">Rain \ began, \ all \ as \ planned,</script><script type="math/tex; mode=display">Whos \ gon \ laugh \ until \ the \ end.</script><script type="math/tex; mode=display">If \ I \ give \ another \ glance,</script><script type="math/tex; mode=display">Would \ I \ still \ feel \ Im \ obsessed?</script><script type="math/tex; mode=display">All \ the \ memories \ all \ the \ emotions \ just \ got \ buried \ in \ the \ end.</script><script type="math/tex; mode=display">Love \ has \ never \ been \ unclear.</script><script type="math/tex; mode=display">How \ intense \ were \ all \ these \ years?</script><script type="math/tex; mode=display">No, \ I \ cant.</script><script type="math/tex; mode=display">Yes, \ you \ can.</script><script type="math/tex; mode=display">Dont \ pretend \ that \ u \ dont \ understand.</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/112.html">音乐 -《Not Da Vinci》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/114.html">音乐 - 《Sophias》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
-    </content>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/113.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/113.html"/>
-    <published>2026-02-24T14:15:00.000Z</published>
-    <summary>
-      <![CDATA[<p>这首英文说唱改编自超级出名歌曲《素颜》，生活即使简单，也是甜甜的哦，而且爱也是呐~😝<br>又是一个适合在夜晚慢慢唱出来的歌曲，感觉很适合在夜深人静的时候听着唱出来，感觉会有一种特别的氛围呢！🌙</p>
-<script type="math/tex; mode=disp]]>
-    </summary>
-    <title>音乐 - 《Bare Face》</title>
-    <updated>2026-02-25T03:37:49.774Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
-    <content>
-      <![CDATA[<p>这首英语说唱改编自中文流行歌曲《瞬》，又到了分手的季节了，伤感的旋律和歌词适合在夜深人静的时候着跟着节奏唱出来吧！🎤<br>所以，时间真的会磨去悲伤的一切吗？ 😭</p><script type="math/tex; mode=display">You \ put \ down \ the \ photo \ so \ shyly.</script><script type="math/tex; mode=display">It \ was \ our \ first \ scene.</script><script type="math/tex; mode=display">U \ got \ me \ to \ reach \ that \ one \ right \ key.</script><script type="math/tex; mode=display">Chillest \ side \ that \ Ive \ seen.</script><script type="math/tex; mode=display">Our \ love \ got \ into \ a \ tortuous \ slow \ fade.</script><script type="math/tex; mode=display">Who \ knew \ that \ wed \ split \ that \ day?</script><script type="math/tex; mode=display">Who \ coulda \ thought \ that \ maybe \ one \ day \ in \ the \ future \ love \ would \ fade \ away?</script><script type="math/tex; mode=display">We \ thought \ we \ had \ it \ right.</script><script type="math/tex; mode=display">You \ were \ in \ my \ arms \ saying \ how \ ur \ always \ be \ my \ side.</script><script type="math/tex; mode=display">We \ promised \ that \ wed \ watch \ the \ tide.</script><script type="math/tex; mode=display">Now \ Im \ gon \ be \ lost \ for \ my \ life.</script><script type="math/tex; mode=display">It \ took \ all \ this \ time\sim \ to \ realize\sim</script><script type="math/tex; mode=display">thought \ we \ could \ fight\sim \ thru \ this \ lie\sim</script><script type="math/tex; mode=display">Remember \ all \ these \ nights\sim</script><script type="math/tex; mode=display">we \ fantasized\sim</script><script type="math/tex; mode=display">To \ make \ it \ a \ reality \ I \ tried \ and \ I \ tried\sim</script><script type="math/tex; mode=display">Maybe \ one \ day \ youll \ meet \ someone \ like \ me.</script><script type="math/tex; mode=display">Was \ it \ meant \ to \ be \ I \ didnt \ hold \ you \ tightly?</script><script type="math/tex; mode=display">Its \ stuck \ in \ my \ head \ wondering \ if \ I \ had \ not \ let.</script><script type="math/tex; mode=display">It \ pains \ me \ that \ I \ still \ cant \ get \ you \ outta \ my \ head.</script><script type="math/tex; mode=display">Until \ its \ done\sim</script><script type="math/tex; mode=display">You \ werent \ the \ one\sim</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/110.html">音乐 - 《Patch Our Memories》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/112.html">音乐 - 《Not Da Vinci》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
-    </content>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/111.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/111.html"/>
-    <published>2026-02-24T10:50:00.000Z</published>
-    <summary>
-      <![CDATA[<p>这首英语说唱改编自中文流行歌曲《瞬》，又到了分手的季节了，伤感的旋律和歌词适合在夜深人静的时候着跟着节奏唱出来吧！🎤<br>所以，时间真的会磨去悲伤的一切吗？ 😭</p>
-<script type="math/tex; mode=display">You \ put \]]>
-    </summary>
-    <title>音乐 - 《Flash》</title>
-    <updated>2026-02-25T03:36:37.933Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
-    <content>
-      <![CDATA[<p>这首英语说唱改编自中文流行歌曲《别叫我达芬奇》，是一首非常有个性的歌曲，旋律和歌词都很有趣，试着对着旋律唱出来吧！😎<br>今天不失恋了，来点欢快的，让我们一起跳起来吧！💃</p><script type="math/tex; mode=display">Cuz \ Im \ a \ bad \ boy.</script><script type="math/tex; mode=display">Tell \ me \ girl \ what \ you \ love.</script><script type="math/tex; mode=display">And \ Im \ afraid \ to \ tell \ you \ I \ might \ like \ u \ too \ much.</script><script type="math/tex; mode=display">Cuz \ Im \ a \ bad \ boy.</script><script type="math/tex; mode=display">Bet \ youve \ never \ seen \ before.</script><script type="math/tex; mode=display">All \ my \ future \ drawing \ and \ my \ songs \ would \ all \ be \ yours.</script><script type="math/tex; mode=display">U \ aint \ got \ my \ number \ how \ you \ gonna \ call \ me?</script><script type="math/tex; mode=display">Wanna \ take \ u \ to \ shopping.</script><script type="math/tex; mode=display">Ur \ hotter \ than \ I \ thought \ u \ would \ be.</script><script type="math/tex; mode=display">Oh \ baby \ girl, \ ur \ name \ is \ Ashlyn.</script><script type="math/tex; mode=display">Just \ wanna \ make \ u \ happy.</script><script type="math/tex; mode=display">Dont \ ever \ gotta \ ask \ u \ to \ be.</script><script type="math/tex; mode=display">So \ baby \ girl, \ dont \ call \ me \ Da \ Vinci.</script><script type="math/tex; mode=display">Wanna \ sing \ u \ a \ melody.</script><script type="math/tex; mode=display">This \ song \ is \ just \ for \ you \ and \ me.</script><script type="math/tex; mode=display">Gimme \ a \ smile \ if \ u \ do \ believe.</script><script type="math/tex; mode=display">So \ baby \ girl, \ dont \ call \ me \ Da \ Vinci.</script><script type="math/tex; mode=display">Ur \ beauty \ inspired \ me.</script><script type="math/tex; mode=display">This \ whole \ things \ prolly \ meant \ to \ be.</script><script type="math/tex; mode=display">Theres \ only \ one \ way \ to \ proceed.</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/111.html">音乐 - 《Flash》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/113.html">音乐 - 《Bare Face》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
-    </content>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/112.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/112.html"/>
-    <published>2026-02-24T10:50:00.000Z</published>
-    <summary>
-      <![CDATA[<p>这首英语说唱改编自中文流行歌曲《别叫我达芬奇》，是一首非常有个性的歌曲，旋律和歌词都很有趣，试着对着旋律唱出来吧！😎<br>今天不失恋了，来点欢快的，让我们一起跳起来吧！💃</p>
-<script type="math/tex; mode=display">Cuz \]]>
-    </summary>
-    <title>音乐 - 《Not Da Vinci》</title>
-    <updated>2026-02-24T14:16:02.669Z</updated>
   </entry>
 </feed>

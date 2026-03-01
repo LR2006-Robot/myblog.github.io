@@ -1,0 +1,804 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/myblog.github.io/css/bilicard.css">
+<!-- hexo injector head_begin end --><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>加解密模式分析 - 前言 | Alice and Bobの神秘小屋</title><meta name="author" content="Dorange"><meta name="copyright" content="Dorange"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="当你在给私密文件加密归档📁、用端到端加密发送消息📱、或是为区块链资产设置加密钱包🪙时，那些让数据从 “明文可读” 变为 “密文难解” 的神奇转换，背后其实是一套套精妙的加解密模式在精准运转⚙️。 欢迎来到《加解密模式分析》的解密工坊！这里没有空洞的概念堆砌（真的不玩文字游戏😜），只有一把把解锁加解密核心逻辑的金钥匙🗝️。 在密码学的世界里，数学是底层根基🏗️，算法是实现工具🔨，而加解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="加解密模式分析 - 前言">
+<meta property="og:url" content="https://lr2006-robot.github.io/myblog.github.io/post/2000.html">
+<meta property="og:site_name" content="Alice and Bobの神秘小屋">
+<meta property="og:description" content="当你在给私密文件加密归档📁、用端到端加密发送消息📱、或是为区块链资产设置加密钱包🪙时，那些让数据从 “明文可读” 变为 “密文难解” 的神奇转换，背后其实是一套套精妙的加解密模式在精准运转⚙️。 欢迎来到《加解密模式分析》的解密工坊！这里没有空洞的概念堆砌（真的不玩文字游戏😜），只有一把把解锁加解密核心逻辑的金钥匙🗝️。 在密码学的世界里，数学是底层根基🏗️，算法是实现工具🔨，而加解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWVNpo-N2hyCdq6qvWXObYt1K1vC1LQACsx8AAtluIVUKkC_346ZW1ToE.jpg">
+<meta property="article:published_time" content="2026-03-01T06:58:00.000Z">
+<meta property="article:modified_time" content="2026-03-01T07:29:36.220Z">
+<meta property="article:author" content="Dorange">
+<meta property="article:tag" content="前言">
+<meta property="article:tag" content="加解密">
+<meta property="article:tag" content="古典密码">
+<meta property="article:tag" content="同态加密">
+<meta property="article:tag" content="后量子加密">
+<meta property="article:tag" content="哈希函数">
+<meta property="article:tag" content="密码学">
+<meta property="article:tag" content="密钥交换协议">
+<meta property="article:tag" content="对称加密">
+<meta property="article:tag" content="数字签名">
+<meta property="article:tag" content="消息认证码">
+<meta property="article:tag" content="混合加密">
+<meta property="article:tag" content="现代密码">
+<meta property="article:tag" content="量子加密">
+<meta property="article:tag" content="零知识证明">
+<meta property="article:tag" content="非对称加密">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWVNpo-N2hyCdq6qvWXObYt1K1vC1LQACsx8AAtluIVUKkC_346ZW1ToE.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "加解密模式分析 - 前言",
+  "url": "https://lr2006-robot.github.io/myblog.github.io/post/2000.html",
+  "image": "https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWVNpo-N2hyCdq6qvWXObYt1K1vC1LQACsx8AAtluIVUKkC_346ZW1ToE.jpg",
+  "datePublished": "2026-03-01T06:58:00.000Z",
+  "dateModified": "2026-03-01T07:29:36.220Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Dorange",
+      "url": "https://LR2006-Robot.github.io/myblog.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/myblog.github.io/img/favicon.png"><link rel="canonical" href="https://lr2006-robot.github.io/myblog.github.io/post/2000.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/myblog.github.io/manifest.json"/><meta name="msapplication-TileColor" content="#49b1f5"/><link rel="apple-touch-icon" sizes="180x180" href="/myblog.github.io/img/siteicon/128.png"/><link rel="icon" type="image/png" sizes="32x32" href="/myblog.github.io/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/myblog.github.io/img/siteicon/16.png"/><link rel="mask-icon" href="/myblog.github.io/img/siteicon/128.png" color="#5bbad5"/><link rel="stylesheet" href="/myblog.github.io/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/myblog.github.io/',
+  algolia: undefined,
+  localSearch: {"path":"/myblog.github.io/search.xml","preload":true,"top_n_per_article":3,"unescape":false,"pagination":{"enable":true,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '加解密模式分析 - 前言',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><style>
+  @font-face {
+      font-family: ZhuZiAYuanJWD;
+      src: url(https://cdn.cbd.int/anzhiyu-blog@latest/fonts/ZhuZiAYuanJWD.woff2);
+      font-display: swap;
+      font-weight: lighter;
+  }
+  @import url(https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap);
+
+  /* 字体样式 */
+  div#menu {
+      font-family: 'ZCOOL KuaiLe', cursive;
+  }
+  h1#site-title {
+      font-family: 'ZCOOL KuaiLe', cursive;
+      font-size: 3em !important;
+  }
+  a.article-title,
+  a.blog-slider__title,
+  a.categoryBar-list-link,
+  h1.post-title{
+      font-family: 'ZCOOL KuaiLe', cursive;
+  }
+
+  /* 图标样式 */
+  .iconfont{
+      font-family: 'iconfont' !important;
+      font-size: 3em;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
+  svg.icon{
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+  }
+  .icon-zhongbiao::before{
+      color:#f7c768;
+  }
+
+  /* bilibli番剧插件 */
+  .bangumi-active{
+      background:#dbecfe !important;
+      border-radius:10px !important;
+  }
+  a.bangumi-tab:hover{
+      text-decoration:none !important;
+  }
+  .bangumi-button:hover{
+      background:#dbecfe !important;
+      border-radius:10px !important;
+  }
+  a.bangumi-button.bangumi-nextpage:hover {
+      text-decoration:none !important;
+  }
+  .bangumi-button{
+      padding: 5px 10px !important;
+  }
+  a.bangumi-tab {
+      padding: 5px 10px !important;
+  }
+  svg.icon.faa-tada {
+      font-size:1.1em;
+  }
+
+  /* 解决artitalk的图标问题 */
+  #uploadSource > svg {
+      width:1.19em;
+      height:1.5em;
+  }   
+
+  /* 移除头图黑色透明玻璃效果 */
+  #page-header:not(.not-top-img):before{
+      background-color: transparent !important;
+  }
+
+  /* 核心：透明化配置 */
+  /* 文章卡片 */
+  body #recent-posts > .recent-post-item {
+    background:rgba(255,255,255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 8px !important;
+  }
+  /* 侧边栏卡片 */
+  body #aside-content .card-widget {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+  /* 核心：透明化配置 */
+  body div#post {
+    background: rgba(255, 255, 255, 0.7) !important; /* 纯白色背景，替换原来的透明 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important; /* 可选：轻微阴影 */
+    color: #000000 !important; /* 确保文字是黑色，方便阅读 */
+  }
+  body div#page {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+  body div#archive {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+  body div#tag {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+  body div#category {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* 夜间模式 */
+  [data-theme='dark'] #recent-posts >.recent-post-item {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] .card-widget {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#post {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#tag {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#archive {
+      background: #121212 !important;
+  }   
+  [data-theme='dark'] div#page {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#category {
+      background: #121212 !important;
+  }
+  /* 黑夜模式下文章正文文本颜色 */
+  [data-theme='dark'] .article-content p,
+  [data-theme='dark'] .article-content li,
+  [data-theme='dark'] .article-content span, 
+  [data-theme='dark'] .article-content div {
+      color: #e0e0e0 !important; /* 浅灰色，适配深色背景 */
+  }
+  /* 黑夜模式下，强制所有文章正文文本为浅色 */
+  [data-theme='dark'] #article-container,
+  [data-theme='dark'] .article-content,
+  [data-theme='dark'] .post-content,
+  [data-theme='dark'] .entry-content {
+    color: #e0e0e0 !important;
+  }
+
+  /* 头部+尾部完全透明 */
+  #footer {
+      background: transparent !important;
+  }
+  #page-header,
+  #page-header #site-banner {
+      background: transparent !important;
+      background-color: transparent !important;
+  }
+  #rightside > div > button {
+      border-radius: 5px !important;
+  }
+
+  /* 滚动条 */
+  ::-webkit-scrollbar {
+      width:10px;
+      height:10px;
+  }
+  ::-webkit-scrollbar-thumb {
+      background-color:#49b1f5 !important;
+      border-radius:20px !important;
+  }
+  ::-webkit-scrollbar-corner {
+      background-color: transparent !important;
+  }
+  ::selection{
+      color: #fff !important;
+      background-color:#49b1f5 !important;
+  }
+
+  /* 音乐播放器 */
+  .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+      left: -66px !important;
+      transition: all 0.3s !important;
+  }
+  .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{
+      left:0 !important;
+      transition: all 0.3s !important;
+  }
+  .aplayer.aplayer-fixed {
+      z-index: 9999999 !important;
+  }
+
+  /* 评论框 */
+  .vwrap{
+      box-shadow: 2px 2px 5px#bbb !important;
+      background: rgba(255, 255, 255,0.3) !important;
+      border-radius: 8px !important;
+      padding: 30px !important;
+      margin: 30px 0px 30px 0px !important;
+  }
+  .vcard{
+      box-shadow:2px 2px 2px 5px#bbb !important;
+      background: rgba(255,255, 255,0.3) !important;
+      border-radius:8px !important;
+      padding: 30px !important;
+      margin: 30px 0px 0px 0px !important;   
+  }
+
+  /* md下划线 */
+  #article-container a:hover {
+      text-decoration:none !important;
+  }
+  #article-container #hpp_talk p img {
+      display: inline !important;
+  }
+
+  /* 404页面 */
+  #error-wrap {
+      position: absolute;
+      top: 40%;
+      right: 0;
+      left: 0;
+      margin:0 auto;
+      padding: 0 1rem !important;
+      max-width: 1000px;
+      transform: translate(0,-50%);
+  }
+  #error-wrap .error-content {    
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin: 0 1rem !important;
+      height: 18rem !important;
+      border-radius: 8px !important;
+      background: var(--card-bg) !important;
+      box-shadow: var(--card-box-shadow) !important;
+      transition: all 0.3s !important;
+  }
+  #error-wrap .error-content .error-img {
+      box-flex: 1;
+      flex: 1;
+      height: 100%;
+      border-top-left-radius:8px !important;
+      border-bottom-left-radius: 8px !important;
+      background-color: #49b1f5 !important;
+      background-position: center !important;
+      background-size: cover !important;
+  }
+  #error-wrap .error-content .error-info {
+      box-flex: 1;
+      flex: 1;
+      padding: 0.7rem;
+      text-align: center;
+      font-size: 14px;
+      font-family:Titillium Web, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft JhengHei', 'Microsoft YaHei',sans-serif;
+  }
+  #error-wrap .error-content .error-info .error_title {
+      margin-top: -4rem;
+      font-size: 9em;
+  }
+  #error-wrap .error-content .error-info .error_subtitle {
+      margin-top: -3.5rem;
+      word-break:break-word;
+      font-size: 1.6em;
+  }
+  #error-wrap .error-content .error-info a {
+      display: inline-block;
+      margin-top: 0.7rem;
+      padding: 0.3rem 1.5rem;
+      background:var(--btn-bg);
+      color: var(--btn-color);
+  }
+  #body-wrap.error .aside-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      bottom:0px;
+      position: absolute;
+      padding: 1rem;
+      width:100%;
+      overflow: scroll;
+  }
+  #body-wrap.error .aside-list .aside-list-group{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      max-width:1200px;
+      margin:0 auto;
+  }
+  #body-wrap.error .aside-list .aside-list-item {
+   padding: 0.7rem;
+  }
+  #body-wrap.error .aside-list .aside-list-item img {
+      width:100%;
+      object-fit: cover;
+      border-radius: 12px;
+  }
+  #body-wrap.error .aside-list .aside-list-item .thumbnail {
+      overflow:hidden;
+      width: 230px;
+      height: 143px;
+      background: var(--heo-card-bg);
+      display: flex;
+  }
+  #body-wrap.error .aside-list .aside-list-item .content .title {
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      line-height: 1.5;
+      justify-content: center;
+      align-items: flex-end;
+      align-content: center; 
+      padding-top: 0.7rem;
+      color: white;
+  }
+  #body-wrap.error .aside-list .aside-list-item .content time {
+      display: none;
+  }
+
+  /* 代码框 */
+  #article-container figure.highlight {
+      border-radius: 10px !important;
+  }
+
+  /* 文章卡片标题/时间：确保黑字清晰 */
+  body #recent-posts .recent-post-item .post-title,
+  body #recent-posts .recent-post-item .post-meta {
+    color: #000000 !important;
+  }
+
+  /* 侧边栏文字：确保黑字清晰 */
+  #aside-content .card-widget * {
+    color: #000000 !important;
+  }
+
+</style>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="/myblog.github.io/css/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.8/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/myblog.github.io/atom.xml" title="Alice and Bobの神秘小屋" type="application/atom+xml">
+</head><body><div class="bg-animation" id="web_bg" style="background-image: url(https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERHs5pnQjVmX4zTI2qi25gyPTpfMxSWQACLB4AAulJ6VS2ZLUXLEvt1zoE.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERHs1pnQe60Op2h26cHbJ2yXTjR1odBgACKB4AAulJ6VRT0XhcdjNKcjoE.png" onerror="this.onerror=null;this.src='/myblog.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/myblog.github.io/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/myblog.github.io/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/myblog.github.io/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog.github.io/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/bangumis/index.html"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/cinemas/index.html"><i class="fa-fw fas fa-film"></i><span> 追剧</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWVNpo-N2hyCdq6qvWXObYt1K1vC1LQACsx8AAtluIVUKkC_346ZW1ToE.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/myblog.github.io/"><img class="site-icon" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERHtBpnQsdLk7Qfwhgys-Le6gzuMG_JgACLh4AAulJ6VQL-yQp4WriNzoE.png" alt="Logo"></a><a class="nav-page-title" href="/myblog.github.io/"><span class="site-name">加解密模式分析 - 前言</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog.github.io/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/bangumis/index.html"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/cinemas/index.html"><i class="fa-fw fas fa-film"></i><span> 追剧</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">加解密模式分析 - 前言</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-01T06:58:00.000Z" title="发表于 2026-03-01 14:58:00">2026-03-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-01T07:29:36.220Z" title="更新于 2026-03-01 15:29:36">2026-03-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/myblog.github.io/categories/%E5%8A%A0%E8%A7%A3%E5%AF%86%E6%A8%A1%E5%BC%8F%E5%88%86%E6%9E%90/">加解密模式分析</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>当你在给私密文件加密归档📁、用端到端加密发送消息📱、或是为区块链资产设置加密钱包🪙时，那些让数据从 “明文可读” 变为 “密文难解” 的神奇转换，背后其实是一套套精妙的加解密模式在精准运转⚙️。</p>
+<p>欢迎来到《加解密模式分析》的解密工坊！这里没有空洞的概念堆砌（真的不玩文字游戏😜），只有一把把解锁加解密核心逻辑的金钥匙🗝️。</p>
+<p>在密码学的世界里，数学是底层根基🏗️，算法是实现工具🔨，而加解密模式就是将二者融合、让加密能力落地的 “桥梁与蓝图”🗺️。本系列文章将带你拆解密码学中最经典、最常用的加解密模式，从古典密码的简单替换、移位模式，到对称加密的分组 / 流加密模式，再到非对称加密的密钥交换、签名验证模式，我们会一步步揭开这些模式的设计思路与运行奥秘🎭。</p>
+<p>别担心，我会用通俗直白的方式（🔍➡️🧩），让你发现这些看似抽象的加解密模式，其实是决定加密体系安全性、实用性的核心关键。它们不仅是凯撒密码、维吉尼亚密码这些古典密码的 “灵魂”👻，更是 AES、DES、RSA、ECC 这些现代加密算法落地应用的 “骨架”🦴，甚至在混合加密、零知识证明等前沿密码学领域，也离不开经典加解密模式的延伸与创新。</p>
+<p>想象一下：<br>当你用凯撒密码简单隐藏信息时🔤，字符移位的基础模式正在帮你完成最朴素的明文混淆；<br>当你用维吉尼亚密码提升加密复杂度时📜，多表替换的模式正在让密文的破解难度指数级上升；<br>当你用 RSA 完成跨网络安全通信时🌐，非对称的公钥加密、私钥解密模式正在构建起安全的密钥交换通道；<br>当你用 ECC 为区块链交易签名时⛓️，椭圆曲线的点运算加密模式正在用更小的密钥实现更高的安全等级。<br>这些从古典到现代的加解密操作，本质上都是不同加解密模式的巧妙设计与灵活应用🎯。</p>
+<p>在这个系列里，我们会像解谜者🧩一样，拆解每一种加解密模式的核心逻辑；像工程师🔧一样，分析不同模式的适用场景与优劣特点；像实战者⚔️一样，探究模式在实际加密场景中的落地技巧。你会发现，原来古典密码的简单模式里藏着现代加密的设计雏形；原来看似复杂的现代加解密算法，核心都是基础模式的组合与优化。</p>
+<p>准备好了吗？让我们一起踏上这场加解密模式的探索之旅🚀，解锁密码学加解密的核心逻辑，亲手搭建属于自己的安全加密体系吧！💡</p>
+<p>在这里简单介绍密码的分类：</p>
+<ul>
+<li>古典密码：如凯撒密码、维吉尼亚密码等，主要通过字符替换和移位来实现加密，安全性较低，容易被频率分析等方法破解。</li>
+<li>现代对称加密：如 AES、DES 等，使用相同的密钥进行加密和解密，适用于大量数据的加密，但密钥管理较为复杂。</li>
+<li>现代非对称加密：如 RSA、ECC 等，使用一对公钥和私钥进行加密和解密，适用于安全通信和数字签名，但加密效率较低。</li>
+<li>混合加密：结合对称加密和非对称加密的优点，使用非对称加密来安全传输对称加密的密钥，从而实现高效且安全的数据加密。</li>
+<li>零知识证明：一种特殊的加密模式，允许一方在不泄露任何信息的情况下向另一方证明某个陈述是正确的，广泛应用于隐私保护和区块链等领域。</li>
+<li>哈希函数：虽然不属于加密算法，但在密码学中也扮演着重要角色，用于数据完整性验证、数字签名等场景，如 SHA-256、MD5 等。</li>
+<li>消息认证码（MAC）：用于验证消息的完整性和真实性，常见的有 HMAC、CMAC 等，广泛应用于网络通信和数据存储等领域。</li>
+<li>数字签名：用于验证消息的来源和完整性，常见的有 RSA 签名、ECDSA 等，广泛应用于电子邮件、软件分发等场景。</li>
+<li>密钥交换协议：用于安全地交换加密密钥，常见的有 Diffie-Hellman、ECDH 等，广泛应用于安全通信和加密协议中。</li>
+<li>同态加密：允许在密文上直接进行计算，而不需要解密，常见的有 Paillier、BFV 等，广泛应用于隐私保护和云计算等领域。</li>
+<li>量子加密：利用量子力学原理实现的加密方法，如量子密钥分发（QKD）等，具有理论上的绝对安全性，但目前仍处于实验阶段。</li>
+<li>后量子加密：针对量子计算机攻击设计的加密算法，如 lattice-based、code-based 等，旨在抵御未来量子计算机的威胁，目前正在积极研究和标准化中。</li>
+</ul>
+<p>注：本系列文章编号从 2000 开始，后续章节将依次递增。每篇文章都会在结尾提供下一章的链接，敬请期待！😉</p>
+<p>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/2001.html">加解密模式分析 - 凯撒密码</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://LR2006-Robot.github.io/myblog.github.io">Dorange</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://lr2006-robot.github.io/myblog.github.io/post/2000.html">https://lr2006-robot.github.io/myblog.github.io/post/2000.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://LR2006-Robot.github.io/myblog.github.io" target="_blank">Alice and Bobの神秘小屋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/">加解密</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81/">现代密码</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/">非对称加密</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/">古典密码</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E5%89%8D%E8%A8%80/">前言</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E6%B7%B7%E5%90%88%E5%8A%A0%E5%AF%86/">混合加密</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E9%9B%B6%E7%9F%A5%E8%AF%86%E8%AF%81%E6%98%8E/">零知识证明</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0/">哈希函数</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81/">消息认证码</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/">数字签名</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E5%8D%8F%E8%AE%AE/">密钥交换协议</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E5%90%8C%E6%80%81%E5%8A%A0%E5%AF%86/">同态加密</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E9%87%8F%E5%AD%90%E5%8A%A0%E5%AF%86/">量子加密</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E5%90%8E%E9%87%8F%E5%AD%90%E5%8A%A0%E5%AF%86/">后量子加密</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/">对称加密</a></div><div class="post-share"><div class="social-share" data-image="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWVNpo-N2hyCdq6qvWXObYt1K1vC1LQACsx8AAtluIVUKkC_346ZW1ToE.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related  no-desc" href="/myblog.github.io/post/2001.html" title="加解密模式分析 - 单表替换密码"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWWtpo-ZCLhrk6C66x4EuctZp9dmN2AAC1B8AAtluIVWdMWxbZaHJuzoE.jpg" onerror="onerror=null;src='/myblog.github.io/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">加解密模式分析 - 单表替换密码</div></div></div></a><a class="pagination-related" href="/myblog.github.io/post/3007.html" title="密码学算法 - Miller-Rabin素数检验"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERVR5poutC11mOkt33gEBoZQABuUjd3n0AAgEfAAIHSRhVAejvNeBEb0w6BA.jpg" onerror="onerror=null;src='/myblog.github.io/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">密码学算法 - Miller-Rabin素数检验</div></div><div class="info-2"><div class="info-item-1">当你需要验证一个大数是否为素数时，Miller-Rabin算法就像一位经验丰富的侦探🕵️‍♂️，能在短时间内给出一个可靠的答案，帮助你在数字的迷宫中找到真相。 欢迎来到《密码学核心算法实战》的Miller-Rabin素数检验算法专题！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安全的精密齿轮⚙️。 Miller-Rabin算法的原理 🌟Miller-Rabin算法基于两个数学定理：  费马小定理：如果 $p$ 是素数，且 $a$ 是一个整数，满足 $1 &lt; a &lt; p-1$，那么 $a^{p-1} \equiv 1 \mod p$。 二次剩余相关：如果 $p$ 是奇素数，方程 $x^2 \equiv 1 \mod p$，只有两个解 $x \equiv \pm 1 \mod p$。  首先，将待检验的奇数 $n$ 写成 $n-1 = 2^s \cdot d$ 的形式，其中 $d$ 是奇数。然后使用费马小定理： a^{n-1} \equiv a^{2^s \cdot d} \equiv (\ldots ((a^d)^2)^2 \ldots)...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related no-desc" href="/myblog.github.io/post/2005.html" title="加解密模式分析 - RC4 加密算法"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWdJpo_R5eSoXg_oIt0rk8dn8suOsQwACUiAAAtluIVUv4a48BTJa8zoE.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-01</div><div class="info-item-2">加解密模式分析 - RC4 加密算法</div></div></div></a><a class="pagination-related no-desc" href="/myblog.github.io/post/2003.html" title="加解密模式分析 - RSA 加密算法"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWX5po-iNwZ0DIy0ReFxjLqTXASWfGgAC5x8AAtluIVV4kF0WTSGZSToE.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-01</div><div class="info-item-2">加解密模式分析 - RSA 加密算法</div></div></div></a><a class="pagination-related no-desc" href="/myblog.github.io/post/2004.html" title="加解密模式分析 - ElGamal 加密算法"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWZBpo-p2PkY9YuEwpbqfLGAClRNSnAACASAAAtluIVVDyQV3_pBc2DoE.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-01</div><div class="info-item-2">加解密模式分析 - ElGamal 加密算法</div></div></div></a><a class="pagination-related no-desc" href="/myblog.github.io/post/2001.html" title="加解密模式分析 - 单表替换密码"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWWtpo-ZCLhrk6C66x4EuctZp9dmN2AAC1B8AAtluIVWdMWxbZaHJuzoE.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-01</div><div class="info-item-2">加解密模式分析 - 单表替换密码</div></div></div></a><a class="pagination-related no-desc" href="/myblog.github.io/post/2002.html" title="加解密模式分析 - 维吉尼亚密码"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWXdpo-fNc2YOEnQ0_6r_DjshIQOk-AAC3x8AAtluIVX0xG3IrKYc1DoE.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-01</div><div class="info-item-2">加解密模式分析 - 维吉尼亚密码</div></div></div></a><a class="pagination-related" href="/myblog.github.io/post/1000.html" title="密码学数学基础 - 前言"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERHtFpnQt8IwL9gNUIbzUGHE4Q7voFWAACMh4AAulJ6VSt7-kVcXvvlzoE.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-19</div><div class="info-item-2">密码学数学基础 - 前言</div></div><div class="info-2"><div class="info-item-1">你有没有想过，当你在深夜网购🛒、和朋友发私密消息💬、或是登录银行账户🏦时，那些看似 “坚不可摧” 的安全屏障🔒，背后其实是一群数学精灵🧚在默默守护？✨ 欢迎来到《密码学数学基础》的奇妙世界！这里没有枯燥的公式堆砌（真的假的😋），只有一把把打开信息安全大门的钥匙🗝️。 在信息安全的宇宙🌌里，密码学就像是一位神秘的魔法师🧙，而数学则是它手中的魔法棒🪄。本系列文章将带你解锁密码学中最核心的数学知识，特别是数论和代数这两大 “护法”🛡️。从最基础的整除、同余，到高深莫测的群论、环论和域论，我们会一步步揭开这些数学工具的神秘面纱🎭。 别担心，我会用轻松有趣的方式（🤣👉🤡），让你发现这些看似高冷的数学概念，其实是设计和分析加密算法与协议的基石🧱。它们不仅是密码学的 “幕后英雄”🦸，还在编码理论、计算复杂性等领域大放异彩🌟。 想象一下：当你用 HTTPS 浏览网页时🌐，大素数的乘积正在帮你抵御窃听👂；当你用数字签名确认身份时✍️，椭圆曲线的点运算正在为你保驾护航🚢；当区块链上的交易被永久记录时⛓️，哈希函数的单向性正在守护数据的不可篡改性📜。这些听起...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERHs1pnQe60Op2h26cHbJ2yXTjR1odBgACKB4AAulJ6VRT0XhcdjNKcjoE.png" onerror="this.onerror=null;this.src='/myblog.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Dorange</div><div class="author-info-description"></div><div class="site-data"><a href="/myblog.github.io/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/myblog.github.io/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/myblog.github.io/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LR2006-Robot"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Crypto is fun!</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/myblog.github.io/post/121.html" title="音乐 - 《My Queen》"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWdRpo_U_PVFEeOh3qtNBLNMbxuih2QACVCAAAtluIVWzatmDhpuNHDoE.jpg" onerror="this.onerror=null;this.src='/myblog.github.io/img/404.jpg'" alt="音乐 - 《My Queen》"/></a><div class="content"><a class="title" href="/myblog.github.io/post/121.html" title="音乐 - 《My Queen》">音乐 - 《My Queen》</a><time datetime="2026-03-01T09:10:00.000Z" title="发表于 2026-03-01 17:10:00">2026-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/myblog.github.io/post/2005.html" title="加解密模式分析 - RC4 加密算法"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWdJpo_R5eSoXg_oIt0rk8dn8suOsQwACUiAAAtluIVUv4a48BTJa8zoE.jpg" onerror="this.onerror=null;this.src='/myblog.github.io/img/404.jpg'" alt="加解密模式分析 - RC4 加密算法"/></a><div class="content"><a class="title" href="/myblog.github.io/post/2005.html" title="加解密模式分析 - RC4 加密算法">加解密模式分析 - RC4 加密算法</a><time datetime="2026-03-01T07:30:00.000Z" title="发表于 2026-03-01 15:30:00">2026-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/myblog.github.io/post/2004.html" title="加解密模式分析 - ElGamal 加密算法"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWZBpo-p2PkY9YuEwpbqfLGAClRNSnAACASAAAtluIVVDyQV3_pBc2DoE.jpg" onerror="this.onerror=null;this.src='/myblog.github.io/img/404.jpg'" alt="加解密模式分析 - ElGamal 加密算法"/></a><div class="content"><a class="title" href="/myblog.github.io/post/2004.html" title="加解密模式分析 - ElGamal 加密算法">加解密模式分析 - ElGamal 加密算法</a><time datetime="2026-03-01T07:24:00.000Z" title="发表于 2026-03-01 15:24:00">2026-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/myblog.github.io/post/2003.html" title="加解密模式分析 - RSA 加密算法"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWX5po-iNwZ0DIy0ReFxjLqTXASWfGgAC5x8AAtluIVV4kF0WTSGZSToE.jpg" onerror="this.onerror=null;this.src='/myblog.github.io/img/404.jpg'" alt="加解密模式分析 - RSA 加密算法"/></a><div class="content"><a class="title" href="/myblog.github.io/post/2003.html" title="加解密模式分析 - RSA 加密算法">加解密模式分析 - RSA 加密算法</a><time datetime="2026-03-01T07:19:00.000Z" title="发表于 2026-03-01 15:19:00">2026-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/myblog.github.io/post/2002.html" title="加解密模式分析 - 维吉尼亚密码"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWXdpo-fNc2YOEnQ0_6r_DjshIQOk-AAC3x8AAtluIVX0xG3IrKYc1DoE.jpg" onerror="this.onerror=null;this.src='/myblog.github.io/img/404.jpg'" alt="加解密模式分析 - 维吉尼亚密码"/></a><div class="content"><a class="title" href="/myblog.github.io/post/2002.html" title="加解密模式分析 - 维吉尼亚密码">加解密模式分析 - 维吉尼亚密码</a><time datetime="2026-03-01T07:10:00.000Z" title="发表于 2026-03-01 15:10:00">2026-03-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Dorange</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/myblog.github.io/js/utils.js?v=5.5.4"></script><script src="/myblog.github.io/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-fzi50solb-doranges-projects.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = (el = document, path = location.pathname) => {
+    twikoo.init({
+      el: el.querySelector('#twikoo-wrap'),
+      envId: 'https://twikoo-fzi50solb-doranges-projects.vercel.app/',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      },
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    
+
+    isShuoshuo && (window.shuoshuoComment.destroyTwikoo = () => {
+      if (el.children.length) {
+        el.innerHTML = ''
+        el.classList.add('no-comment')
+      }
+    })
+  }
+
+  const loadTwikoo = (el, path) => {
+    if (typeof twikoo === 'object') setTimeout(() => init(el, path), 0)
+    else btf.getScript('https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.all.min.js').then(() => init(el, path))
+  }
+
+  if (isShuoshuo) {
+    'Twikoo' === 'Twikoo'
+      ? window.shuoshuoComment = { loadComment: loadTwikoo }
+      : window.loadOtherComment = loadTwikoo
+    return
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><div class="aplayer no-destory" data-id="9662215536" data-server="tencent" data-type="playlist" data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/metingjs/dist/Meting.min.js"></script><div class="app-refresh" id="app-refresh" style="position: fixed;top: -2.2rem;left: 0;right: 0;z-index: 99999;padding: 0 lrem;font-size: 15px; height: 2.2rem;transition: all 0.3s ease;"><div class="app-refresh-wrap" style=" display: flex;color: #fff;height: 100%;align-items: center;justify-content: center;"><label>✨ 有新文章啦！👉</label><a href="javascript:void(0)" onclick="location.reload()"><span style="color: #fff;text-decoration: underline;cursor: pointer;">🍗点击食用🍔</span></a></div></div><script>if ('serviceWorker' in navigator) {
+if (navigator.serviceWorker.controller) {
+navigator.serviceWorker.addEventListener('controllerchange', function () {
+showNotification()
+})
+}
+window.addEventListener('load', function () {
+navigator.serviceWorker.register('/sw.js')
+})
+}
+function showNotification() {
+if (GLOBAL_CONFIG.Snackbar) {
+var snackbarBg = 
+document.documentElement.getAttribute('data-theme') === 'light' ? 
+GLOBAL_CONFIG.Snackbar.bgLight :
+GLOBAL_CONFIG.Snackbar.bgDark
+var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+Snackbar.show({
+text: '✨有新文章啦！👉',
+backgroundColor: snackbarBg,
+duration: 5000,
+pos: snackbarPos,
+actionText: '🍗点击食用🍔',
+actionTextColor: '#fff',
+onActionClick: function (e) {
+locaton.reload()
+},
+})
+} else {
+var showBg = 
+document.documentElement.getAttribute('data-theme') === 'light' ? 
+'#49b1f5' :
+'#1f1f1f'
+var cssText = `top: 0; background: ${showBg}`
+document.getElementById('app-refresh').style.cssText = cssText
+}
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索......." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/myblog.github.io/js/search/local-search.js?v=5.5.4"></script></div></div><!-- hexo injector body_end start --><script async src="/js/ali_font.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '15');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('zoomIn');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="/myblog.github.io/js/wow.min.js"></script><script defer src="/myblog.github.io/js/wow_init.js"></script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.8/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = 'c7dd6e12c55343d08f1c43980c4cd0fa';
+  var qweather_api_host = 'nj6r6pm8pt.re.qweatherapi.com';
+  var ip_api_key = 'Kq1pRjB3WyDja7rhKcWV9f5QU8';
+  var gaud_map_key = 'c7ac840f81b353a1fecc8d3c42421754';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.8/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="/myblog.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/myblog.github.io/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
