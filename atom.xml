@@ -9,7 +9,36 @@
   <link href="https://lr2006-robot.github.io/myblog.github.io/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, Dorange</rights>
   <title>Alice and Bobの神秘小屋</title>
-  <updated>2026-03-01T08:30:49.289Z</updated>
+  <updated>2026-03-01T15:08:34.386Z</updated>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="RSA加解密专题" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%B8%93%E9%A2%98/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="前言" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%89%8D%E8%A8%80/"/>
+    <category term="RSA" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/RSA/"/>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/4000.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/4000.html"/>
+    <published>2026-03-01T15:08:00.000Z</published>
+    <title>RSA加解密专题 - 前言</title>
+    <updated>2026-03-01T15:08:34.386Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="密码学前置内容" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%89%8D%E7%BD%AE%E5%86%85%E5%AE%B9/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="现代密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81/"/>
+    <category term="古典密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/"/>
+    <category term="分类" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%88%86%E7%B1%BB/"/>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/2.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/2.html"/>
+    <published>2026-03-01T14:33:00.000Z</published>
+    <title>密码学前置内容 - 密码分类与简介</title>
+    <updated>2026-03-01T14:36:30.772Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Dorange</name>
@@ -36,13 +65,13 @@
     <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
     <category term="加解密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%8A%A0%E8%A7%A3%E5%AF%86/"/>
     <category term="现代密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81/"/>
-    <category term="流加密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%B5%81%E5%8A%A0%E5%AF%86/"/>
+    <category term="流密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%B5%81%E5%AF%86%E7%A0%81/"/>
     <category term="对称加密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/"/>
     <id>https://lr2006-robot.github.io/myblog.github.io/post/2005.html</id>
     <link href="https://lr2006-robot.github.io/myblog.github.io/post/2005.html"/>
     <published>2026-03-01T07:30:00.000Z</published>
     <title>加解密模式分析 - RC4 加密算法</title>
-    <updated>2026-03-01T08:10:47.130Z</updated>
+    <updated>2026-03-01T14:38:39.582Z</updated>
   </entry>
   <entry>
     <author>
@@ -346,24 +375,6 @@
     </author>
     <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
     <content>
-      <![CDATA[<p>这首英语说唱改编自徐良的《坏女孩》，是一首非常有个性的歌曲，旋律和歌词都很有趣，试着对着旋律唱出来吧！😎<br>许嵩，汪苏泷都有了，情歌怎么少了徐良呢？事不宜迟，go~😋</p><script type="math/tex; mode=display">First \ time \ we \ met \ wasnt \ too \ sure.</script><script type="math/tex; mode=display">We \ havent \ even \ met \ for \ too \ long.</script><script type="math/tex; mode=display">I \ want \ you \ to \ know.</script><script type="math/tex; mode=display">My \ heart \ is \ bout \ to \ implode.</script><script type="math/tex; mode=display">We \ met \ today \ its \ still \ too \ slow.</script><script type="math/tex; mode=display">Im \ so \ afraid \ just \ to \ let \ go.</script><script type="math/tex; mode=display">Im \ lost \ in \ your \ eyes.</script><script type="math/tex; mode=display">Didnt \ know \ that \ beauty \ can \ glow.</script><script type="math/tex; mode=display">Swhe \ said \ that \ it \ might \ be \ too \ soon.</script><script type="math/tex; mode=display">In \ my \ head \ I \ might \ be \ too \ doomed.</script><script type="math/tex; mode=display">Beauty \ in \ a \ room.</script><script type="math/tex; mode=display">I \ dont \ know \ much \ else \ about \ you.</script><script type="math/tex; mode=display">What \ she \ said \ rly \ hurt \ me \ damn.</script><script type="math/tex; mode=display">Is \ this \ how \ me \ and \ Birkly \ ends.</script><script type="math/tex; mode=display">Let \ me \ make \ amends.</script><script type="math/tex; mode=display">Just \ wait \ yeah\sim</script><script type="math/tex; mode=display">She \ with \ the \ smile \ and \ no \ one \ could \ contend.</script><script type="math/tex; mode=display">She \ look \ so \ dialed \ in, \ shes \ biting \ her \ hands.</script><script type="math/tex; mode=display">Do \ what \ I \ can \ and \ I \ cannot \ pretend.</script><script type="math/tex; mode=display">Oh \ we \ just \ began\sim</script><script type="math/tex; mode=display">Tats \ on \ her \ arms \ and \ tats \ on \ her \ chest.</script><script type="math/tex; mode=display">Wonder \ what \ tats \ shed \ be \ getting \ whats \ next.</script><script type="math/tex; mode=display">How \ bout \ my \ name \ on \ ur \ hands, \ on \ ur \ wrist?</script><script type="math/tex; mode=display">I \ might \ just \ be \ obsessed.</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/119.html">音乐 - 《Might’ve Met You》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/121.html">音乐 - 《My Queen》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
-    </content>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/120.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/120.html"/>
-    <published>2026-02-25T09:10:00.000Z</published>
-    <summary>
-      <![CDATA[<p>这首英语说唱改编自徐良的《坏女孩》，是一首非常有个性的歌曲，旋律和歌词都很有趣，试着对着旋律唱出来吧！😎<br>许嵩，汪苏泷都有了，情歌怎么少了徐良呢？事不宜迟，go~😋</p>
-<script type="math/tex; mode=display">First \]]>
-    </summary>
-    <title>音乐 - 《Mischievous Girl》</title>
-    <updated>2026-03-01T08:30:43.614Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
-    <content>
       <![CDATA[<p>这首歌改编自薛之谦的《我好像在哪里见过你》，当然，说唱的话用那首歌的DJ版的旋律和节奏来唱会更好哦！😎<br>虽然只有一小段，相信我跟着DJ的旋律你一定会上头的，那就让我们一起嗨起来吧！😋</p><script type="math/tex; mode=display">I \ thought \ that \ travelers \ burned \ my \ passion \ into \ pieces.</script><script type="math/tex; mode=display">Ur \ like \ a \ love \ letter, \ preliminary.</script><script type="math/tex; mode=display">Love \ secrets \ in \ the \ password \ is \ where \ all \ people \ keep.</script><script type="math/tex; mode=display">Full \ of \ execuses \ we \ both \ know \ its \ you \ tryna \ leave.</script><script type="math/tex; mode=display">I \ heard \ ur \ voice \ it \ felt \ so \ deep.</script><script type="math/tex; mode=display">And \ I \ saw \ ur \ heart \ that \ cant \ be \ seen.</script><script type="math/tex; mode=display">I \ hid \ in \ a \ crowd \ thats \ real \ picky.</script><script type="math/tex; mode=display">When \ the \ dark \ comes \ that \ star \ is \ what \ Ill \ seek.</script><script type="math/tex; mode=display">I \ know \ you \ cant \ hear \ when \ I \ speak.</script><script type="math/tex; mode=display">Im \ scared \ that \ Id \ name \ you \ easily.</script><script type="math/tex; mode=display">I \ wanna \ make \ sure \ we \ could \ meet.</script><script type="math/tex; mode=display">Its \ like \ weve \ exchanged \ our \ eyes \ to \ see.</script><script type="math/tex; mode=display">I \ might \ have \ met \ you \ already.</script><script type="math/tex; mode=display">I \ might \ have \ met \ you \ already.</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/118.html">音乐 - 《Rice Scent》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/120.html">音乐 - 《Mischievous Girl》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
     </content>
     <id>https://lr2006-robot.github.io/myblog.github.io/post/119.html</id>
@@ -375,23 +386,5 @@
     </summary>
     <title>音乐 - 《Might've Met You》</title>
     <updated>2026-03-01T08:12:15.806Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="音乐" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
-    <content>
-      <![CDATA[<p>今天不唱情歌了，这首歌改编自周杰伦的《稻香》，不管生活有多苦，都要有一个生活休息的港湾哦。😉<br>又独立地生活了一天，已经很厉害了！👏</p><script type="math/tex; mode=display">Man, \ if \ the \ world \ is \ full</script><script type="math/tex; mode=display">of \ complainers \ being \ loud \ and</script><script type="math/tex; mode=display">when \ u \ fall, \ u \ dont \ even \ dare \ to \ keep \ going.</script><script type="math/tex; mode=display">How \ could \ us \ human \ ever \ ever \ stoop \ so \ low?</script><script type="math/tex; mode=display">Plz \ turn \ on \ the \ TV \ look \ at \ all \ of \ those</script><script type="math/tex; mode=display">who \ were \ fighting \ w \ their \ lives.</script><script type="math/tex; mode=display">Are \ they \ better? \ No.</script><script type="math/tex; mode=display">Shouldnt \ we \ all \ be \ content \ too?</script><script type="math/tex; mode=display">Believe \ even \ if \ u \ nothing \ to \ hold.</script><script type="math/tex; mode=display">Yeah.</script><script type="math/tex; mode=display">Remember \ you \ said \ that \ homes \ your \ only \ way \ out.</script><script type="math/tex; mode=display">With \ the \ rice \ scent, \ river \ there \ you \ go \ scout.</script><script type="math/tex; mode=display">Give \ me \ a \ smile.</script><script type="math/tex; mode=display">Wasnt \ that \ all \ our \ dreams \ about?</script><script type="math/tex; mode=display">Weep \ no \ more,</script><script type="math/tex; mode=display">let \ fireflies \ go \ plan \ out \ your \ route.</script><script type="math/tex; mode=display">Folk \ songs \ might \ be \ loud,</script><script type="math/tex; mode=display">but \ cant \ live \ without.</script><script type="math/tex; mode=display">Come \ back \ love.</script><script type="math/tex; mode=display">Back \ to \ where \ we \ all \ came \ out.</script><script type="math/tex; mode=display">This \ is \ place \ that \ we \ will \ not \ come \ for.</script><script type="math/tex; mode=display">Come \ back \ when \ u \ want \ even \ if \ its \ too \ old.</script><script type="math/tex; mode=display">We \ dont \ care \ if \ ur \ heart \ is \ cold.</script><script type="math/tex; mode=display">We \ will \ not \ say \ no.</script><p>$from \ bloger: \ Whatevs$</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/117.html">音乐 - 《Why Not》</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/119.html">音乐 - 《Might’ve Met You》</a> 👈<br>回到前言：<a href="http://lr2006-robot.github.io/myblog.github.io/post/100.html">音乐 - 前言</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
-    </content>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/118.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/118.html"/>
-    <published>2026-02-25T06:47:00.000Z</published>
-    <summary>
-      <![CDATA[<p>今天不唱情歌了，这首歌改编自周杰伦的《稻香》，不管生活有多苦，都要有一个生活休息的港湾哦。😉<br>又独立地生活了一天，已经很厉害了！👏</p>
-<script type="math/tex; mode=display">Man, \ if \ the \ world]]>
-    </summary>
-    <title>音乐 - 《Rice Scent》</title>
-    <updated>2026-02-25T09:10:28.583Z</updated>
   </entry>
 </feed>
