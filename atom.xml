@@ -9,7 +9,21 @@
   <link href="https://lr2006-robot.github.io/myblog.github.io/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, Dorange</rights>
   <title>Alice and Bobの神秘小屋</title>
-  <updated>2026-03-02T13:59:12.948Z</updated>
+  <updated>2026-03-02T15:03:41.593Z</updated>
+  <entry>
+    <author>
+      <name>Dorange</name>
+    </author>
+    <category term="密码学算法" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95/"/>
+    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    <category term="算法" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    <id>https://lr2006-robot.github.io/myblog.github.io/post/3008.html</id>
+    <link href="https://lr2006-robot.github.io/myblog.github.io/post/3008.html"/>
+    <published>2026-03-02T15:58:00.000Z</published>
+    <title>密码学算法 - BSGS 算法</title>
+    <updated>2026-03-02T15:03:41.593Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Dorange</name>
@@ -71,7 +85,7 @@
     <link href="https://lr2006-robot.github.io/myblog.github.io/post/2006.html"/>
     <published>2026-03-02T03:30:00.000Z</published>
     <title>加解密模式分析 - 背包加密加密算法</title>
-    <updated>2026-03-02T03:41:40.874Z</updated>
+    <updated>2026-03-02T14:23:19.814Z</updated>
   </entry>
   <entry>
     <author>
@@ -159,7 +173,7 @@
     <category term="现代密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81/"/>
     <category term="非对称加密" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/"/>
     <content>
-      <![CDATA[<p>ElGamal 加密算法，作为非对称加密的经典方案之一，基于离散对数问题的困难性，为数据加密和数字签名提供了强大的安全保障。它在实际应用中被广泛采用，尤其是在需要高安全性的场景中。</p><p>在本章中，我们将深入分析 ElGamal 加密算法的核心原理和实现细节。我们将从 ElGamal 的数学基础开始，逐步揭示其加密和解密过程中的关键步骤。通过对 ElGamal 算法的详细解析，你将能够理解它是如何利用离散对数问题的困难性来确保数据安全的。</p><h2><span id="elgamal-加密过程">ElGamal 加密过程 😁</span></h2><p>一天，Alice 想要向 Bob 发送一条秘密消息。为了确保消息的安全性，Alice 决定使用 ElGamal 加密算法。</p><p>首先通信双方先共享两个公共参数，模数 $p$ 和生成元 $g$。</p><p>Alice本地随机生成一个私钥 $x$，并计算 $y ≡ g^x \mod p$，将 $y$作为公钥发送给Bob。</p><p>Bob收到 $y$ 后，选择一个随机数 $k$ （$1 &lt; k &lt; p-2$且 $k$与 $p-1$互素），计算临时公钥 $C_1 ≡ g^k \mod p$。<br>然后，计算共享密钥 $K ≡ y^k ≡ g^{xk} \mod p$。<br>对明文信息 $m$ 进行处理使得 $m &lt; p$ （如果 $m$ 过大，可以分段加密），使用共享密钥 $K$ 对消息 $m$ 进行加密，计算 $C_2 ≡ m·K \mod p$。<br>Bob将密文对 $(C_1, C_2)$ 发送给Alice。</p><p>Alice收到密文对 $(C_1, C_2)$ 后，计算共享密钥 $K ≡ C_1^x ≡ g^{kx} \mod p$<br>Alice使用共享密钥 $K$ 对 $C_2$ 进行解密，计算 $m ≡ C_2 · K^{-1} \mod p$</p><p>加密侧（Bob）：$K = y_A^k = (g^x)^k = g^{xk}$  → $C_2 = M \times K \mod p$<br>解密侧（Alice）：$K = C_1^x = (g^k)^x = g^{xk}$  → $M = C_2 \times K^{-1} \mod p$</p><h2><span id="elgamal-加密数学原理">ElGamal 加密数学原理 😇</span></h2><p>ElGamal 加密算法的安全性基于离散对数问题的困难性。<br>首先，对于乘法群 $(Z_p^*, \times)$，其阶数为 $p-1$，通过 $g$ 的幂次运算，可以生成群中的所有元素。</p><p>而对于一个足够大的素数 $p$ 和生成元 $g$，计算 $y = g^x \mod p$ 的离散对数 $x$ 是非常困难的。这意味着攻击者无法轻易地从公钥 $y$ 中推断出私钥 $x$，从而无法解密密文。</p><p>举个例子，在模数为 $p = 17627$ 和生成元 $g = 6$ 的情况下，其幂次的结果是非常离散的，没有规律可言，如下图：（仅列举100个）<br><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERX1VppTeVRVK4axMcdUV3DaG8zrpSmQACRSIAAtluKVUdgW7WLoLmQzoE.png" alt="离散对数问题示例"></p><p>在 ElGamal 加密过程中，选择合适的 $p$ 和 $g$ 是至关重要的。通常，$p$ 被选择为一个大素数，而 $g$ 则被选择为 $p$ 的一个生成元，以确保算法的安全性。</p><h2><span id="elgamal-加密算法实现">ElGamal 加密算法实现 🥰</span></h2><p>下面是一个简单的 ElGamal 加密算法的 Python 实现示例：</p><pre><code class="lang-python">from sage.all import random_prime, inverse_mod, primitive_root, randint, gcd# 共享数据bits = 256  # 素数位数upper = pow(2, bits)lower = pow(2, bits - 1)p = random_prime(upper, lbound=lower) # 生成大素数 pg = primitive_root(p) # 找模 p 的一个生成元 g# Alice 生成私钥 x（随机整数 1 &lt; x &lt; p-1）x = randint(2, p-2)y = pow(g, x, p) # 计算公钥 y = g^x mod p# Bob 操作M = &quot;hello_Alice&quot;  # 待加密的消息long_M = int.from_bytes(M.encode(), &#39;big&#39;) # 字符串转整数assert long_M &lt; p, f&quot;消息太大！请分段，要求 long_M &lt; p={p}&quot;# Bob 选择随机数 k（1 &lt; k &lt; p-1，且 gcd(k, p-1)=1）while True:    k = randint(2, p-2)    if gcd(k, p-1) == 1:        break# 计算密文对 (C1, C2)C1 = pow(g, k, p)          # 临时公钥K = pow(y, k, p)           # 共享密钥 K = y^k = g^{xk}C2 = (long_M * K) % p       # 加密消息cipher = (C1, C2)# Alice 解密消息C1, C2 = cipherK_decrypt = pow(C1, x, p) # 用私钥 x 恢复共享密钥 K K_inv = inverse_mod(K_decrypt, p) # 求 K 在模 p 下的逆元decrypted_long_M = (C2 * K_inv) % p # 恢复消息的整数形式# 整数转回字符串byte_len = (decrypted_long_M.bit_length() + 7) // 8# 由于python和sage的整数类型不同，所以需要转换一下M = int(decrypted_long_M)flag = int.to_bytes(M,length=byte_len,byteorder=&#39;big&#39;).decode()print(flag) # 输出解密后的消息</code></pre><p>实际上由于 sage 中的整数类型和 python 中的整数类型不同，所以在非必要情况下不要纯使用sage函数进行算法实现，可以多使用python的密码学库使用。</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/2003.html">加解密模式分析 - RSA 加密算法</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/2005.html">加解密模式分析 - ECC 加密算法</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p><p>相关链接：<br><a href="https://lr2006-robot.github.io/myblog.github.io/post/1007.html">密码学数学基础 - 群论基础</a> 👈</p>]]>
+      <![CDATA[<p>ElGamal 加密算法，作为非对称加密的经典方案之一，基于离散对数问题的困难性，为数据加密和数字签名提供了强大的安全保障。它在实际应用中被广泛采用，尤其是在需要高安全性的场景中。</p><p>在本章中，我们将深入分析 ElGamal 加密算法的核心原理和实现细节。我们将从 ElGamal 的数学基础开始，逐步揭示其加密和解密过程中的关键步骤。通过对 ElGamal 算法的详细解析，你将能够理解它是如何利用离散对数问题的困难性来确保数据安全的。</p><h2><span id="elgamal-加密过程">ElGamal 加密过程 😁</span></h2><p>一天，Alice 想要向 Bob 发送一条秘密消息。为了确保消息的安全性，Alice 决定使用 ElGamal 加密算法。</p><p>首先通信双方先共享两个公共参数，模数 $p$ 和生成元 $g$。</p><p>Alice本地随机生成一个私钥 $x$，并计算 $y ≡ g^x \mod p$，将 $y$作为公钥发送给Bob。</p><p>Bob收到 $y$ 后，选择一个随机数 $k$ （$1 &lt; k &lt; p-2$且 $k$与 $p-1$互素），计算临时公钥 $C_1 ≡ g^k \mod p$。<br>然后，计算共享密钥 $K ≡ y^k ≡ g^{xk} \mod p$。<br>对明文信息 $m$ 进行处理使得 $m &lt; p$ （如果 $m$ 过大，可以分段加密），使用共享密钥 $K$ 对消息 $m$ 进行加密，计算 $C_2 ≡ m·K \mod p$。<br>Bob将密文对 $(C_1, C_2)$ 发送给Alice。</p><p>Alice收到密文对 $(C_1, C_2)$ 后，计算共享密钥 $K ≡ C_1^x ≡ g^{kx} \mod p$<br>Alice使用共享密钥 $K$ 对 $C_2$ 进行解密，计算 $m ≡ C_2 · K^{-1} \mod p$</p><p>加密侧（Bob）：$K = y_A^k = (g^x)^k = g^{xk}$  → $C_2 = M \times K \mod p$<br>解密侧（Alice）：$K = C_1^x = (g^k)^x = g^{xk}$  → $M = C_2 \times K^{-1} \mod p$</p><h2><span id="elgamal-加密数学原理">ElGamal 加密数学原理 😇</span></h2><p>ElGamal 加密算法的安全性基于离散对数问题的困难性。<br>首先，对于乘法群 $(Z_p^*, \times)$，其阶数为 $p-1$，通过 $g$ 的幂次运算，可以生成群中的所有元素。</p><p>而对于一个足够大的素数 $p$ 和生成元 $g$，计算 $y = g^x \mod p$ 的离散对数 $x$ 是非常困难的。这意味着攻击者无法轻易地从公钥 $y$ 中推断出私钥 $x$，从而无法解密密文。</p><p>举个例子，在模数为 $p = 17627$ 和生成元 $g = 6$ 的情况下，其幂次的结果是非常离散的，没有规律可言，如下图：（仅列举100个）<br><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERX1VppTeVRVK4axMcdUV3DaG8zrpSmQACRSIAAtluKVUdgW7WLoLmQzoE.png" alt="离散对数问题示例"></p><p>在 ElGamal 加密过程中，选择合适的 $p$ 和 $g$ 是至关重要的。通常，$p$ 被选择为一个大素数，而 $g$ 则被选择为 $p$ 的一个生成元，以确保算法的安全性。</p><h2><span id="elgamal-加密算法实现">ElGamal 加密算法实现 🥰</span></h2><p>下面是一个简单的 ElGamal 加密算法的 Python 实现示例：</p><pre><code class="lang-python">from sage.all import random_prime, inverse_mod, primitive_root, randint, gcd# 共享数据bits = 256  # 素数位数upper = pow(2, bits)lower = pow(2, bits - 1)p = random_prime(upper, lbound=lower) # 生成大素数 pg = primitive_root(p) # 找模 p 的一个生成元 g# Alice 生成私钥 x（随机整数 1 &lt; x &lt; p-1）x = randint(2, p-2)y = pow(g, x, p) # 计算公钥 y = g^x mod p# Bob 操作M = &quot;hello_Alice&quot;  # 待加密的消息long_M = int.from_bytes(M.encode(), &#39;big&#39;) # 字符串转整数assert long_M &lt; p, f&quot;消息太大！请分段，要求 long_M &lt; p={p}&quot;# Bob 选择随机数 k（1 &lt; k &lt; p-1，且 gcd(k, p-1)=1）while True:    k = randint(2, p-2)    if gcd(k, p-1) == 1:        break# 计算密文对 (C1, C2)C1 = pow(g, k, p)          # 临时公钥K = pow(y, k, p)           # 共享密钥 K = y^k = g^{xk}C2 = (long_M * K) % p       # 加密消息cipher = (C1, C2)# Alice 解密消息C1, C2 = cipherK_decrypt = pow(C1, x, p) # 用私钥 x 恢复共享密钥 K K_inv = inverse_mod(K_decrypt, p) # 求 K 在模 p 下的逆元decrypted_long_M = (C2 * K_inv) % p # 恢复消息的整数形式# 整数转回字符串byte_len = (decrypted_long_M.bit_length() + 7) // 8# 由于python和sage的整数类型不同，所以需要转换一下M = int(decrypted_long_M)flag = int.to_bytes(M,length=byte_len,byteorder=&#39;big&#39;).decode()print(flag) # 输出解密后的消息</code></pre><p>实际上由于 sage 中的整数类型和 python 中的整数类型不同，所以在非必要情况下不要纯使用sage函数进行算法实现，可以多使用python的密码学库使用。</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/2003.html">加解密模式分析 - RSA 加密算法</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/2005.html">加解密模式分析 - Rabin 加密算法</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p><p>相关链接：<br><a href="https://lr2006-robot.github.io/myblog.github.io/post/1007.html">密码学数学基础 - 群论基础</a> 👈</p>]]>
     </content>
     <id>https://lr2006-robot.github.io/myblog.github.io/post/2004.html</id>
     <link href="https://lr2006-robot.github.io/myblog.github.io/post/2004.html"/>
@@ -169,7 +183,7 @@
 <p>在本章中，我们将深入分析 ElGamal 加密算法的核心原理和实现细节。我们将]]>
     </summary>
     <title>加解密模式分析 - ElGamal 加密算法</title>
-    <updated>2026-03-02T07:33:17.686Z</updated>
+    <updated>2026-03-02T14:54:27.355Z</updated>
   </entry>
   <entry>
     <author>
@@ -261,8 +275,8 @@
       <![CDATA[<p>当你需要验证一个大数是否为素数时，Miller-Rabin算法就像一位经验丰富的侦探🕵️‍♂️，能在短时间内给出一个可靠的答案，帮助你在数字的迷宫中找到真相。</p>
 <p>欢迎来到《密码学核心算法实战》的Miller-Rabin素数检验算法专题！这里没有纸上谈兵的理论空]]>
     </summary>
-    <title>密码学算法 - Miller-Rabin素数检验</title>
-    <updated>2026-02-28T15:40:30.206Z</updated>
+    <title>密码学算法 - Miller-Rabin 素数检验</title>
+    <updated>2026-03-02T15:00:40.573Z</updated>
   </entry>
   <entry>
     <author>
@@ -303,8 +317,8 @@
       <![CDATA[<p>当我们要计算一个与已知数近似的数的确定值时，连分数算法就像一把精确的放大镜🔍，能帮我们在无尽的小数世界中找到那个最接近的整数解。</p>
 <p>欢迎来到《密码学核心算法实战》的Wiener算法专题！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安]]>
     </summary>
-    <title>密码学算法 - Wiener算法</title>
-    <updated>2026-02-28T16:00:32.892Z</updated>
+    <title>密码学算法 - Wiener 算法</title>
+    <updated>2026-03-02T15:00:50.947Z</updated>
   </entry>
   <entry>
     <author>
@@ -366,28 +380,7 @@
     <summary>
       <![CDATA[<p>当你熟练掌握 Tonelli-Shanks 算法求解同余方程问题，但是在处理多项式方程的根📐，发现问题和以前有一点点不太一样，在这里需要将模 $p$ 的解提升到模 $p^k$ 的解时😱，别担心，这时候 Hensel-lifting 算法 就像一把神奇的梯子🪜，能帮你一]]>
     </summary>
-    <title>密码学算法 - Hensel-Lifting算法</title>
-    <updated>2026-03-01T09:11:08.416Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Dorange</name>
-    </author>
-    <category term="密码学算法" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95/"/>
-    <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
-    <category term="数学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    <category term="算法" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    <content>
-      <![CDATA[<p>当你在椭圆曲线上进行加密操作时📐，需要计算某个点的平方根，但又发现这个点在有限域中没有平方根时😱，别担心，这时候 Tonelli-Shanks 算法 就像一把灵巧的钥匙🔑，能帮你在无解的荒漠中精准定位那唯一的坐标点。</p><p>欢迎来到《密码学核心算法实战》的 Tonelli-Shanks 专题！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安全的精密齿轮⚙️。</p><h2><span id="tonelli-shanks算法">Tonelli-Shanks算法 🌟</span></h2><p>Tonelli-Shanks 算法用于求解形如：</p><script type="math/tex; mode=display">x^2 \equiv a \pmod{p}</script><p>的同余方程，其中 $ p $ 是奇素数，$ a $ 是模 $ p $ 下的平方数。</p><h2><span id="tonelli-shanks算法的操作">Tonelli-Shanks算法的操作 🙃</span></h2><p>输入：一个整数 $ a $ 和一个奇素数 $ p $，满足 $ a $ 是模 $ p $ 下的平方数。则 $ (\frac{a}{p}) = 1 $。<br>输出：一个整数 $ x $，满足 $ x^2 \equiv a \pmod{p} $。</p><p>算法步骤：</p><ol><li>将 $ p-1 $ 分解为 $ Q \cdot 2^s $，其中 $ Q $ 是奇数。<br>（如果 $s = 1$，即 $ p \equiv 3 \pmod{4} $，则直接计算 $ x \equiv \pm a^{\frac{p+1}{4}} \pmod{p} $）</li><li>找到一个非平方数 $ z $，即满足 $ (\frac{z}{p}) = -1 $ 的整数，令 $ c \equiv z^Q \pmod{p} $。</li><li>令 $ x \equiv a^{\frac{Q+1}{2}} \pmod{p} $，$ t \equiv a^Q \pmod{p} $，$ m = s $。</li><li><p>循环：</p><ul><li>如果 $ t \equiv 1 \pmod{p} $，则返回 $ x $。</li><li>否则，找一个最小的 $ i $，使得 $ t^{2^i} \equiv 1 \pmod{p} $（重复平方）。</li><li>令 $ b \equiv c^{2^{m-i-1}} \pmod{p} $，更新 $ x \equiv x \cdot b \pmod{p} $，$ t \equiv t \cdot b^2 \pmod{p} $，$ c \equiv b^2 \pmod{p} $，$ m = i $。</li><li>如果 $x$ 是一个解，那么第二个解为 $p - x$。</li></ul></li></ol><h2><span id="tonelli-shanks算法的原理">Tonelli-Shanks算法的原理 😭</span></h2><p>已知</p><script type="math/tex; mode=display">\begin{align*}p - 1 = Q \cdot 2^s \\r \equiv a^{\frac{Q+1}{2}} \pmod{p} \\t \equiv a^Q \pmod{p}\end{align*}</script><p>所以，$r^2 \equiv at \pmod{p}$，对于每次迭代都为真。</p><p>如果 $t \equiv 1 \pmod{p}$，则 $r^2 \equiv a \pmod{p}$，并且 $x \equiv \pm r \pmod{p}$，算法结束。</p><p>如果 $t \not\equiv 1 \pmod{p}$，那么认为 $z$ 为模 $p$ 的平方非剩余。<br>令 $c \equiv z^Q \pmod{p}$，那么</p><script type="math/tex; mode=display">c^{2^s} \equiv z^{Q \cdot 2^s} \equiv z^{p-1} \equiv 1 \pmod{p}</script><p>并且</p><script type="math/tex; mode=display">c^{2^{s-1}} \equiv z^{Q \cdot 2^{s-1}} \equiv z^{\frac{p-1}{2}} \equiv -1 \pmod{p}</script><p>所以 $c$ 的乘法阶为 $2^s$。</p><p>同理，有 $t^{2^s} \equiv 1 \pmod{p}$，所以 $t$ 的乘法阶整除 $2^s$。<br>假设 $t$ 的乘法阶为 $2^{s^<em>}$，由于 $a$ 是模 $p$ 的平方剩余，所以 $t \equiv a^Q \equiv 1 \pmod{p}$也是一个平方，所以 $s^</em> &lt; s - 1$。</p><p>之后令</p><script type="math/tex; mode=display">\begin{align*}b \equiv c^{2^{s - s^* - 1}} \pmod{p} \\r^* \equiv r \cdot b \pmod{p} \\c^* \equiv b^2 \pmod{p} \\t^* \equiv t \cdot c^* \pmod{p}\end{align*}</script><p>和上述一致，有 $(r^<em>)^2 \equiv a t^</em> \pmod{p}$ 成立。</p><p>然而 $t$ 和 $c^<em>$ 的阶都是 $2^{s^</em>}$，所以 $t^<em>$ 的阶数为 $2^{s^<strong>}$ 满足 $s^</strong> &lt; s^</em>$。</p><p>如果 $s^<em>* = 0$，则 $t^</em> \equiv 1 \pmod{p}$，并且 $x \equiv \pm r^<em> \pmod{p}$，算法结束。<br>否则，用 $r^</em>$、$t^<em>$ 和 $c^</em>$ 替换 $r$、$t$ 和 $c$，继续迭代重新开始循环，直到 $s^{<em> \ldots </em>}$。<br>因此，一系列的 $s$ 是属于严格减少的算法，一定会终止。</p><h2><span id="tonelli-shanks算法的实现">Tonelli-Shanks算法的实现 🤠</span></h2><p>看懂了吗，下面是 Tonelli-Shanks 算法的一个简单实现：</p><pre><code class="lang-python">def tonelli_shanks(n, p):    if n == 0:        return 0    if pow(n, (p - 1) // 2, p) != 1: # 如果 n 不是模 p 的平方剩余，则没有解        print(&quot;No square root exists&quot;)        return None    if p % 4 == 3: # 如果 p ≡ 3 (mod 4)，直接计算平方根        return pow(n, (p + 1) // 4, p)    q = p - 1 # 将 p-1 分解为 Q * 2^s    s = 0    while q % 2 == 0:        s += 1        q //= 2    # 找到一个非平方数 z    z = 2    while pow(z, (p - 1) // 2, p) != p - 1:        z += 1    c = pow(z, q, p)    x = pow(n, (q + 1) // 2, p)    t = pow(n, q, p)    m = s    # 开始迭代    while t != 1:        i = 1        t2 = pow(t, 2, p)        while t2 != 1:            t2 = pow(t2, 2, p)            i += 1        b = pow(c, 1 &lt;&lt; (m - i - 1), p) # c^(2^(m-i-1))        x = (x * b) % p        t = (t * b * b) % p        c = (b * b) % p        m = i    return x, p - x</code></pre><h2><span id="sagemath-偷懒">SageMath 偷懒 🤓👆</span></h2><p>有同学说：“博主，博主，你的算法确实很厉害，但是还是太吃操作了，有没有更加简单无脑的用法？”👻<br>有的，兄弟有的，这样的算法在 SageMath 中早就已经被封装好了🤫，我们直接调用就行了：</p><pre><code class="lang-python">from sage.all import solve_mod, var # sage环境中才生效# solve_mod 中已经有 Tonelli-Shanks 算法的实现了，直接用就好x = var(&#39;x&#39;) # 一定要记得定义变量，不然会报错的哦mod = 7f = x**2 - 4r = solve_mod(f, mod)</code></pre><p>怎么样，是不是非常简单？🤣👉🤡</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3002.html">密码学算法 - 中国剩余定理CRT</a> 👈<br>下一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/3004.html">密码学算法 - Hensel-lifting算法</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p><p>相关链接：<br><a href="http://lr2006-robot.github.io/myblog.github.io/post/1003.html">密码学数学基础 - 二次剩余</a> 👈</p>]]>
-    </content>
-    <id>https://lr2006-robot.github.io/myblog.github.io/post/3003.html</id>
-    <link href="https://lr2006-robot.github.io/myblog.github.io/post/3003.html"/>
-    <published>2026-02-26T03:36:00.000Z</published>
-    <summary>
-      <![CDATA[<p>当你在椭圆曲线上进行加密操作时📐，需要计算某个点的平方根，但又发现这个点在有限域中没有平方根时😱，别担心，这时候 Tonelli-Shanks 算法 就像一把灵巧的钥匙🔑，能帮你在无解的荒漠中精准定位那唯一的坐标点。</p>
-<p>欢迎来到《密码学核心算法实战》的 T]]>
-    </summary>
-    <title>密码学算法 - Tonelli-Shanks算法</title>
-    <updated>2026-02-28T15:01:57.388Z</updated>
+    <title>密码学算法 - Hensel-Lifting 算法</title>
+    <updated>2026-03-02T15:00:32.823Z</updated>
   </entry>
 </feed>
