@@ -1,0 +1,765 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><!-- hexo injector head_begin start -->
+<link rel="stylesheet" href="/myblog.github.io/css/bilicard.css">
+<!-- hexo injector head_begin end --><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>RSA加解密专题 - 私钥d相关攻击 | Alice and Bobの神秘小屋</title><meta name="author" content="Dorange"><meta name="copyright" content="Dorange"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="article">
+<meta property="og:title" content="RSA加解密专题 - 私钥d相关攻击">
+<meta property="og:url" content="https://lr2006-robot.github.io/myblog.github.io/post/4003.html">
+<meta property="og:site_name" content="Alice and Bobの神秘小屋">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERYq5ppZeiNtHwpDIocmbo-ywSM_1VEgACsx0AAt7rMVUKUltnRipkajoE.jpg">
+<meta property="article:published_time" content="2026-03-02T13:58:00.000Z">
+<meta property="article:modified_time" content="2026-03-02T13:59:12.948Z">
+<meta property="article:author" content="Dorange">
+<meta property="article:tag" content="RSA">
+<meta property="article:tag" content="前言">
+<meta property="article:tag" content="密码学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERYq5ppZeiNtHwpDIocmbo-ywSM_1VEgACsx0AAt7rMVUKUltnRipkajoE.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "RSA加解密专题 - 私钥d相关攻击",
+  "url": "https://lr2006-robot.github.io/myblog.github.io/post/4003.html",
+  "image": "https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERYq5ppZeiNtHwpDIocmbo-ywSM_1VEgACsx0AAt7rMVUKUltnRipkajoE.jpg",
+  "datePublished": "2026-03-02T13:58:00.000Z",
+  "dateModified": "2026-03-02T13:59:12.948Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Dorange",
+      "url": "https://LR2006-Robot.github.io/myblog.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/myblog.github.io/img/favicon.png"><link rel="canonical" href="https://lr2006-robot.github.io/myblog.github.io/post/4003.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/myblog.github.io/manifest.json"/><meta name="msapplication-TileColor" content="#49b1f5"/><link rel="apple-touch-icon" sizes="180x180" href="/myblog.github.io/img/siteicon/128.png"/><link rel="icon" type="image/png" sizes="32x32" href="/myblog.github.io/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/myblog.github.io/img/siteicon/16.png"/><link rel="mask-icon" href="/myblog.github.io/img/siteicon/128.png" color="#5bbad5"/><link rel="stylesheet" href="/myblog.github.io/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/myblog.github.io/',
+  algolia: undefined,
+  localSearch: {"path":"/myblog.github.io/search.xml","preload":true,"top_n_per_article":3,"unescape":false,"pagination":{"enable":true,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'RSA加解密专题 - 私钥d相关攻击',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><style>
+  @font-face {
+      font-family: ZhuZiAYuanJWD;
+      src: url(https://cdn.cbd.int/anzhiyu-blog@latest/fonts/ZhuZiAYuanJWD.woff2);
+      font-display: swap;
+      font-weight: lighter;
+  }
+  @import url(https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap);
+
+  /* 字体样式 */
+  div#menu {
+      font-family: 'ZCOOL KuaiLe', cursive;
+  }
+  h1#site-title {
+      font-family: 'ZCOOL KuaiLe', cursive;
+      font-size: 3em !important;
+  }
+  a.article-title,
+  a.blog-slider__title,
+  a.categoryBar-list-link,
+  h1.post-title{
+      font-family: 'ZCOOL KuaiLe', cursive;
+  }
+
+  /* 图标样式 */
+  .iconfont{
+      font-family: 'iconfont' !important;
+      font-size: 3em;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
+  svg.icon{
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+  }
+  .icon-zhongbiao::before{
+      color:#f7c768;
+  }
+
+  /* bilibli番剧插件 */
+  .bangumi-active{
+      background:#dbecfe !important;
+      border-radius:10px !important;
+  }
+  a.bangumi-tab:hover{
+      text-decoration:none !important;
+  }
+  .bangumi-button:hover{
+      background:#dbecfe !important;
+      border-radius:10px !important;
+  }
+  a.bangumi-button.bangumi-nextpage:hover {
+      text-decoration:none !important;
+  }
+  .bangumi-button{
+      padding: 5px 10px !important;
+  }
+  a.bangumi-tab {
+      padding: 5px 10px !important;
+  }
+  svg.icon.faa-tada {
+      font-size:1.1em;
+  }
+
+  /* 解决artitalk的图标问题 */
+  #uploadSource > svg {
+      width:1.19em;
+      height:1.5em;
+  }   
+
+  /* 移除头图黑色透明玻璃效果 */
+  #page-header:not(.not-top-img):before{
+      background-color: transparent !important;
+  }
+
+  /* 核心：透明化配置 */
+  /* 文章卡片 */
+  body #recent-posts > .recent-post-item {
+    background:rgba(255,255,255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 8px !important;
+  }
+  /* 侧边栏卡片 */
+  body #aside-content .card-widget {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+  /* 核心：透明化配置 */
+  body div#post {
+    background: rgba(255, 255, 255, 0.7) !important; /* 纯白色背景，替换原来的透明 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important; /* 可选：轻微阴影 */
+    color: #000000 !important; /* 确保文字是黑色，方便阅读 */
+  }
+  body div#page {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+  body div#archive {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+  body div#tag {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+  body div#category {
+    background:rgba(255, 255, 255,0.7) !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* 夜间模式 */
+  [data-theme='dark'] #recent-posts >.recent-post-item {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] .card-widget {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#post {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#tag {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#archive {
+      background: #121212 !important;
+  }   
+  [data-theme='dark'] div#page {
+      background: #121212 !important;
+  }
+  [data-theme='dark'] div#category {
+      background: #121212 !important;
+  }
+  /* 黑夜模式下文章正文文本颜色 */
+  [data-theme='dark'] .article-content p,
+  [data-theme='dark'] .article-content li,
+  [data-theme='dark'] .article-content span, 
+  [data-theme='dark'] .article-content div {
+      color: #e0e0e0 !important; /* 浅灰色，适配深色背景 */
+  }
+  /* 黑夜模式下，强制所有文章正文文本为浅色 */
+  [data-theme='dark'] #article-container,
+  [data-theme='dark'] .article-content,
+  [data-theme='dark'] .post-content,
+  [data-theme='dark'] .entry-content {
+    color: #e0e0e0 !important;
+  }
+
+  /* 头部+尾部完全透明 */
+  #footer {
+      background: transparent !important;
+  }
+  #page-header,
+  #page-header #site-banner {
+      background: transparent !important;
+      background-color: transparent !important;
+  }
+  #rightside > div > button {
+      border-radius: 5px !important;
+  }
+
+  /* 滚动条 */
+  ::-webkit-scrollbar {
+      width:10px;
+      height:10px;
+  }
+  ::-webkit-scrollbar-thumb {
+      background-color:#49b1f5 !important;
+      border-radius:20px !important;
+  }
+  ::-webkit-scrollbar-corner {
+      background-color: transparent !important;
+  }
+  ::selection{
+      color: #fff !important;
+      background-color:#49b1f5 !important;
+  }
+
+  /* 音乐播放器 */
+  .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+      left: -66px !important;
+      transition: all 0.3s !important;
+  }
+  .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{
+      left:0 !important;
+      transition: all 0.3s !important;
+  }
+  .aplayer.aplayer-fixed {
+      z-index: 9999999 !important;
+  }
+
+  /* 评论框 */
+  .vwrap{
+      box-shadow: 2px 2px 5px#bbb !important;
+      background: rgba(255, 255, 255,0.3) !important;
+      border-radius: 8px !important;
+      padding: 30px !important;
+      margin: 30px 0px 30px 0px !important;
+  }
+  .vcard{
+      box-shadow:2px 2px 2px 5px#bbb !important;
+      background: rgba(255,255, 255,0.3) !important;
+      border-radius:8px !important;
+      padding: 30px !important;
+      margin: 30px 0px 0px 0px !important;   
+  }
+
+  /* md下划线 */
+  #article-container a:hover {
+      text-decoration:none !important;
+  }
+  #article-container #hpp_talk p img {
+      display: inline !important;
+  }
+
+  /* 404页面 */
+  #error-wrap {
+      position: absolute;
+      top: 40%;
+      right: 0;
+      left: 0;
+      margin:0 auto;
+      padding: 0 1rem !important;
+      max-width: 1000px;
+      transform: translate(0,-50%);
+  }
+  #error-wrap .error-content {    
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin: 0 1rem !important;
+      height: 18rem !important;
+      border-radius: 8px !important;
+      background: var(--card-bg) !important;
+      box-shadow: var(--card-box-shadow) !important;
+      transition: all 0.3s !important;
+  }
+  #error-wrap .error-content .error-img {
+      box-flex: 1;
+      flex: 1;
+      height: 100%;
+      border-top-left-radius:8px !important;
+      border-bottom-left-radius: 8px !important;
+      background-color: #49b1f5 !important;
+      background-position: center !important;
+      background-size: cover !important;
+  }
+  #error-wrap .error-content .error-info {
+      box-flex: 1;
+      flex: 1;
+      padding: 0.7rem;
+      text-align: center;
+      font-size: 14px;
+      font-family:Titillium Web, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft JhengHei', 'Microsoft YaHei',sans-serif;
+  }
+  #error-wrap .error-content .error-info .error_title {
+      margin-top: -4rem;
+      font-size: 9em;
+  }
+  #error-wrap .error-content .error-info .error_subtitle {
+      margin-top: -3.5rem;
+      word-break:break-word;
+      font-size: 1.6em;
+  }
+  #error-wrap .error-content .error-info a {
+      display: inline-block;
+      margin-top: 0.7rem;
+      padding: 0.3rem 1.5rem;
+      background:var(--btn-bg);
+      color: var(--btn-color);
+  }
+  #body-wrap.error .aside-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      bottom:0px;
+      position: absolute;
+      padding: 1rem;
+      width:100%;
+      overflow: scroll;
+  }
+  #body-wrap.error .aside-list .aside-list-group{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      max-width:1200px;
+      margin:0 auto;
+  }
+  #body-wrap.error .aside-list .aside-list-item {
+   padding: 0.7rem;
+  }
+  #body-wrap.error .aside-list .aside-list-item img {
+      width:100%;
+      object-fit: cover;
+      border-radius: 12px;
+  }
+  #body-wrap.error .aside-list .aside-list-item .thumbnail {
+      overflow:hidden;
+      width: 230px;
+      height: 143px;
+      background: var(--heo-card-bg);
+      display: flex;
+  }
+  #body-wrap.error .aside-list .aside-list-item .content .title {
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      line-height: 1.5;
+      justify-content: center;
+      align-items: flex-end;
+      align-content: center; 
+      padding-top: 0.7rem;
+      color: white;
+  }
+  #body-wrap.error .aside-list .aside-list-item .content time {
+      display: none;
+  }
+
+  /* 代码框 */
+  #article-container figure.highlight {
+      border-radius: 10px !important;
+  }
+
+  /* 文章卡片标题/时间：确保黑字清晰 */
+  body #recent-posts .recent-post-item .post-title,
+  body #recent-posts .recent-post-item .post-meta {
+    color: #000000 !important;
+  }
+
+  /* 侧边栏文字：确保黑字清晰 */
+  #aside-content .card-widget * {
+    color: #000000 !important;
+  }
+
+</style>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.8/lib/clock.min.css" /><link rel="stylesheet" href="/myblog.github.io/css/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/myblog.github.io/atom.xml" title="Alice and Bobの神秘小屋" type="application/atom+xml">
+</head><body><div class="bg-animation" id="web_bg" style="background-image: url(https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERHs5pnQjVmX4zTI2qi25gyPTpfMxSWQACLB4AAulJ6VS2ZLUXLEvt1zoE.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERHs1pnQe60Op2h26cHbJ2yXTjR1odBgACKB4AAulJ6VRT0XhcdjNKcjoE.png" onerror="this.onerror=null;this.src='/myblog.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/myblog.github.io/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/myblog.github.io/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/myblog.github.io/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog.github.io/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/bangumis/index.html"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/cinemas/index.html"><i class="fa-fw fas fa-film"></i><span> 追剧</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERYq5ppZeiNtHwpDIocmbo-ywSM_1VEgACsx0AAt7rMVUKUltnRipkajoE.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/myblog.github.io/"><img class="site-icon" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERHtBpnQsdLk7Qfwhgys-Le6gzuMG_JgACLh4AAulJ6VQL-yQp4WriNzoE.png" alt="Logo"></a><a class="nav-page-title" href="/myblog.github.io/"><span class="site-name">RSA加解密专题 - 私钥d相关攻击</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/myblog.github.io/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/bangumis/index.html"><i class="fa-fw fas fa-tv"></i><span> 追番</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/cinemas/index.html"><i class="fa-fw fas fa-film"></i><span> 追剧</span></a></div><div class="menus_item"><a class="site-page" href="/myblog.github.io/about/"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">RSA加解密专题 - 私钥d相关攻击</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-02T13:58:00.000Z" title="发表于 2026-03-02 21:58:00">2026-03-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-02T13:59:12.948Z" title="更新于 2026-03-02 21:59:12">2026-03-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/myblog.github.io/categories/RSA%E5%8A%A0%E8%A7%A3%E5%AF%86%E4%B8%93%E9%A2%98/">RSA加解密专题</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://LR2006-Robot.github.io/myblog.github.io">Dorange</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://lr2006-robot.github.io/myblog.github.io/post/4003.html">https://lr2006-robot.github.io/myblog.github.io/post/4003.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://LR2006-Robot.github.io/myblog.github.io" target="_blank">Alice and Bobの神秘小屋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a><a class="post-meta__tags" href="/myblog.github.io/tags/%E5%89%8D%E8%A8%80/">前言</a><a class="post-meta__tags" href="/myblog.github.io/tags/RSA/">RSA</a></div><div class="post-share"><div class="social-share" data-image="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERYq5ppZeiNtHwpDIocmbo-ywSM_1VEgACsx0AAt7rMVUKUltnRipkajoE.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width no-desc" href="/myblog.github.io/post/4002.html" title="RSA加解密专题 - 公钥指数相关攻击"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERYqtppZdhCU7r7ONXaFzn7BrnOtW70QACsB0AAt7rMVWCrm6sJs5EhDoE.jpg" onerror="onerror=null;src='/myblog.github.io/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">RSA加解密专题 - 公钥指数相关攻击</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related no-desc" href="/myblog.github.io/post/4002.html" title="RSA加解密专题 - 公钥指数相关攻击"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERYqtppZdhCU7r7ONXaFzn7BrnOtW70QACsB0AAt7rMVWCrm6sJs5EhDoE.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-02</div><div class="info-item-2">RSA加解密专题 - 公钥指数相关攻击</div></div></div></a><a class="pagination-related" href="/myblog.github.io/post/4000.html" title="RSA加解密专题 - 前言"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERW8BppFVzcewRqfexiO7xHr97U-AHiwACByMAAtluIVUBRi7f2F7X7ToE.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-01</div><div class="info-item-2">RSA加解密专题 - 前言</div></div><div class="info-2"><div class="info-item-1">当你在 CTF 赛场拆解 RSA 密文🧩、爆破私钥参数🔑、或是还原模分解的隐藏信息📝时，那些看似毫无头绪的密文串、复杂的数论参数，背后其实是 RSA 加解密的核心逻辑在层层嵌套⚙️。 欢迎来到《RSA 加解密专题》的 CTF 攻坚工坊！这里没有晦涩的理论空谈（真的不绕弯😜），只有一把把破解 RSA 题型的实战密钥🗝️。 在 CTF 密码学的赛场上，RSA 绝对是出场率拉满的 “常驻嘉宾”🥇，而数论基础是拆解它的利刃🔪，模运算、大素数分解是攻破它的关键招式，加解密的核心逻辑则是破解各类变种题型的底层密码。本系列专题将带你深耕 RSA 加解密的全维度知识，从最基础的 RSA 原理、密钥生成与加解密流程，到 CTF 中高频出现的低加密指数、模重复、私钥泄露、共模攻击等经典题型，再到进阶的多素数 RSA、盲签名、CRT 加速破解等复杂场景，我们会一步步揭开 RSA 在 CTF 题型中的出题套路与破解技巧🎭。 别担心，我会用 CTF 实战视角（🔍➡️💻），让你发现这些看似复杂的 RSA 题型，其实都是核心原理的变形与拓展。它们不仅考验着数论与模运算的基础功底，更需要灵活...</div></div></div></a><a class="pagination-related" href="/myblog.github.io/post/4001.html" title="RSA加解密专题 - 模数相关攻击"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERX8dppUSJwET2O_bjFVMFlzx_oH8BzgAC7iIAAtluKVXj1q8VEn2TZzoE.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-02</div><div class="info-item-2">RSA加解密专题 - 模数相关攻击</div></div><div class="info-2"><div class="info-item-1">当你在 CTF 赛场遇到 RSA 题型时，模数相关的攻击手法⚔️往往是破解的关键。无论是共模攻击、模重复攻击，还是模数分解的相关漏洞，这些都是 RSA 加解密中常见且高频出现的题型。掌握这些攻击手法，不仅能让你在 CTF 赛场上如鱼得水，还能加深你对 RSA 加解密原理的理解。 暴力分解模数 🥳在 $N$ 的比特位数小于 512 的时候，可以采用大整数分解的策略获取 $p$ 和 $q$。一般来说，使用一些高效的分解工具（如 YAFU、msieve、CADO-NFS 等）可以在合理的时间内完成分解，获取 $p$ 和 $q$。 暴力分解模数例题暴力分解模数例题下载 from Crypto.Util.number import * from secret import M  p = getPrime(56) q = getPrime(56) e = 65537  n = p * q long_M = long_to_bytes(M.encode()) C = pow(long_M, e, n)  print(C) print(n) #n: 3211733906383171840011...</div></div></div></a><a class="pagination-related" href="/myblog.github.io/post/2003.html" title="加解密模式分析 - RSA 加密算法"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERWX5po-iNwZ0DIy0ReFxjLqTXASWfGgAC5x8AAtluIVV4kF0WTSGZSToE.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-01</div><div class="info-item-2">加解密模式分析 - RSA 加密算法</div></div><div class="info-2"><div class="info-item-1">RSA 加密算法，作为非对称加密的代表作之一，已经成为现代密码学中不可或缺的基石。它不仅在数据加密、数字签名等领域发挥着重要作用，还在互联网安全、电子商务等实际应用中得到了广泛的应用。 在本章中，我们将深入分析 RSA 加密算法的核心原理和实现细节。我们将从 RSA 的数学基础开始，逐步揭示其加密和解密过程中的关键步骤。通过对 RSA 算法的详细解析，你将能够理解它是如何利用大数分解的困难性来确保数据安全的。 RSA 加密过程 😁一天，Alice 想要向 Bob 发送一条秘密消息。为了确保消息的安全性，Alice 决定使用 RSA 加密算法。 首先，Bob 先选取两个大素数 $p$ 和 $q$，并计算它们的乘积 $n = p \times q$。接着，Bob 计算 $\phi(n) = (p-1)(q-1)$，并选择一个整数 $e$，满足 $1 &lt; e &lt; \phi(n)$ 且 $\gcd(e, \phi(n)) = 1$。最后，Bob 计算 $d$，使得 $d \equiv e^{-1} \mod \phi(n)$。Bob 将公钥 $(e, n)$ 发送给 Ali...</div></div></div></a><a class="pagination-related" href="/myblog.github.io/post/1000.html" title="密码学数学基础 - 前言"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERHtFpnQt8IwL9gNUIbzUGHE4Q7voFWAACMh4AAulJ6VSt7-kVcXvvlzoE.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-19</div><div class="info-item-2">密码学数学基础 - 前言</div></div><div class="info-2"><div class="info-item-1">你有没有想过，当你在深夜网购🛒、和朋友发私密消息💬、或是登录银行账户🏦时，那些看似 “坚不可摧” 的安全屏障🔒，背后其实是一群数学精灵🧚在默默守护？✨ 欢迎来到《密码学数学基础》的奇妙世界！这里没有枯燥的公式堆砌（真的假的😋），只有一把把打开信息安全大门的钥匙🗝️。 在信息安全的宇宙🌌里，密码学就像是一位神秘的魔法师🧙，而数学则是它手中的魔法棒🪄。本系列文章将带你解锁密码学中最核心的数学知识，特别是数论和代数这两大 “护法”🛡️。从最基础的整除、同余，到高深莫测的群论、环论和域论，我们会一步步揭开这些数学工具的神秘面纱🎭。 别担心，我会用轻松有趣的方式（🤣👉🤡），让你发现这些看似高冷的数学概念，其实是设计和分析加密算法与协议的基石🧱。它们不仅是密码学的 “幕后英雄”🦸，还在编码理论、计算复杂性等领域大放异彩🌟。 想象一下：当你用 HTTPS 浏览网页时🌐，大素数的乘积正在帮你抵御窃听👂；当你用数字签名确认身份时✍️，椭圆曲线的点运算正在为你保驾护航🚢；当区块链上的交易被永久记录时⛓️，哈希函数的单向性正在守护数据的不可篡改性📜。这些听起...</div></div></div></a><a class="pagination-related" href="/myblog.github.io/post/3000.html" title="密码学算法 - 前言"><img class="cover" src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERQGZpnwwrLLtvJsRRZqVItoeO2Ai_YwACLy0AAr6z-VQfM0ltb7_HlzoE.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-25</div><div class="info-item-2">密码学算法 - 前言</div></div><div class="info-2"><div class="info-item-1">当你在验证数字证书的真伪📜、向钱包里导入私钥🔑、或是在区块链上完成一笔跨链交易⛓️时，那些在代码底层飞速运转的 “黑盒”，背后其实是一群不知疲倦的算法工匠在精准操刀⚙️。欢迎来到《密码学核心算法实战》的硬核工坊！这里没有纸上谈兵的理论空谈（真的不画大饼😉），只有一把把能直接撬动数据安全的精密齿轮⚙️。 在密码学的兵器谱里，数学是铸造神兵的矿石⛰️，而算法就是将矿石锻造成利剑的炉火与锤法🔨。本系列专题将带你亲手拆解密码学中最经典、最核心的算法实现，特别是数论算法、开方算法和离散对数算法这三大 “王牌工具”🧰。从古老却依旧强悍的欧几里得算法，到堪称 “中国智慧之光” 的孙子定理（CRT），再到能在有限域中 “求根问底” 的 Tonelli-Shanks 算法，我们会一层层剥开这些算法的外衣，看清它们最核心的运行逻辑。 别害怕，我会用庖丁解牛的方式（🔪➡️🐂），让你发现这些看似复杂的逻辑，其实是构建现代密码体系的精密发条。它们不仅是 RSA、ECC 这些非对称加密的 “心脏”❤️，更是零知识证明、多方安全计算等前沿领域的基石。 想象一下：当你计算私钥的模逆元时♻️，扩展欧...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERHs1pnQe60Op2h26cHbJ2yXTjR1odBgACKB4AAulJ6VRT0XhcdjNKcjoE.png" onerror="this.onerror=null;this.src='/myblog.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Dorange</div><div class="author-info-description"></div><div class="site-data"><a href="/myblog.github.io/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/myblog.github.io/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/myblog.github.io/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LR2006-Robot"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Crypto is fun!</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/myblog.github.io/post/4003.html" title="RSA加解密专题 - 私钥d相关攻击"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERYq5ppZeiNtHwpDIocmbo-ywSM_1VEgACsx0AAt7rMVUKUltnRipkajoE.jpg" onerror="this.onerror=null;this.src='/myblog.github.io/img/404.jpg'" alt="RSA加解密专题 - 私钥d相关攻击"/></a><div class="content"><a class="title" href="/myblog.github.io/post/4003.html" title="RSA加解密专题 - 私钥d相关攻击">RSA加解密专题 - 私钥d相关攻击</a><time datetime="2026-03-02T13:58:00.000Z" title="发表于 2026-03-02 21:58:00">2026-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/myblog.github.io/post/4002.html" title="RSA加解密专题 - 公钥指数相关攻击"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERYqtppZdhCU7r7ONXaFzn7BrnOtW70QACsB0AAt7rMVWCrm6sJs5EhDoE.jpg" onerror="this.onerror=null;this.src='/myblog.github.io/img/404.jpg'" alt="RSA加解密专题 - 公钥指数相关攻击"/></a><div class="content"><a class="title" href="/myblog.github.io/post/4002.html" title="RSA加解密专题 - 公钥指数相关攻击">RSA加解密专题 - 公钥指数相关攻击</a><time datetime="2026-03-02T13:08:00.000Z" title="发表于 2026-03-02 21:08:00">2026-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/myblog.github.io/post/4001.html" title="RSA加解密专题 - 模数相关攻击"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERX8dppUSJwET2O_bjFVMFlzx_oH8BzgAC7iIAAtluKVXj1q8VEn2TZzoE.jpg" onerror="this.onerror=null;this.src='/myblog.github.io/img/404.jpg'" alt="RSA加解密专题 - 模数相关攻击"/></a><div class="content"><a class="title" href="/myblog.github.io/post/4001.html" title="RSA加解密专题 - 模数相关攻击">RSA加解密专题 - 模数相关攻击</a><time datetime="2026-03-02T08:08:00.000Z" title="发表于 2026-03-02 16:08:00">2026-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/myblog.github.io/post/2006.html" title="加解密模式分析 - 背包加密加密算法"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERXmdppQbjhE-FaFiqzp6oTgL4WyC-aAACyyAAAtluKVWBsZ_AAAF8j9k6BA.jpg" onerror="this.onerror=null;this.src='/myblog.github.io/img/404.jpg'" alt="加解密模式分析 - 背包加密加密算法"/></a><div class="content"><a class="title" href="/myblog.github.io/post/2006.html" title="加解密模式分析 - 背包加密加密算法">加解密模式分析 - 背包加密加密算法</a><time datetime="2026-03-02T03:30:00.000Z" title="发表于 2026-03-02 11:30:00">2026-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/myblog.github.io/post/4000.html" title="RSA加解密专题 - 前言"><img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAERW8BppFVzcewRqfexiO7xHr97U-AHiwACByMAAtluIVUBRi7f2F7X7ToE.jpg" onerror="this.onerror=null;this.src='/myblog.github.io/img/404.jpg'" alt="RSA加解密专题 - 前言"/></a><div class="content"><a class="title" href="/myblog.github.io/post/4000.html" title="RSA加解密专题 - 前言">RSA加解密专题 - 前言</a><time datetime="2026-03-01T15:08:00.000Z" title="发表于 2026-03-01 23:08:00">2026-03-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Dorange</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/myblog.github.io/js/utils.js?v=5.5.4"></script><script src="/myblog.github.io/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-fzi50solb-doranges-projects.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = (el = document, path = location.pathname) => {
+    twikoo.init({
+      el: el.querySelector('#twikoo-wrap'),
+      envId: 'https://twikoo-fzi50solb-doranges-projects.vercel.app/',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      },
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    
+
+    isShuoshuo && (window.shuoshuoComment.destroyTwikoo = () => {
+      if (el.children.length) {
+        el.innerHTML = ''
+        el.classList.add('no-comment')
+      }
+    })
+  }
+
+  const loadTwikoo = (el, path) => {
+    if (typeof twikoo === 'object') setTimeout(() => init(el, path), 0)
+    else btf.getScript('https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.all.min.js').then(() => init(el, path))
+  }
+
+  if (isShuoshuo) {
+    'Twikoo' === 'Twikoo'
+      ? window.shuoshuoComment = { loadComment: loadTwikoo }
+      : window.loadOtherComment = loadTwikoo
+    return
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><div class="aplayer no-destory" data-id="9662215536" data-server="tencent" data-type="playlist" data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/metingjs/dist/Meting.min.js"></script><div class="app-refresh" id="app-refresh" style="position: fixed;top: -2.2rem;left: 0;right: 0;z-index: 99999;padding: 0 lrem;font-size: 15px; height: 2.2rem;transition: all 0.3s ease;"><div class="app-refresh-wrap" style=" display: flex;color: #fff;height: 100%;align-items: center;justify-content: center;"><label>✨ 有新文章啦！👉</label><a href="javascript:void(0)" onclick="location.reload()"><span style="color: #fff;text-decoration: underline;cursor: pointer;">🍗点击食用🍔</span></a></div></div><script>if ('serviceWorker' in navigator) {
+if (navigator.serviceWorker.controller) {
+navigator.serviceWorker.addEventListener('controllerchange', function () {
+showNotification()
+})
+}
+window.addEventListener('load', function () {
+navigator.serviceWorker.register('/sw.js')
+})
+}
+function showNotification() {
+if (GLOBAL_CONFIG.Snackbar) {
+var snackbarBg = 
+document.documentElement.getAttribute('data-theme') === 'light' ? 
+GLOBAL_CONFIG.Snackbar.bgLight :
+GLOBAL_CONFIG.Snackbar.bgDark
+var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+Snackbar.show({
+text: '✨有新文章啦！👉',
+backgroundColor: snackbarBg,
+duration: 5000,
+pos: snackbarPos,
+actionText: '🍗点击食用🍔',
+actionTextColor: '#fff',
+onActionClick: function (e) {
+locaton.reload()
+},
+})
+} else {
+var showBg = 
+document.documentElement.getAttribute('data-theme') === 'light' ? 
+'#49b1f5' :
+'#1f1f1f'
+var cssText = `top: 0; background: ${showBg}`
+document.getElementById('app-refresh').style.cssText = cssText
+}
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索......." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/myblog.github.io/js/search/local-search.js?v=5.5.4"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.8/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = 'c7dd6e12c55343d08f1c43980c4cd0fa';
+  var qweather_api_host = 'nj6r6pm8pt.re.qweatherapi.com';
+  var ip_api_key = 'Kq1pRjB3WyDja7rhKcWV9f5QU8';
+  var gaud_map_key = 'c7ac840f81b353a1fecc8d3c42421754';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.8/lib/clock.min.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '15');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('zoomIn');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="/myblog.github.io/js/wow.min.js"></script><script defer src="/myblog.github.io/js/wow_init.js"></script><script async src="/js/ali_font.js"></script><!-- hexo injector body_end end --><script src="/myblog.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/myblog.github.io/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
