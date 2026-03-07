@@ -64,7 +64,7 @@
 <p>欢迎来到《密码学核心算法实战》的 BSG]]>
     </summary>
     <title>密码学算法 - BSGS 算法</title>
-    <updated>2026-03-07T09:17:29.919Z</updated>
+    <updated>2026-03-07T09:24:01.953Z</updated>
   </entry>
   <entry>
     <author>
@@ -172,8 +172,8 @@
     <category term="密码学前置内容" scheme="https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%89%8D%E7%BD%AE%E5%86%85%E5%AE%B9/"/>
     <category term="密码学" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
     <category term="现代密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81/"/>
-    <category term="古典密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/"/>
     <category term="分类" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%88%86%E7%B1%BB/"/>
+    <category term="古典密码" scheme="https://lr2006-robot.github.io/myblog.github.io/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/"/>
     <content>
       <![CDATA[<p>密码学，作为信息安全领域的核心学科之一，涵盖了广泛的内容和技术。在学习密码学之前，了解密码学的分类和基本概念是非常重要的。本文将为你介绍密码学的主要分类，以及每个分类下的一些经典算法和应用。</p><h2><span id="密码学的分类">密码学的分类 😁</span></h2><p>密码学可以大致分为以下几类：</p><h3><span id="古典密码学">古典密码学</span></h3><p>这是密码学的早期阶段，主要包括一些简单的加密方法，如凯撒密码、维吉尼亚密码等。这些方法虽然在当时具有一定的安全性，但随着计算能力的提升，它们已经不再安全。</p><h3><span id="现代密码学">现代密码学</span></h3><h4><span id="按照密钥的特性进行分类">按照密钥的特性进行分类</span></h4><p>对称密码(AES，RC4)         速度快，密钥分发难<br>非对称密码(RSA，ECC)       密钥分发易，速度慢<br>混合密码(HTTPS)            结合两者优势，主流</p><h4><span id="按照功能分类">按照功能分类</span></h4><p>数据加密(AES，RSA)         保机密性<br>数字签名(ECDSA，EdDSA)     保完整+认证+不可否认<br>密钥交换(ECDH，TLS，ECDHE) 安全协商对称密钥<br>消息认证(HMAC，CMAC)       保完整+认证(无不可否认)</p><h4><span id="按照抗量子能力">按照抗量子能力</span></h4><p>传统密码(RSA，ECC)         抗经典，不抗量子<br>后量子密码(Kyber，Di)      抗量子，未来核心</p><h2><span id="密码学简介">密码学简介 😇</span></h2><p>我们重点关注现代密码学的相关基础知识，现代密码学是基于复杂的数学问题设计的，具有更高的安全性和效率。它包括对称加密、非对称加密、数字签名、密钥交换等多个方面，每个方面都有其独特的算法和应用场景。</p><h3><span id="对称加密">对称加密</span></h3><p>对称密码可以分为两大类：序列密码(流密码)和分组密码(块密码)</p><p>序列密码：生成与明文长度相同的密钥流(由密钥生成器产生)，逐位(或逐字节)加密，将明文与密钥流逐位异或。其中，密钥生成器通常是一个伪随机数生成器，使用一个短的密钥作为种子来生成一个长的密钥流。常见的序列密码算法包括 RC4、Salsa20 和 ChaCha20 等。</p><p>分组密码：将明文分成固定长度的组，每组独立加密，用同一密钥对每组明文加密，密钥长度固定。其中，分组密码算法通常使用一个固定长度的密钥来加密一个固定长度的明文块。常见的分组密码算法包括 AES、DES 和 3DES 等。</p><p>现代密码学设计密码算法一般遵循两个原则：</p><ol><li>混淆：模糊明文和密文的关系，尝试用替换的方式实现</li><li>扩散：将明文中一位的影响扩散到多个密文，尝试用置换的方式实现</li></ol><p>现代密码学中通常使用多轮运算，每一轮中会有若干层混淆变换和扩散变换，以增强安全性。</p><h3><span id="非对称加密">非对称加密</span></h3><p>非对称密码，也称为公钥密码，使用一对密钥进行加密和解密：一个公钥用于加密，另一个私钥用于解密。常见的非对称加密算法包括 RSA、ECC 和 ElGamal 等。非对称加密算法的安全性通常基于一些数学问题的困难性，如大数分解问题、离散对数问题等。</p><h3><span id="数字签名">数字签名</span></h3><p>数字签名是一种用于验证消息完整性和身份认证的技术。它使用非对称加密算法生成一个签名，接收方可以使用发送方的公钥来验证签名的有效性。常见的数字签名算法包括 RSA 签名、ECDSA 和 EdDSA 等。</p><h3><span id="密钥交换">密钥交换</span></h3><p>密钥交换协议允许通信双方在不安全的信道上安全地协商一个共享的密钥。常见的密钥交换协议包括 Diffie-Hellman 密钥交换、Elliptic Curve Diffie-Hellman (ECDH) 等。</p><h3><span id="后量子密码">后量子密码</span></h3><p>后量子密码是指那些在量子计算机出现后仍然安全的密码算法。随着量子计算的发展，传统的密码算法可能会被破解，因此研究和开发后量子密码算法变得非常重要。常见的后量子密码算法包括基于格的密码、基于哈希的签名等。</p><p>上一章：<a href="http://lr2006-robot.github.io/myblog.github.io/post/1.html">密码学前置内容 - Sage环境配置</a> 👈<br>回到开始：<a href="http://lr2006-robot.github.io/myblog.github.io/about/">关于我</a> 👈</p>]]>
     </content>
