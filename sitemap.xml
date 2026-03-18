@@ -676,13 +676,6 @@
   </url>
   
   <url>
-    <loc>https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</loc>
-    <lastmod>2026-03-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://lr2006-robot.github.io/myblog.github.io/tags/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -697,6 +690,13 @@
   </url>
   
   <url>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/tags/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://lr2006-robot.github.io/myblog.github.io/tags/%E6%B5%81%E5%AF%86%E7%A0%81/</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -705,27 +705,6 @@
   
   <url>
     <loc>https://lr2006-robot.github.io/myblog.github.io/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/</loc>
-    <lastmod>2026-03-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2026-03-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E8%AE%BA/</loc>
-    <lastmod>2026-03-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lr2006-robot.github.io/myblog.github.io/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -747,6 +726,27 @@
   
   <url>
     <loc>https://lr2006-robot.github.io/myblog.github.io/tags/SageMath/</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E5%AD%A6/</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/tags/%E6%95%B0%E8%AE%BA/</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -783,14 +783,14 @@
   </url>
   
   <url>
-    <loc>https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/</loc>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%89%8D%E7%BD%AE%E5%86%85%E5%AE%B9/</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%89%8D%E7%BD%AE%E5%86%85%E5%AE%B9/</loc>
+    <loc>https://lr2006-robot.github.io/myblog.github.io/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
